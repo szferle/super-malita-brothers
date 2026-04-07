@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Super Malita Brothers — Construction & Renovation, Szeged</title>
+  <meta name="description" content="Premium construction, wall painting, drywall and tile installation in Szeged and surroundings. Licensed & insured." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav">
+  <div class="logo">Super <span>Malita</span> Brothers</div>
+  <div class="nav-location">Szeged &amp; surroundings</div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#services" data-nav="services"></a>
+      <a href="#about" data-nav="about"></a>
+      <a href="#references" data-nav="references"></a>
+      <a href="#contact" data-nav="contact"></a>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="hu" onclick="setLang('hu')">HU</button>
+      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="ro" onclick="setLang('ro')">RO</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-eyebrow"><span class="hero-eyebrow-text"></span></div>
+  <h1 class="hero-h1"></h1>
+  <p class="hero-sub"></p>
+  <div class="hero-location-pill hero-location"></div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats">
+  <div class="stat"><div class="stat-num"></div><div class="stat-label"></div><div class="stat-sub"></div></div>
+  <div class="stat"><div class="stat-num"></div><div class="stat-label"></div><div class="stat-sub"></div></div>
+  <div class="stat"><div class="stat-num"></div><div class="stat-label"></div><div class="stat-sub"></div></div>
+</div>
+
+<!-- ── BEST AT ── -->
+<section class="section best-at">
+  <div class="section-inner">
+    <div class="section-eyebrow best-eyebrow"></div>
+    <h2 class="section-title best-title"></h2>
+    <div class="best-grid"></div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="section services-section" id="services">
+  <div class="section-inner">
+    <div class="section-eyebrow services-eyebrow"></div>
+    <h2 class="section-title services-title"></h2>
+    <div class="services-grid"></div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="section" id="about" style="background:#fff;">
+  <div class="section-inner">
+    <div class="gold-rule"></div>
+    <div class="section-eyebrow about-eyebrow"></div>
+    <h2 class="section-title about-title"></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="about-p1"></p>
+        <p class="about-p2"></p>
+        <p class="about-p3"></p>
+        <p style="margin-top:1rem;font-size:13px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;" class="about-lang-label"></p>
+        <div class="languages-row"></div>
+      </div>
+      <div class="brothers"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PIXEL ART ── -->
+<section class="mario-section">
+  <div class="pixel-art-wrap">
+    <div style="text-align:center;">
+      <canvas id="mario-canvas" class="pixel"></canvas>
+      <div class="pixel-label">Malita Alex</div>
+    </div>
+    <div style="text-align:center;">
+      <canvas id="luigi-canvas" class="pixel"></canvas>
+      <div class="pixel-label">Malita Sergiu</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REFERENCES ── -->
+<section class="section references-section" id="references">
+  <div class="section-inner">
+    <div class="section-eyebrow refs-eyebrow"></div>
+    <h2 class="section-title refs-title"></h2>
+    <div class="slider-wrap">
+      <div class="slider-track"></div>
+      <div class="slider-arrows">
+        <button class="slider-arrow" onclick="prevSlide()">&#8592;</button>
+        <button class="slider-arrow" onclick="nextSlide()">&#8594;</button>
+      </div>
+    </div>
+    <div class="slider-nav"></div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="section contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-eyebrow contact-eyebrow"></div>
+        <h2 class="section-title contact-title"></h2>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div><strong class="contact-phone"></strong></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">✉️</div>
+          <div><strong class="contact-email"></strong></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div><strong class="contact-location"></strong></div>
+        </div>
+      </div>
+      <div>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" id="f-name" />
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="text" id="f-phone" />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="f-msg"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="file-upload-label">
+            <span></span>
+            <input type="file" multiple accept="image/*,.pdf" onchange="fileChosen(this)" />
+          </label>
+          <div class="file-hint"></div>
+        </div>
+        <button class="btn-submit t-send" onclick="submitForm()"></button>
+        <div class="t-sent sent-msg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">Super <span>Malita</span> Brothers</div>
+  <p>Szeged &amp; surroundings · 123 · abc@abc.com</p>
+  <p>© 2026 Super Malita Brothers</p>
+</footer>
+
+<script src="js/translations.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
