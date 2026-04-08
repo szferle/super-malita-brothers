@@ -118,89 +118,87 @@ function prevSlide() { goSlide((slideIndex - 1 + slideTotal) % slideTotal); rese
 function nextSlide() { goSlide((slideIndex + 1) % slideTotal); resetAuto(); }
 function resetAuto() { clearInterval(autoSlide); autoSlide = setInterval(() => goSlide((slideIndex + 1) % slideTotal), 4000); }
 
-/* ── PIXEL MARIO ART ── */
-const S = 16;
+/* ── PIXEL CONSTRUCTION WORKERS ── */
+function drawPixelArt() {
+  const S = 16;
 
-const _ = null;
-const SK = '#D4A870'; // skin
-const BR = '#6B3A1F'; // brown boots
-const YL = '#D4A820'; // hard hat yellow
-const YD = '#A87C10'; // hard hat shadow
-const OR = '#CC6600'; // orange vest
-const OD = '#994400'; // vest shadow/stripe
-const GR = '#888888'; // grey pants
-const GD = '#555555'; // grey shadow
-const WH = '#DDDDDD'; // white pants
-const WD = '#AAAAAA'; // white shadow
-const BL = '#333333'; // belt / dark
-const RD = '#BB2200'; // tool handle red
-const MT = '#999999'; // metal tool
+  const _ = null;
+  const SK = '#D4A870';
+  const BR = '#6B3A1F';
+  const YL = '#D4A820';
+  const YD = '#A87C10';
+  const OR = '#CC6600';
+  const GR = '#888888';
+  const GD = '#555555';
+  const WH = '#DDDDDD';
+  const WD = '#AAAAAA';
+  const MT = '#999999';
 
-// Guy A — grey pants, facing right
-const guyA = [
-  [_,_,YL,YL,YL,YL,YL,_,_,_],
-  [_,YL,YL,YL,YL,YL,YL,YD,_,_],
-  [_,YD,YL,YL,YL,YL,YD,YD,_,_],
-  [_,_,SK,SK,SK,SK,SK,_,_,_],
-  [_,SK,SK,SK,SK,SK,SK,SK,_,_],
-  [_,SK,BR,SK,SK,SK,BR,SK,_,_],
-  [_,_,SK,SK,SK,SK,SK,_,_,_],
-  [_,OR,OR,OR,OR,OR,OR,OR,_,_],
-  [OR,OR,OR,GR,GR,OR,OR,OR,OR,_],
-  [OR,OR,GR,GR,GR,GR,OR,OR,OR,_],
-  [SK,OR,GR,YL,GR,YL,GR,OR,SK,_],
-  [SK,GR,GR,GR,GR,GR,GR,GR,SK,_],
-  [_,GR,GR,GR,GR,GR,GR,GR,_,_],
-  [_,GD,GR,GR,_,GR,GR,GD,_,_],
-  [_,GD,GR,GR,_,GR,GR,GD,_,_],
-  [_,GD,GD,GR,_,GR,GD,GD,_,_],
-  [BR,BR,BR,BR,_,BR,BR,BR,BR,_],
-  [BR,BR,BR,BR,_,BR,BR,BR,BR,_],
-  [_,BR,BR,BR,_,BR,BR,BR,_,_],
-];
+  const guyA = [
+    [_,_,YL,YL,YL,YL,YL,_,_,_],
+    [_,YL,YL,YL,YL,YL,YL,YD,_,_],
+    [_,YD,YL,YL,YL,YL,YD,YD,_,_],
+    [_,_,SK,SK,SK,SK,SK,_,_,_],
+    [_,SK,SK,SK,SK,SK,SK,SK,_,_],
+    [_,SK,BR,SK,SK,SK,BR,SK,_,_],
+    [_,_,SK,SK,SK,SK,SK,_,_,_],
+    [_,OR,OR,OR,OR,OR,OR,OR,_,_],
+    [OR,OR,OR,GR,GR,OR,OR,OR,OR,_],
+    [OR,OR,GR,GR,GR,GR,OR,OR,OR,_],
+    [SK,OR,GR,YL,GR,YL,GR,OR,SK,_],
+    [SK,GR,GR,GR,GR,GR,GR,GR,SK,_],
+    [_,GR,GR,GR,GR,GR,GR,GR,_,_],
+    [_,GD,GR,GR,_,GR,GR,GD,_,_],
+    [_,GD,GR,GR,_,GR,GR,GD,_,_],
+    [_,GD,GD,GR,_,GR,GD,GD,_,_],
+    [BR,BR,BR,BR,_,BR,BR,BR,BR,_],
+    [BR,BR,BR,BR,_,BR,BR,BR,BR,_],
+    [_,BR,BR,BR,_,BR,BR,BR,_,_],
+  ];
 
-// Guy B — white pants, facing left (mirror when drawing)
-const guyB = [
-  [_,_,_,YL,YL,YL,YL,YL,_,_],
-  [_,_,YD,YL,YL,YL,YL,YL,YL,_],
-  [_,_,YD,YD,YL,YL,YL,YL,YD,_],
-  [_,_,_,SK,SK,SK,SK,SK,_,_],
-  [_,_,SK,SK,SK,SK,SK,SK,SK,_],
-  [_,_,SK,BR,SK,SK,SK,BR,SK,_],
-  [_,_,_,SK,SK,SK,SK,SK,_,_],
-  [_,_,OR,OR,OR,OR,OR,OR,OR,_],
-  [_,OR,OR,OR,WH,WH,OR,OR,OR,MT],
-  [_,OR,OR,WH,WH,WH,WH,OR,OR,MT],
-  [_,SK,OR,WH,YL,WH,YL,WH,OR,SK],
-  [_,SK,WH,WH,WH,WH,WH,WH,WH,SK],
-  [_,_,WH,WH,WH,WH,WH,WH,WH,_],
-  [_,_,WD,WH,WH,_,WH,WH,WD,_],
-  [_,_,WD,WH,WH,_,WH,WH,WD,_],
-  [_,_,WD,WD,WH,_,WH,WD,WD,_],
-  [_,BR,BR,BR,BR,_,BR,BR,BR,BR],
-  [_,BR,BR,BR,BR,_,BR,BR,BR,BR],
-  [_,_,BR,BR,BR,_,BR,BR,BR,_],
-];
+  const guyB = [
+    [_,_,_,YL,YL,YL,YL,YL,_,_],
+    [_,_,YD,YL,YL,YL,YL,YL,YL,_],
+    [_,_,YD,YD,YL,YL,YL,YL,YD,_],
+    [_,_,_,SK,SK,SK,SK,SK,_,_],
+    [_,_,SK,SK,SK,SK,SK,SK,SK,_],
+    [_,_,SK,BR,SK,SK,SK,BR,SK,_],
+    [_,_,_,SK,SK,SK,SK,SK,_,_],
+    [_,_,OR,OR,OR,OR,OR,OR,OR,_],
+    [_,OR,OR,OR,WH,WH,OR,OR,OR,MT],
+    [_,OR,OR,WH,WH,WH,WH,OR,OR,MT],
+    [_,SK,OR,WH,YL,WH,YL,WH,OR,SK],
+    [_,SK,WH,WH,WH,WH,WH,WH,WH,SK],
+    [_,_,WH,WH,WH,WH,WH,WH,WH,_],
+    [_,_,WD,WH,WH,_,WH,WH,WD,_],
+    [_,_,WD,WH,WH,_,WH,WH,WD,_],
+    [_,_,WD,WD,WH,_,WH,WD,WD,_],
+    [_,BR,BR,BR,BR,_,BR,BR,BR,BR],
+    [_,BR,BR,BR,BR,_,BR,BR,BR,BR],
+    [_,_,BR,BR,BR,_,BR,BR,BR,_],
+  ];
 
-function draw(id, grid, mirror) {
-  const rows = grid.length, cols = grid[0].length;
-  const c = document.getElementById(id);
-  c.width = cols * S; c.height = rows * S;
-  const ctx = c.getContext('2d');
-  ctx.clearRect(0, 0, c.width, c.height);
-  grid.forEach((row, r) => {
-    const dr = mirror ? [...row].reverse() : row;
-    dr.forEach((color, col) => {
-      if (!color) return;
-      ctx.fillStyle = color;
-      ctx.fillRect(col * S, r * S, S, S);
+  function drawChar(canvasId, grid, mirror) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const rows = grid.length, cols = grid[0].length;
+    canvas.width = cols * S;
+    canvas.height = rows * S;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    grid.forEach((row, r) => {
+      const dr = mirror ? [...row].reverse() : row;
+      dr.forEach((color, c) => {
+        if (!color) return;
+        ctx.fillStyle = color;
+        ctx.fillRect(c * S, r * S, S, S);
+      });
     });
-  });
+  }
+
+  drawChar('mario-canvas', guyA, false);
+  drawChar('luigi-canvas', guyB, true);
 }
-
-draw('a', guyA, false);   // grey pants, faces right
-draw('b', guyB, true);    // white pants, mirrored to face left
-
 
 /* ── CONTACT FORM ── */
 function submitForm() {
