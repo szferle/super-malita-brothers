@@ -119,80 +119,88 @@ function nextSlide() { goSlide((slideIndex + 1) % slideTotal); resetAuto(); }
 function resetAuto() { clearInterval(autoSlide); autoSlide = setInterval(() => goSlide((slideIndex + 1) % slideTotal), 4000); }
 
 /* ── PIXEL MARIO ART ── */
-function drawPixelArt() {
-  const scale = 14;
+const S = 16;
 
-  /* Mario — red cap, grey pants */
-  const marioData = [
-    [0,0,1,1,1,1,1,0,0,0],
-    [0,1,1,1,1,1,1,1,1,0],
-    [0,2,2,3,3,3,2,3,0,0],
-    [2,3,2,3,3,3,2,3,3,2],
-    [2,3,2,2,3,3,3,2,3,2],
-    [2,2,3,3,3,3,2,2,2,2],
-    [0,0,1,1,4,1,1,0,0,0],
-    [0,1,1,1,4,1,1,1,0,0],
-    [1,1,1,1,4,4,1,1,1,0],
-    [3,3,1,4,5,4,1,3,3,0],
-    [3,3,3,4,5,4,3,3,3,0],
-    [3,3,4,4,0,4,4,3,0,0],
-    [0,2,2,0,0,0,2,2,0,0],
-    [2,2,2,0,0,0,2,2,2,0],
-  ];
+const _ = null;
+const SK = '#D4A870'; // skin
+const BR = '#6B3A1F'; // brown boots
+const YL = '#D4A820'; // hard hat yellow
+const YD = '#A87C10'; // hard hat shadow
+const OR = '#CC6600'; // orange vest
+const OD = '#994400'; // vest shadow/stripe
+const GR = '#888888'; // grey pants
+const GD = '#555555'; // grey shadow
+const WH = '#DDDDDD'; // white pants
+const WD = '#AAAAAA'; // white shadow
+const BL = '#333333'; // belt / dark
+const RD = '#BB2200'; // tool handle red
+const MT = '#999999'; // metal tool
 
-  /* Luigi — green cap, white pants */
-  const luigiData = [
-    [0,0,6,6,6,6,6,0,0,0],
-    [0,6,6,6,6,6,6,6,6,0],
-    [0,2,2,3,3,3,2,3,0,0],
-    [2,3,2,3,3,3,2,3,3,2],
-    [2,3,2,2,3,3,3,2,3,2],
-    [2,2,3,3,3,3,2,2,2,2],
-    [0,0,6,6,4,6,6,0,0,0],
-    [0,6,6,6,4,6,6,6,0,0],
-    [6,6,6,6,4,4,6,6,6,0],
-    [3,3,6,4,5,4,6,3,3,0],
-    [3,3,3,4,5,4,3,3,3,0],
-    [3,3,4,4,0,4,4,3,0,0],
-    [0,7,7,0,0,0,7,7,0,0],
-    [7,7,7,0,0,0,7,7,7,0],
-  ];
+// Guy A — grey pants, facing right
+const guyA = [
+  [_,_,YL,YL,YL,YL,YL,_,_,_],
+  [_,YL,YL,YL,YL,YL,YL,YD,_,_],
+  [_,YD,YL,YL,YL,YL,YD,YD,_,_],
+  [_,_,SK,SK,SK,SK,SK,_,_,_],
+  [_,SK,SK,SK,SK,SK,SK,SK,_,_],
+  [_,SK,BR,SK,SK,SK,BR,SK,_,_],
+  [_,_,SK,SK,SK,SK,SK,_,_,_],
+  [_,OR,OR,OR,OR,OR,OR,OR,_,_],
+  [OR,OR,OR,GR,GR,OR,OR,OR,OR,_],
+  [OR,OR,GR,GR,GR,GR,OR,OR,OR,_],
+  [SK,OR,GR,YL,GR,YL,GR,OR,SK,_],
+  [SK,GR,GR,GR,GR,GR,GR,GR,SK,_],
+  [_,GR,GR,GR,GR,GR,GR,GR,_,_],
+  [_,GD,GR,GR,_,GR,GR,GD,_,_],
+  [_,GD,GR,GR,_,GR,GR,GD,_,_],
+  [_,GD,GD,GR,_,GR,GD,GD,_,_],
+  [BR,BR,BR,BR,_,BR,BR,BR,BR,_],
+  [BR,BR,BR,BR,_,BR,BR,BR,BR,_],
+  [_,BR,BR,BR,_,BR,BR,BR,_,_],
+];
 
-  const colors = {
-    0: null,
-    1: '#CC2200', // Mario red
-    2: '#F5A623', // skin
-    3: '#5D3A1A', // brown hair/shoes
-    4: '#7A7A7A', // grey pants (Mario)
-    5: '#5A5A5A', // grey pants shadow
-    6: '#2A8C2A', // Luigi green
-    7: '#F5F5F5', // white pants (Luigi)
-    8: '#D4D4D4', // white pants shadow
-  };
-  // override luigi's leg color
-  const luigiColors = { ...colors, 4: '#E0E0E0', 5: '#C8C8C8' };
+// Guy B — white pants, facing left (mirror when drawing)
+const guyB = [
+  [_,_,_,YL,YL,YL,YL,YL,_,_],
+  [_,_,YD,YL,YL,YL,YL,YL,YL,_],
+  [_,_,YD,YD,YL,YL,YL,YL,YD,_],
+  [_,_,_,SK,SK,SK,SK,SK,_,_],
+  [_,_,SK,SK,SK,SK,SK,SK,SK,_],
+  [_,_,SK,BR,SK,SK,SK,BR,SK,_],
+  [_,_,_,SK,SK,SK,SK,SK,_,_],
+  [_,_,OR,OR,OR,OR,OR,OR,OR,_],
+  [_,OR,OR,OR,WH,WH,OR,OR,OR,MT],
+  [_,OR,OR,WH,WH,WH,WH,OR,OR,MT],
+  [_,SK,OR,WH,YL,WH,YL,WH,OR,SK],
+  [_,SK,WH,WH,WH,WH,WH,WH,WH,SK],
+  [_,_,WH,WH,WH,WH,WH,WH,WH,_],
+  [_,_,WD,WH,WH,_,WH,WH,WD,_],
+  [_,_,WD,WH,WH,_,WH,WH,WD,_],
+  [_,_,WD,WD,WH,_,WH,WD,WD,_],
+  [_,BR,BR,BR,BR,_,BR,BR,BR,BR],
+  [_,BR,BR,BR,BR,_,BR,BR,BR,BR],
+  [_,_,BR,BR,BR,_,BR,BR,BR,_],
+];
 
-  function drawChar(canvasId, data, colorMap) {
-    const canvas = document.getElementById(canvasId);
-    if (!canvas) return;
-    const rows = data.length, cols = data[0].length;
-    canvas.width = cols * scale;
-    canvas.height = rows * scale;
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    data.forEach((row, r) => {
-      row.forEach((cell, c) => {
-        const color = colorMap[cell];
-        if (!color) return;
-        ctx.fillStyle = color;
-        ctx.fillRect(c * scale, r * scale, scale, scale);
-      });
+function draw(id, grid, mirror) {
+  const rows = grid.length, cols = grid[0].length;
+  const c = document.getElementById(id);
+  c.width = cols * S; c.height = rows * S;
+  const ctx = c.getContext('2d');
+  ctx.clearRect(0, 0, c.width, c.height);
+  grid.forEach((row, r) => {
+    const dr = mirror ? [...row].reverse() : row;
+    dr.forEach((color, col) => {
+      if (!color) return;
+      ctx.fillStyle = color;
+      ctx.fillRect(col * S, r * S, S, S);
     });
-  }
-
-  drawChar('mario-canvas', marioData, colors);
-  drawChar('luigi-canvas', luigiData, luigiColors);
+  });
 }
+
+draw('a', guyA, false);   // grey pants, faces right
+draw('b', guyB, true);    // white pants, mirrored to face left
+
 
 /* ── CONTACT FORM ── */
 function submitForm() {
