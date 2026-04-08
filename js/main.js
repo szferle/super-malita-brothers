@@ -139,8 +139,8 @@ function drawPixelArt() {
     [_,YL,YL,YL,YL,YL,YL,YD,_,_],
     [_,YD,YL,YL,YL,YL,YD,YD,_,_],
     [_,_,SK,SK,SK,SK,SK,_,_,_],
+    [_,SK,SK,BR,SK,BR,SK,SK,_,_],
     [_,SK,SK,SK,SK,SK,SK,SK,_,_],
-    [_,SK,BR,SK,SK,SK,BR,SK,_,_],
     [_,_,SK,SK,SK,SK,SK,_,_,_],
     [_,OR,OR,OR,OR,OR,OR,OR,_,_],
     [OR,OR,OR,GR,GR,OR,OR,OR,OR,_],
@@ -153,7 +153,6 @@ function drawPixelArt() {
     [_,GD,GD,GR,_,GR,GD,GD,_,_],
     [BR,BR,BR,BR,_,BR,BR,BR,BR,_],
     [BR,BR,BR,BR,_,BR,BR,BR,BR,_],
-    [_,BR,BR,BR,_,BR,BR,BR,_,_],
   ];
 
   const guyB = [
@@ -161,8 +160,8 @@ function drawPixelArt() {
     [_,_,YD,YL,YL,YL,YL,YL,YL,_],
     [_,_,YD,YD,YL,YL,YL,YL,YD,_],
     [_,_,_,SK,SK,SK,SK,SK,_,_],
+    [_,_,SK,SK,BR,SK,BR,SK,SK,_],
     [_,_,SK,SK,SK,SK,SK,SK,SK,_],
-    [_,_,SK,BR,SK,SK,SK,BR,SK,_],
     [_,_,_,SK,SK,SK,SK,SK,_,_],
     [_,_,OR,OR,OR,OR,OR,OR,OR,_],
     [_,OR,OR,OR,WH,WH,OR,OR,OR,MT],
@@ -175,7 +174,6 @@ function drawPixelArt() {
     [_,_,WD,WD,WH,_,WH,WD,WD,_],
     [_,BR,BR,BR,BR,_,BR,BR,BR,BR],
     [_,BR,BR,BR,BR,_,BR,BR,BR,BR],
-    [_,_,BR,BR,BR,_,BR,BR,BR,_],
   ];
 
   function drawChar(canvasId, grid, mirror) {
