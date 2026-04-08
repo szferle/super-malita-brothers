@@ -2,7 +2,6 @@ const translations = {
   en: {
     nav: { services: "Services", about: "About", references: "References", contact: "Contact" },
     hero: {
-      eyebrow: "Szeged & Surroundings",
       h1: "Built by brothers.<br><em>Built to last.</em>",
       sub: "Premium construction and renovation services delivered with craftsmanship and precision.",
       location: "📍 Szeged, Hungary & surrounding regions"
@@ -82,7 +81,6 @@ const translations = {
   hu: {
     nav: { services: "Szolgáltatások", about: "Rólunk", references: "Referenciák", contact: "Kapcsolat" },
     hero: {
-      eyebrow: "Szeged és környéke",
       h1: "Fivérek építik.<br><em>Maradandóra.</em>",
       sub: "Prémium építési és felújítási szolgáltatások szakértelemmel és pontossággal.",
       location: "📍 Szeged, Magyarország és a régió"
@@ -162,7 +160,6 @@ const translations = {
   ro: {
     nav: { services: "Servicii", about: "Despre noi", references: "Referințe", contact: "Contact" },
     hero: {
-      eyebrow: "Szeged și împrejurimi",
       h1: "Construit de frați.<br><em>Construit să dureze.</em>",
       sub: "Servicii premium de construcții și renovări, livrate cu măiestrie și precizie.",
       location: "📍 Szeged, Ungaria și regiunile din jur"
