@@ -175,7 +175,7 @@ function drawPixelArt() {
     [_,BL,BL,BL,BL,_,BL,BL,BL,BL],
   ];
 
-  function drawChar(canvasId, grid, mirror) {
+  function drawChar(canvasId, grid) {
     const canvas = document.getElementById(canvasId);
     if (!canvas) return;
     const rows = grid.length, cols = grid[0].length;
@@ -183,18 +183,10 @@ function drawPixelArt() {
     canvas.height = rows * S;
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    grid.forEach((row, r) => {
-      const dr = mirror ? [...row].reverse() : row;
-      dr.forEach((color, c) => {
-        if (!color) return;
-        ctx.fillStyle = color;
-        ctx.fillRect(c * S, r * S, S, S);
-      });
-    });
   }
 
-  drawChar('mario-canvas', guyA, false);
-  drawChar('luigi-canvas', guyB, true);
+  drawChar('mario-canvas', guyA);
+  drawChar('luigi-canvas', guyB);
 }
 
 /* ── CONTACT FORM ── */
