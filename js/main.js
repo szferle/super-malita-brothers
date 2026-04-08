@@ -124,9 +124,9 @@ function drawPixelArt() {
 
   const _ = null;
   const SK = '#D4A870';
-  const BL  = '#000000';
-  const RE  = '#CC1100'; // red
-  const GE  = '#3A9A1A'; // green
+  const BL = '#000000';
+  const RE = '#CC1100';
+  const GE = '#3A9A1A';
   const OR = '#CC6600';
   const GR = '#888888';
   const GD = '#555555';
@@ -136,7 +136,7 @@ function drawPixelArt() {
   const guyA = [
     [_,_,RE,RE,RE,RE,RE,_,_,_],
     [_,_,RE,RE,RE,RE,RE,_,_,_],
-    [_,RE,RE,RE,RE,RE,RE,RE,RE,_],
+    [_,_,RE,RE,RE,RE,RE,RE,RE,_],
     [_,_,SK,SK,SK,SK,SK,_,_,_],
     [_,SK,SK,BL,SK,BL,SK,SK,_,_],
     [_,SK,SK,SK,SK,SK,SK,SK,_,_],
@@ -157,7 +157,7 @@ function drawPixelArt() {
   const guyB = [
     [_,_,_,GE,GE,GE,GE,GE,_,_],
     [_,_,_,GE,GE,GE,GE,GE,_,_],
-    [_,GE,GE,GE,GE,GE,GE,GE,GE,_],
+    [_,GE,GE,GE,GE,GE,GE,GE,_,_],
     [_,_,_,SK,SK,SK,SK,SK,_,_],
     [_,_,SK,SK,BL,SK,BL,SK,SK,_],
     [_,_,SK,SK,SK,SK,SK,SK,SK,_],
@@ -175,7 +175,7 @@ function drawPixelArt() {
     [_,BL,BL,BL,BL,_,BL,BL,BL,BL],
   ];
 
-  function drawChar(canvasId, grid) {
+  function drawChar(canvasId, grid, mirror) {
     const canvas = document.getElementById(canvasId);
     if (!canvas) return;
     const rows = grid.length, cols = grid[0].length;
@@ -183,10 +183,18 @@ function drawPixelArt() {
     canvas.height = rows * S;
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    grid.forEach((row, r) => {
+      const dr = mirror ? [...row].reverse() : row;
+      dr.forEach((color, c) => {
+        if (!color) return;
+        ctx.fillStyle = color;
+        ctx.fillRect(c * S, r * S, S, S);
+      });
+    });
   }
 
-  drawChar('mario-canvas', guyA);
-  drawChar('luigi-canvas', guyB);
+  drawChar('mario-canvas', guyA, false);
+  drawChar('luigi-canvas', guyB, true);
 }
 
 /* ── CONTACT FORM ── */
