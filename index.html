@@ -85,9 +85,11 @@
   <div class="pixel-art-wrap">
     <div style="text-align:center;">
       <canvas id="mario-canvas" class="pixel"></canvas>
+      <div class="pixel-label">Malita Alex</div>
     </div>
     <div style="text-align:center;">
       <canvas id="luigi-canvas" class="pixel"></canvas>
+      <div class="pixel-label">Malita Sergiu</div>
     </div>
   </div>
 </section>
@@ -107,6 +109,49 @@
     <div class="slider-nav"></div>
   </div>
 </section>
+
+<!-- ── BOOKING ── -->
+<section class="section booking-section" id="booking">
+  <div class="section-inner">
+    <div class="section-eyebrow booking-eyebrow"></div>
+    <h2 class="section-title booking-title"></h2>
+    <p class="booking-sub"></p>
+    <div class="calendar-wrap">
+      <div class="cal-header">
+        <button class="cal-nav" onclick="calPrev()">&#8592;</button>
+        <span class="cal-month-label" id="cal-month-label"></span>
+        <button class="cal-nav" onclick="calNext()">&#8594;</button>
+      </div>
+      <div class="cal-weekdays">
+        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+      <div class="cal-legend">
+        <span class="leg-item"><span class="leg-dot leg-available"></span><span class="leg-txt-available"></span></span>
+        <span class="leg-item"><span class="leg-dot leg-blocked"></span><span class="leg-txt-blocked"></span></span>
+        <span class="leg-item"><span class="leg-dot leg-selected"></span><span class="leg-txt-selected"></span></span>
+      </div>
+    </div>
+    <div class="booking-form" id="booking-form" style="display:none;">
+      <div class="booking-selected-date" id="booking-selected-date"></div>
+      <div class="form-group"><label class="bk-label-name"></label><input type="text" id="bk-name" /></div>
+      <div class="form-group"><label class="bk-label-phone"></label><input type="text" id="bk-phone" /></div>
+      <div class="form-group"><label class="bk-label-note"></label><textarea id="bk-note" style="min-height:80px;resize:vertical;"></textarea></div>
+      <button class="btn-submit bk-send-btn" onclick="submitBooking()"></button>
+      <div class="bk-sent" id="bk-sent" style="display:none;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STICKER ── -->
+<div class="sticker-popup" id="sticker-popup" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
+  <div class="sticker-inner">
+    <div class="sticker-star">★</div>
+    <div class="sticker-text bk-sticker-txt"></div>
+    <div class="sticker-cta bk-sticker-cta"></div>
+  </div>
+  <button class="sticker-close" onclick="event.stopPropagation();document.getElementById('sticker-popup').style.display='none'">✕</button>
+</div>
 
 <!-- ── CONTACT ── -->
 <section class="section contact-section" id="contact">

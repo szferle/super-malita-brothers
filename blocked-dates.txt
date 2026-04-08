@@ -1,0 +1,6 @@
+# Blocked dates for Super Malita Brothers booking calendar
+# Format: YYYY-MM-DD or YYYY-MM-DD to YYYY-MM-DD for ranges
+# Lines starting with # are comments
+
+2026-05-10
+2026-05-20 to 2026-05-25

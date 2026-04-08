@@ -138,7 +138,7 @@ function drawPixelArt() {
     [_,_,RE,RE,RE,RE,RE,_,_,_],
     [_,_,RE,RE,RE,RE,RE,RE,RE,_],
     [_,_,SK,SK,SK,SK,SK,_,_,_],
-    [_,SK,SK,BL,SK,BL,SK,SK,_,_],
+        [_,SK,SK,BL,SK,BL,SK,SK,_,_],
     [_,SK,SK,SK,SK,SK,SK,SK,_,_],
     [_,_,SK,SK,SK,SK,SK,_,_,_],
     [_,OR,OR,OR,OR,OR,OR,OR,_,_],
@@ -220,4 +220,189 @@ function fileChosen(input) {
 document.addEventListener('DOMContentLoaded', () => {
   setLang('en');
   drawPixelArt();
+});
+
+/* ── CALENDAR / BOOKING ── */
+
+// Blocked dates loaded from blocked-dates.txt (parsed at runtime)
+// Format: YYYY-MM-DD singles, or YYYY-MM-DD to YYYY-MM-DD ranges
+const BLOCKED_DATES_TEXT = `2026-05-10
+2026-05-20 to 2026-05-25`;
+
+function parseBlockedDates(text) {
+  const blocked = new Set();
+  text.split('\n').forEach(line => {
+    line = line.trim();
+    if (!line || line.startsWith('#')) return;
+    if (line.includes(' to ')) {
+      const [startStr, endStr] = line.split(' to ').map(s => s.trim());
+      const start = new Date(startStr);
+      const end = new Date(endStr);
+      for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+        blocked.add(d.toISOString().slice(0, 10));
+      }
+    } else {
+      blocked.add(line);
+    }
+  });
+  return blocked;
+}
+
+const blockedDates = parseBlockedDates(BLOCKED_DATES_TEXT);
+
+let calYear, calMonth, selectedDate = null;
+
+function initCalendar() {
+  const now = new Date();
+  calYear = now.getFullYear();
+  calMonth = now.getMonth();
+  renderCalendar();
+}
+
+function renderCalendar() {
+  const monthNames = ['January','February','March','April','May','June',
+                      'July','August','September','October','November','December'];
+  document.getElementById('cal-month-label').textContent = monthNames[calMonth] + ' ' + calYear;
+
+  const grid = document.getElementById('cal-grid');
+  grid.innerHTML = '';
+
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  // First day of month (0=Sun..6=Sat), convert to Mon-first (0=Mon..6=Sun)
+  const firstDay = new Date(calYear, calMonth, 1).getDay();
+  const offset = (firstDay === 0) ? 6 : firstDay - 1;
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+
+  // Empty cells
+  for (let i = 0; i < offset; i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day empty';
+    grid.appendChild(el);
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const el = document.createElement('div');
+    el.textContent = d;
+    const dateStr = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const date = new Date(calYear, calMonth, d);
+
+    if (date < today) {
+      el.className = 'cal-day past';
+    } else if (blockedDates.has(dateStr)) {
+      el.className = 'cal-day blocked';
+      el.title = 'Not available';
+    } else {
+      el.className = 'cal-day available';
+      if (dateStr === selectedDate) el.classList.add('selected');
+      if (date.getTime() === today.getTime()) el.classList.add('today');
+      el.onclick = () => selectDate(dateStr, d);
+    }
+    grid.appendChild(el);
+  }
+}
+
+function selectDate(dateStr, day) {
+  selectedDate = dateStr;
+  renderCalendar();
+  const form = document.getElementById('booking-form');
+  form.style.display = 'block';
+  const months = ['January','February','March','April','May','June',
+                  'July','August','September','October','November','December'];
+  document.getElementById('booking-selected-date').textContent =
+    '📅 ' + months[calMonth] + ' ' + day + ', ' + calYear;
+  document.getElementById('bk-sent').style.display = 'none';
+  form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function calPrev() {
+  calMonth--;
+  if (calMonth < 0) { calMonth = 11; calYear--; }
+  renderCalendar();
+}
+
+function calNext() {
+  calMonth++;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  renderCalendar();
+}
+
+function submitBooking() {
+  const name = document.getElementById('bk-name').value.trim();
+  if (!name || !selectedDate) return;
+  const sent = document.getElementById('bk-sent');
+  sent.style.display = 'block';
+  document.getElementById('bk-name').value = '';
+  document.getElementById('bk-phone').value = '';
+  document.getElementById('bk-note').value = '';
+  selectedDate = null;
+  setTimeout(() => {
+    document.getElementById('booking-form').style.display = 'none';
+    renderCalendar();
+  }, 3000);
+}
+
+/* ── BOOKING TRANSLATIONS ── */
+const bookingT = {
+  en: {
+    eyebrow: 'Free assessment',
+    title: 'Book a free on-site assessment!',
+    sub: 'Pick an available date and we\'ll come to you — no obligation, no cost.',
+    legAvail: 'Available', legBlocked: 'Not available', legSel: 'Selected',
+    labelName: 'Your name', labelPhone: 'Phone number', labelNote: 'Project notes (optional)',
+    sendBtn: 'Confirm booking',
+    sent: 'Booking received! We\'ll confirm your appointment shortly.',
+    sticker: 'Book us for your next project!', stickerCta: 'Book free visit →'
+  },
+  hu: {
+    eyebrow: 'Ingyenes felmérés',
+    title: 'Foglalj ingyenes helyszíni felmérést!',
+    sub: 'Válassz szabad napot és kimegyünk hozzád — kötelezettség és költség nélkül.',
+    legAvail: 'Szabad', legBlocked: 'Foglalt', legSel: 'Kiválasztva',
+    labelName: 'Neved', labelPhone: 'Telefonszám', labelNote: 'Megjegyzés (opcionális)',
+    sendBtn: 'Foglalás megerősítése',
+    sent: 'Foglalás megérkezett! Hamarosan visszaigazoljuk.',
+    sticker: 'Foglalj minket a következő projektedhez!', stickerCta: 'Ingyenes felmérés →'
+  },
+  ro: {
+    eyebrow: 'Evaluare gratuită',
+    title: 'Programează o evaluare gratuită la fața locului!',
+    sub: 'Alege o dată disponibilă și venim la tine — fără obligații, fără costuri.',
+    legAvail: 'Disponibil', legBlocked: 'Indisponibil', legSel: 'Selectat',
+    labelName: 'Numele tău', labelPhone: 'Număr de telefon', labelNote: 'Note proiect (opțional)',
+    sendBtn: 'Confirmă programarea',
+    sent: 'Programare primită! Te confirmăm în scurt timp.',
+    sticker: 'Rezervă-ne pentru următorul tău proiect!', stickerCta: 'Evaluare gratuită →'
+  }
+};
+
+function renderBookingLang(lang) {
+  const t = bookingT[lang];
+  document.querySelector('.booking-eyebrow').textContent = t.eyebrow;
+  document.querySelector('.booking-title').textContent = t.title;
+  document.querySelector('.booking-sub').textContent = t.sub;
+  document.querySelector('.leg-txt-available').textContent = t.legAvail;
+  document.querySelector('.leg-txt-blocked').textContent = t.legBlocked;
+  document.querySelector('.leg-txt-selected').textContent = t.legSel;
+  document.querySelector('.bk-label-name').textContent = t.labelName;
+  document.querySelector('.bk-label-phone').textContent = t.labelPhone;
+  document.querySelector('.bk-label-note').textContent = t.labelNote;
+  document.querySelector('.bk-send-btn').textContent = t.sendBtn;
+  document.getElementById('bk-sent').textContent = t.sent;
+  document.querySelector('.bk-sticker-txt').textContent = t.sticker;
+  document.querySelector('.bk-sticker-cta').textContent = t.stickerCta;
+}
+
+// Hook into existing setLang
+const _origSetLang = setLang;
+setLang = function(lang) {
+  _origSetLang(lang);
+  renderBookingLang(lang);
+};
+
+// Init on load
+document.addEventListener('DOMContentLoaded', () => {
+  initCalendar();
+  renderBookingLang('en');
 });

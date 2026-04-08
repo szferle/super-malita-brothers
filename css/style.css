@@ -202,3 +202,58 @@ footer p { font-size: 12px; color: #666; }
   .hero { padding: 4rem 1.25rem 3.5rem; }
   footer { flex-direction: column; text-align: center; }
 }
+
+/* ── BOOKING ── */
+.booking-section { background: var(--olive-mist); }
+.booking-sub { font-size: 15px; color: var(--text-muted); margin-bottom: 2rem; max-width: 500px; }
+.calendar-wrap { max-width: 480px; background: #fff; border: 0.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+.cal-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; background: var(--olive); color: #fff; }
+.cal-month-label { font-family: var(--serif); font-size: 18px; font-weight: 400; letter-spacing: 0.04em; }
+.cal-nav { background: none; border: 0.5px solid rgba(255,255,255,0.35); color: #fff; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 15px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+.cal-nav:hover { background: rgba(255,255,255,0.15); }
+.cal-weekdays { display: grid; grid-template-columns: repeat(7,1fr); background: var(--olive-pale); border-bottom: 0.5px solid var(--border); }
+.cal-weekdays span { text-align: center; padding: 0.5rem 0; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--olive); font-weight: 400; }
+.cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; padding: 10px; }
+.cal-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); font-size: 13px; cursor: pointer; transition: background 0.15s, color 0.15s; border: 0.5px solid transparent; font-weight: 300; }
+.cal-day.empty { cursor: default; }
+.cal-day.available:hover { background: var(--olive-pale); border-color: var(--olive-light); }
+.cal-day.blocked { background: #f0f0f0; color: #bbb; cursor: not-allowed; text-decoration: line-through; }
+.cal-day.past { color: #ccc; cursor: not-allowed; }
+.cal-day.selected { background: var(--olive); color: #fff; border-color: var(--olive); }
+.cal-day.today { border-color: var(--gold); color: var(--gold); font-weight: 500; }
+.cal-day.today.selected { color: #fff; }
+.cal-legend { display: flex; gap: 1.25rem; padding: 0.75rem 1.25rem; border-top: 0.5px solid var(--border); flex-wrap: wrap; }
+.leg-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-muted); }
+.leg-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+.leg-available { background: var(--olive-pale); border: 0.5px solid var(--olive-light); }
+.leg-blocked { background: #f0f0f0; }
+.leg-selected { background: var(--olive); }
+.booking-form { margin-top: 1.5rem; max-width: 480px; }
+.booking-selected-date { font-family: var(--serif); font-size: 18px; color: var(--olive); margin-bottom: 1rem; padding: 0.75rem 1rem; background: var(--olive-pale); border-radius: var(--radius); border-left: 3px solid var(--olive); }
+.bk-sent { color: var(--olive); font-size: 14px; margin-top: 0.75rem; font-style: italic; font-family: var(--serif); }
+
+/* ── STICKER ── */
+.sticker-popup {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  background: var(--gold);
+  color: #fff;
+  border-radius: 50% 50% 50% 8px;
+  width: 120px; height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(184,148,63,0.4);
+  transform: rotate(-8deg);
+  transition: transform 0.2s, box-shadow 0.2s;
+  user-select: none;
+}
+.sticker-popup:hover { transform: rotate(-4deg) scale(1.06); box-shadow: 0 6px 28px rgba(184,148,63,0.5); }
+.sticker-inner { text-align: center; padding: 10px; }
+.sticker-star { font-size: 16px; line-height: 1; margin-bottom: 3px; }
+.sticker-text { font-family: var(--serif); font-size: 13px; font-weight: 600; line-height: 1.25; color: #fff; }
+.sticker-cta { font-size: 10px; margin-top: 4px; color: rgba(255,255,255,0.85); letter-spacing: 0.06em; text-transform: uppercase; }
+.sticker-close {
+  position: absolute; top: 4px; right: 8px;
+  background: none; border: none; color: rgba(255,255,255,0.7);
+  font-size: 13px; cursor: pointer; line-height: 1; padding: 2px;
+}
+.sticker-close:hover { color: #fff; }
