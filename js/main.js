@@ -155,8 +155,8 @@ function drawPixelArt() {
   ];
 
   const guyB = [
-    [_,_,GE,GE,GE,GE,GE,_,_,_],
-    [_,_,GE,GE,GE,GE,GE,_,_,_],
+    [_,_,_,GE,GE,GE,GE,GE,_,_],
+    [_,_,_,GE,GE,GE,GE,GE,_,_],
     [_,GE,GE,GE,GE,GE,GE,GE,GE,_],
     [_,_,_,SK,SK,SK,SK,SK,_,_],
     [_,_,SK,SK,BL,SK,BL,SK,SK,_],
