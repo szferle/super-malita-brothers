@@ -2,6 +2,7 @@ const translations = {
   en: {
     nav: { services: "Services", about: "About", references: "References", contact: "Contact" },
     hero: {
+      eyebrow: "Szeged & Surroundings",
       h1: "Built by brothers.<br><em>Built to last.</em>",
       sub: "Premium construction and renovation services delivered with craftsmanship and precision.",
       location: "📍 Szeged, Hungary & surrounding regions"
@@ -40,8 +41,8 @@ const translations = {
       languages: "We speak:",
       langs: ["English", "French", "German", "Romanian"],
       brothers: [
-        { init:"A", name:"Malita Alex", title:"Floor installation", desc:"Flooring specialist. Precision tile and surface installation at the highest level." },
-        { init:"S", name:"Malita Sergiu", title:"Paint & drywall", desc:"Painter, drywall installer and interior designer with international experience." }
+        { init:"A", name:"Malita Sergiu", title:"Floor installation", desc:"Flooring specialist. Precision tile and surface installation at the highest level." },
+        { init:"S", name:"Malita Alex", title:"Paint & drywall", desc:"Painter, drywall installer and interior designer with international experience." }
       ]
     },
     references: {
@@ -81,6 +82,7 @@ const translations = {
   hu: {
     nav: { services: "Szolgáltatások", about: "Rólunk", references: "Referenciák", contact: "Kapcsolat" },
     hero: {
+      eyebrow: "Szeged és környéke",
       h1: "Fivérek építik.<br><em>Maradandóra.</em>",
       sub: "Prémium építési és felújítási szolgáltatások szakértelemmel és pontossággal.",
       location: "📍 Szeged, Magyarország és a régió"
@@ -119,8 +121,8 @@ const translations = {
       languages: "Beszélünk:",
       langs: ["Angol", "Francia", "Német", "Román"],
       brothers: [
-        { init:"A", name:"Malita Alex", title:"Padlóburkolás", desc:"Padlóburkolat-specialista. Precíz csempe és felületbeépítés a legmagasabb szinten." },
-        { init:"S", name:"Malita Sergiu", title:"Festés & gipszkarton", desc:"Festő, gipszkarton szerelő és belsőépítész nemzetközi tapasztalattal." }
+        { init:"A", name:"Malita Sergiu", title:"Padlóburkolás", desc:"Padlóburkolat-specialista. Precíz csempe és felületbeépítés a legmagasabb szinten." },
+        { init:"S", name:"Malita Alex", title:"Festés & gipszkarton", desc:"Festő, gipszkarton szerelő és belsőépítész nemzetközi tapasztalattal." }
       ]
     },
     references: {
@@ -160,6 +162,7 @@ const translations = {
   ro: {
     nav: { services: "Servicii", about: "Despre noi", references: "Referințe", contact: "Contact" },
     hero: {
+      eyebrow: "Szeged și împrejurimi",
       h1: "Construit de frați.<br><em>Construit să dureze.</em>",
       sub: "Servicii premium de construcții și renovări, livrate cu măiestrie și precizie.",
       location: "📍 Szeged, Ungaria și regiunile din jur"
@@ -198,8 +201,8 @@ const translations = {
       languages: "Vorbim:",
       langs: ["Engleză", "Franceză", "Germană", "Română"],
       brothers: [
-        { init:"A", name:"Malita Alex", title:"Montaj pardoseli", desc:"Specialist pardoseli. Montaj plăci și suprafețe de cea mai înaltă calitate." },
-        { init:"S", name:"Malita Sergiu", title:"Vopsitorie & rigips", desc:"Vopsitor, montator rigips și designer de interior cu experiență internațională." }
+        { init:"A", name:"Malita Sergiu", title:"Montaj pardoseli", desc:"Specialist pardoseli. Montaj plăci și suprafețe de cea mai înaltă calitate." },
+        { init:"S", name:"Malita Alex", title:"Vopsitorie & rigips", desc:"Vopsitor, montator rigips și designer de interior cu experiență internațională." }
       ]
     },
     references: {
