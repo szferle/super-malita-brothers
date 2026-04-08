@@ -124,56 +124,55 @@ function drawPixelArt() {
 
   const _ = null;
   const SK = '#D4A870';
-  const BR = '#6B3A1F';
-  const YL = '#D4A820';
-  const YD = '#A87C10';
+  const BL  = '#000000';
+  const RE  = '#CC1100'; // red
+  const GE  = '#3A9A1A'; // green
   const OR = '#CC6600';
   const GR = '#888888';
   const GD = '#555555';
   const WH = '#DDDDDD';
   const WD = '#AAAAAA';
-  const MT = '#999999';
 
   const guyA = [
-    [_,_,YL,YL,YL,YL,YL,_,_,_],
-    [_,YL,YL,YL,YL,YL,YL,YD,_,_],
-    [_,YD,YL,YL,YL,YL,YD,YD,_,_],
+    [_,_,RE,RE,RE,RE,RE,_,_,_],
+    [_,_,RE,RE,RE,RE,RE,_,_,_],
+    [_,RE,RE,RE,RE,RE,RE,RE,RE,_],
     [_,_,SK,SK,SK,SK,SK,_,_,_],
-    [_,SK,SK,BR,SK,BR,SK,SK,_,_],
+    [_,SK,SK,BL,SK,BL,SK,SK,_,_],
     [_,SK,SK,SK,SK,SK,SK,SK,_,_],
     [_,_,SK,SK,SK,SK,SK,_,_,_],
     [_,OR,OR,OR,OR,OR,OR,OR,_,_],
     [OR,OR,OR,GR,GR,OR,OR,OR,OR,_],
     [OR,OR,GR,GR,GR,GR,OR,OR,OR,_],
-    [SK,OR,GR,YL,GR,YL,GR,OR,SK,_],
+    [SK,OR,GR,RE,GR,RE,GR,OR,SK,_],
     [SK,GR,GR,GR,GR,GR,GR,GR,SK,_],
     [_,GR,GR,GR,GR,GR,GR,GR,_,_],
     [_,GD,GR,GR,_,GR,GR,GD,_,_],
     [_,GD,GR,GR,_,GR,GR,GD,_,_],
     [_,GD,GD,GR,_,GR,GD,GD,_,_],
-    [BR,BR,BR,BR,_,BR,BR,BR,BR,_],
-    [BR,BR,BR,BR,_,BR,BR,BR,BR,_],
+    [BL,BL,BL,BL,_,BL,BL,BL,BL,_],
+    [BL,BL,BL,BL,_,BL,BL,BL,BL,_],
   ];
 
   const guyB = [
-    [_,_,_,YL,YL,YL,YL,YL,_,_],
-    [_,_,YD,YL,YL,YL,YL,YL,YL,_],
-    [_,_,YD,YD,YL,YL,YL,YL,YD,_],
+    [_,_,GE,GE,GE,GE,GE,_,_,_],
+    [_,_,GE,GE,GE,GE,GE,_,_,_],
+    [_,GE,GE,GE,GE,GE,GE,GE,GE,_],
     [_,_,_,SK,SK,SK,SK,SK,_,_],
-    [_,_,SK,SK,BR,SK,BR,SK,SK,_],
+    [_,_,SK,SK,BL,SK,BL,SK,SK,_],
     [_,_,SK,SK,SK,SK,SK,SK,SK,_],
     [_,_,_,SK,SK,SK,SK,SK,_,_],
     [_,_,OR,OR,OR,OR,OR,OR,OR,_],
-    [_,OR,OR,OR,WH,WH,OR,OR,OR,MT],
-    [_,OR,OR,WH,WH,WH,WH,OR,OR,MT],
-    [_,SK,OR,WH,YL,WH,YL,WH,OR,SK],
+    [_,OR,OR,OR,WH,WH,OR,OR,OR,OR],
+    [_,OR,OR,WH,WH,WH,WH,OR,OR,OR],
+    [_,SK,OR,WH,GE,WH,GE,WH,OR,SK],
     [_,SK,WH,WH,WH,WH,WH,WH,WH,SK],
     [_,_,WH,WH,WH,WH,WH,WH,WH,_],
     [_,_,WD,WH,WH,_,WH,WH,WD,_],
     [_,_,WD,WH,WH,_,WH,WH,WD,_],
     [_,_,WD,WD,WH,_,WH,WD,WD,_],
-    [_,BR,BR,BR,BR,_,BR,BR,BR,BR],
-    [_,BR,BR,BR,BR,_,BR,BR,BR,BR],
+    [_,BL,BL,BL,BL,_,BL,BL,BL,BL],
+    [_,BL,BL,BL,BL,_,BL,BL,BL,BL],
   ];
 
   function drawChar(canvasId, grid, mirror) {
