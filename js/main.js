@@ -90,18 +90,40 @@ let slideIndex = 0;
 let slideTotal = 0;
 let autoSlide;
 
-const catEmojis = ['🐱','🐈','😺','😸','🐾','😻','🙀','😹','🐈‍⬛','😾'];
+//TODO pics to squares
+//TODO iterate through refs, no placeholders
+//TODO new blok you sent us
+
+// Real reference photos for first 3 slides; cats for the rest (replace with your own photos)
+const refPhotos = [
+  'images/ref1.png',
+  'images/ref2.jpg',
+  'images/ref3.jpg',
+  'images/ref4.jpg',
+  'images/ref5.jpg',
+  'images/ref6.jpg',
+  'images/ref7.jpg',
+  'images/ref8.jpg',
+  'images/ref9.jpg',
+  'images/ref10.jpg',
+  'images/ref11.jpg',
+  'images/ref12.jpg',
+  'images/ref13.jpg'
+];
+const catEmojis = ['🐾','😻','🙀','😹','🐈‍⬛','😾','🐱','🐈'];
 
 function buildSlider(slides) {
   slideTotal = slides.length;
   slideIndex = 0;
   const track = document.querySelector('.slider-track');
   const nav = document.querySelector('.slider-nav');
-  track.innerHTML = slides.map((s, i) => `
-    <div class="slide">
-      <div class="slide-placeholder">${catEmojis[i % catEmojis.length]}</div>
-      <div class="slide-caption"><h4>${s.h}</h4><p>${s.p}</p></div>
-    </div>`).join('');
+  track.innerHTML = slides.map((s, i) => {
+    const photo = refPhotos[i];
+    const media = photo
+      ? `<img class="slide-img" src="${photo}" alt="${s.h}" />`
+      : `<div class="slide-placeholder">${catEmojis[(i - refPhotos.length) % catEmojis.length]}</div>`;
+    return `<div class="slide">${media}<div class="slide-caption"><h4>${s.h}</h4><p>${s.p}</p></div></div>`;
+  }).join('');
   nav.innerHTML = slides.map((_, i) => `<button class="slider-dot${i===0?' active':''}" onclick="goSlide(${i})"></button>`).join('');
   goSlide(0);
   clearInterval(autoSlide);
@@ -138,7 +160,7 @@ function drawPixelArt() {
     [_,_,RE,RE,RE,RE,RE,_,_,_],
     [_,_,RE,RE,RE,RE,RE,RE,RE,_],
     [_,_,SK,SK,SK,SK,SK,_,_,_],
-        [_,SK,SK,BL,SK,BL,SK,SK,_,_],
+    [_,SK,SK,BL,SK,BL,SK,SK,_,_],
     [_,SK,SK,SK,SK,SK,SK,SK,_,_],
     [_,_,SK,SK,SK,SK,SK,_,_,_],
     [_,OR,OR,OR,OR,OR,OR,OR,_,_],
