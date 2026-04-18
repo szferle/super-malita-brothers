@@ -9,10 +9,9 @@
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav class="nav">
   <div class="logo">Super <span>Malita</span> Brothers</div>
-  <div class="nav-location">Szeged &amp; surroundings</div>
   <div class="nav-right">
     <div class="nav-links">
       <a href="#services" data-nav="services"></a>
@@ -28,43 +27,40 @@
   </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow"><span class="hero-eyebrow-text"></span></div>
   <h1 class="hero-h1"></h1>
   <p class="hero-sub"></p>
-  <div class="hero-location-pill hero-location"></div>
 </section>
 
-<!-- ── STATS ── -->
+<!-- STATS -->
 <div class="stats">
   <div class="stat"><div class="stat-num"></div><div class="stat-label"></div><div class="stat-sub"></div></div>
   <div class="stat"><div class="stat-num"></div><div class="stat-label"></div><div class="stat-sub"></div></div>
   <div class="stat"><div class="stat-num"></div><div class="stat-label"></div><div class="stat-sub"></div></div>
 </div>
 
-<!-- ── BEST AT ── -->
+<!-- BEST AT -->
 <section class="section best-at">
   <div class="section-inner">
     <div class="section-eyebrow best-eyebrow"></div>
-    <h2 class="section-title best-title"></h2>
     <div class="best-grid"></div>
   </div>
 </section>
 
-<!-- ── SERVICES ── -->
+<!-- SERVICES -->
 <section class="section services-section" id="services">
   <div class="section-inner">
     <div class="section-eyebrow services-eyebrow"></div>
-    <h2 class="section-title services-title"></h2>
+    <p class="services-sub"></p>
     <div class="services-grid"></div>
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
+<!-- ABOUT -->
 <section class="section" id="about" style="background:#fff;">
   <div class="section-inner">
-    <div class="gold-rule"></div>
     <div class="section-eyebrow about-eyebrow"></div>
     <h2 class="section-title about-title"></h2>
     <div class="about-grid">
@@ -80,130 +76,80 @@
   </div>
 </section>
 
-<!-- ── PIXEL ART ── -->
-<section class="mario-section">
-  <div class="pixel-art-wrap">
-    <div style="text-align:center;">
-      <canvas id="mario-canvas" class="pixel"></canvas>
-    </div>
-    <div style="text-align:center;">
-      <canvas id="luigi-canvas" class="pixel"></canvas>
-    </div>
-  </div>
-</section>
-
-<!-- ── REFERENCES ── -->
+<!-- REFERENCES -->
 <section class="section references-section" id="references">
   <div class="section-inner">
     <div class="section-eyebrow refs-eyebrow"></div>
-    <h2 class="section-title refs-title"></h2>
-    <div class="slider-wrap">
-      <div class="slider-track"></div>
-      <div class="slider-arrows">
-        <button class="slider-arrow" onclick="prevSlide()">&#8592;</button>
-        <button class="slider-arrow" onclick="nextSlide()">&#8594;</button>
-      </div>
-    </div>
-    <div class="slider-nav"></div>
+    <div class="refs-grid" id="refs-grid"></div>
   </div>
 </section>
 
-<!-- ── BOOKING ── -->
-<section class="section booking-section" id="booking">
+<!-- CHECK THIS OUT -->
+<section class="section checkthis-section" id="checkthis">
   <div class="section-inner">
-    <div class="section-eyebrow booking-eyebrow"></div>
-    <h2 class="section-title booking-title"></h2>
-    <p class="booking-sub"></p>
-    <div class="calendar-wrap">
-      <div class="cal-header">
-        <button class="cal-nav" onclick="calPrev()">&#8592;</button>
-        <span class="cal-month-label" id="cal-month-label"></span>
-        <button class="cal-nav" onclick="calNext()">&#8594;</button>
-      </div>
-      <div class="cal-weekdays">
-        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
-      </div>
-      <div class="cal-grid" id="cal-grid"></div>
-      <div class="cal-legend">
-        <span class="leg-item"><span class="leg-dot leg-available"></span><span class="leg-txt-available"></span></span>
-        <span class="leg-item"><span class="leg-dot leg-blocked"></span><span class="leg-txt-blocked"></span></span>
-        <span class="leg-item"><span class="leg-dot leg-selected"></span><span class="leg-txt-selected"></span></span>
-      </div>
-    </div>
-    <div class="booking-form" id="booking-form" style="display:none;">
-      <div class="booking-selected-date" id="booking-selected-date"></div>
-      <div class="form-group"><label class="bk-label-name"></label><input type="text" id="bk-name" /></div>
-      <div class="form-group"><label class="bk-label-phone"></label><input type="text" id="bk-phone" /></div>
-      <div class="form-group"><label class="bk-label-note"></label><textarea id="bk-note" style="min-height:80px;resize:vertical;"></textarea></div>
-      <button class="btn-submit bk-send-btn" onclick="submitBooking()"></button>
-      <div class="bk-sent" id="bk-sent" style="display:none;"></div>
+    <div class="section-eyebrow checkthis-eyebrow"></div>
+    <h2 class="section-title checkthis-title"></h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front" style="background-image:url('images/render1.jpg')"></div><div class="flip-back" style="background-image:url('images/real1.jpg')"></div></div></div>
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front" style="background-image:url('images/render2.jpg')"></div><div class="flip-back" style="background-image:url('images/real2.jpg')"></div></div></div>
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front" style="background-image:url('images/render3.jpg')"></div><div class="flip-back" style="background-image:url('images/real3.jpg')"></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ── STICKER ── -->
-<div class="sticker-popup" id="sticker-popup" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
-  <div class="sticker-inner">
-    <div class="sticker-star">★</div>
-    <div class="sticker-text bk-sticker-txt"></div>
-    <div class="sticker-cta bk-sticker-cta"></div>
-  </div>
-  <button class="sticker-close" onclick="event.stopPropagation();document.getElementById('sticker-popup').style.display='none'">✕</button>
-</div>
-
-<!-- ── CONTACT ── -->
+<!-- CONTACT -->
 <section class="section contact-section" id="contact">
   <div class="section-inner">
     <div class="contact-grid">
       <div class="contact-info">
         <div class="section-eyebrow contact-eyebrow"></div>
-        <h2 class="section-title contact-title"></h2>
-        <div class="contact-detail">
-          <div class="contact-icon">📞</div>
-          <div><strong class="contact-phone"></strong></div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-icon">✉️</div>
-          <div><strong class="contact-email"></strong></div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-icon">📍</div>
-          <div><strong class="contact-location"></strong></div>
+        <div class="contact-detail"><div class="contact-icon">&#128222;</div><div><strong class="contact-phone"></strong></div></div>
+        <div class="contact-detail"><div class="contact-icon">&#9993;&#65039;</div><div><strong class="contact-email"></strong></div></div>
+        <div class="contact-detail"><div class="contact-icon">&#128205;</div><div><strong class="contact-location"></strong></div></div>
+        <div class="map-wrap">
+          <iframe class="szeged-map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d190000!2d20.1486!3d46.253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2shu!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Szeged service area"></iframe>
         </div>
       </div>
       <div>
+        <div class="form-group"><label class="fl-name"></label><input type="text" id="f-name" /></div>
+        <div class="form-group"><label class="fl-phone"></label><input type="text" id="f-phone" /></div>
+        <div class="form-group"><label class="fl-email"></label><input type="email" id="f-email" /></div>
+        <div class="form-group"><label class="fl-msg"></label><textarea id="f-msg"></textarea></div>
         <div class="form-group">
-          <label>Name</label>
-          <input type="text" id="f-name" />
+          <label class="file-upload-label"><span class="fl-file"></span><input type="file" id="f-photos" multiple accept="image/*,.pdf" onchange="fileChosen(this)" /></label>
+          <div class="file-hint fl-hint"></div>
         </div>
-        <div class="form-group">
-          <label>Phone</label>
-          <input type="text" id="f-phone" />
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea id="f-msg"></textarea>
-        </div>
-        <div class="form-group">
-          <label class="file-upload-label">
-            <span></span>
-            <input type="file" multiple accept="image/*,.pdf" onchange="fileChosen(this)" />
-          </label>
-          <div class="file-hint"></div>
-        </div>
-        <button class="btn-submit t-send" onclick="submitForm()"></button>
-        <div class="t-sent sent-msg"></div>
+        <button class="btn-submit fl-send" onclick="submitForm()"></button>
+        <div class="t-sent sent-msg" id="f-sent"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- PIXEL ART at bottom -->
+<section class="mario-section">
+  <div class="pixel-art-wrap">
+    <div style="text-align:center;"><canvas id="mario-canvas" class="pixel"></canvas><div class="pixel-label">Malita Alex</div></div>
+    <div style="text-align:center;"><canvas id="luigi-canvas" class="pixel"></canvas><div class="pixel-label">Malita Sergiu</div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">Super <span>Malita</span> Brothers</div>
-  <p>Szeged &amp; surroundings · 123 · abc@abc.com</p>
-  <p>© 2026 Super Malita Brothers</p>
+  <p>Szeged &amp; surroundings &middot; 123 &middot; abc@abc.com</p>
+  <p>&copy; 2026 Super Malita Brothers</p>
 </footer>
+
+<!-- STICKER -->
+<div class="sticker-popup" id="sticker-popup" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+  <div class="sticker-inner">
+    <div class="sticker-star">&#9733;</div>
+    <div class="sticker-text bk-sticker-txt"></div>
+    <div class="sticker-cta bk-sticker-cta"></div>
+  </div>
+  <button class="sticker-close" onclick="event.stopPropagation();document.getElementById('sticker-popup').style.display='none'">&#10005;</button>
+</div>
 
 <script src="js/translations.js"></script>
 <script src="js/main.js"></script>
