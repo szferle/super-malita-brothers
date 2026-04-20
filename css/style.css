@@ -1,6 +1,18 @@
+/* ─────────────────────────────────────────────
+   SUPER MALITA BROTHERS — STYLESHEET
+   Structured top to bottom matching page layout.
+   Fonts: Cormorant Garamond (serif headings),
+          Jost (sans body text).
+   Colours: all defined as CSS variables in :root.
+───────────────────────────────────────────── */
+
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
 
-/* ── RESET & VARIABLES ── */
+/* ─────────────────────────────────────────────
+   RESET & VARIABLES
+   Box-sizing reset and all design tokens:
+   colours, fonts, border radius.
+───────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -35,7 +47,11 @@ body {
   font-weight: 300;
 }
 
-/* ── NAV ── */
+/* ─────────────────────────────────────────────
+   NAVIGATION
+   Sticky top bar with logo, nav links,
+   location tag and language switcher.
+───────────────────────────────────────────── */
 .nav {
   position: sticky; top: 0; z-index: 100;
   display: flex; justify-content: space-between; align-items: center;
@@ -54,7 +70,11 @@ body {
 .lang-btn { background: none; border: none; padding: 4px 11px; border-radius: 16px; font-size: 11px; cursor: pointer; color: var(--text-muted); font-family: var(--sans); font-weight: 400; letter-spacing: 0.08em; transition: background 0.2s, color 0.2s; }
 .lang-btn.active { background: var(--olive); color: #fff; }
 
-/* ── HERO ── */
+/* ─────────────────────────────────────────────
+   HERO
+   Full-width dark intro section with eyebrow,
+   headline and sub text. Olive radial glow.
+───────────────────────────────────────────── */
 .hero {
   background: var(--dark);
   color: #fff;
@@ -80,7 +100,11 @@ body {
 .hero h1 em { color: var(--gold-light); font-style: italic; }
 .hero-sub { font-size: 15px; color: #999; max-width: 440px; margin: 0 auto; font-weight: 300; }
 
-/* ── STATS ── */
+/* ─────────────────────────────────────────────
+   STATS BAR
+   Three numbers in a single dark row.
+   Stays horizontal on mobile too.
+───────────────────────────────────────────── */
 .stats {
   display: flex;
   flex-direction: row;
@@ -94,11 +118,15 @@ body {
   border-right: 0.5px solid rgba(255,255,255,0.07);
 }
 .stat:last-child { border-right: none; }
-.stat-num { font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--gold-light); line-height: 1; }
-.stat-label { font-size: 11px; color: #888; margin-top: 4px; font-weight: 300; }
-.stat-sub { font-size: 10px; color: #666; margin-top: 3px; font-style: italic; font-family: var(--serif); }
+.stat-num { font-family: var(--serif); font-size: 36px; font-weight: 400; color: var(--gold-light); line-height: 1; }
+.stat-label { font-size: 13px; color: #888; margin-top: 4px; font-weight: 300; }
+.stat-sub { font-size: 13px; color: #666; margin-top: 3px; font-style: italic; font-family: var(--serif); }
 
-/* ── SECTION COMMONS ── */
+/* ─────────────────────────────────────────────
+   SECTION COMMONS
+   Shared padding, max-width container,
+   and the large serif section eyebrow style.
+───────────────────────────────────────────── */
 .section { padding: 5rem 2.5rem; }
 .section-inner { max-width: 980px; margin: 0 auto; }
 .section-eyebrow {
@@ -112,7 +140,11 @@ body {
 }
 .section-title { font-family: var(--serif); font-size: clamp(26px, 3.5vw, 40px); font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; }
 
-/* ── BEST AT ── */
+/* ─────────────────────────────────────────────
+   BEST AT — "OUR CRAFT"
+   Dark background grid of 4 specialty cards.
+   Gold underline on each card.
+───────────────────────────────────────────── */
 .best-at { background: var(--dark); color: #fff; }
 .best-at .section-eyebrow { color: var(--gold-light); }
 .best-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: rgba(255,255,255,0.06); border: 0.5px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); overflow: hidden; margin-top: 0; }
@@ -123,7 +155,11 @@ body {
 .best-item p { font-size: 13px; color: #888; line-height: 1.6; font-weight: 300; }
 .tolerance-badge { display: inline-block; margin-top: 0.75rem; background: rgba(184,148,63,0.15); border: 0.5px solid rgba(184,148,63,0.4); color: var(--gold-light); font-size: 11px; padding: 3px 10px; border-radius: 10px; letter-spacing: 0.06em; }
 
-/* ── SERVICES ── */
+/* ─────────────────────────────────────────────
+   SERVICES — "WHAT WE DO"
+   3-column grid of flip cards. Front shows
+   icon + text; hover reveals a photo on back.
+───────────────────────────────────────────── */
 .services-section { background: var(--olive-mist); }
 .services-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 1.75rem; font-style: italic; font-family: var(--serif); }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
@@ -170,7 +206,11 @@ body {
 .service-card h3 { font-family: var(--serif); font-size: 20px; font-weight: 500; margin-bottom: 0.4rem; }
 .service-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
-/* ── ABOUT ── */
+/* ─────────────────────────────────────────────
+   ABOUT — "WHO WE ARE"
+   Two-column layout: bio text on left,
+   brother profile cards on right.
+───────────────────────────────────────────── */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
 .about-text p { font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
 .languages-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; }
@@ -182,7 +222,12 @@ body {
 .brother-info .title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin: 2px 0 6px; }
 .brother-info p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
-/* ── REFERENCES ── */
+/* ─────────────────────────────────────────────
+   REFERENCES
+   Auto-fill square photo grid. Images are
+   loaded from images/ref*.jpg — missing
+   ones are hidden via JS.
+───────────────────────────────────────────── */
 .references-section { background: var(--olive-mist); }
 .refs-grid {
   display: grid;
@@ -199,7 +244,11 @@ body {
 }
 .ref-tile:hover { transform: scale(1.02); box-shadow: 0 4px 16px rgba(61,82,40,0.2); }
 
-/* ── CHECK THIS OUT ── */
+/* ─────────────────────────────────────────────
+   CHECK THIS OUT
+   Dark section with 3 flip cards showing
+   render vs real photo on hover.
+───────────────────────────────────────────── */
 .checkthis-section { background: var(--dark); }
 .checkthis-section .section-eyebrow { color: var(--gold-light); }
 .checkthis-title { color: #fff; margin-bottom: 2rem; }
@@ -239,18 +288,22 @@ body {
 .flip-front::after { content: 'render'; }
 .flip-back::after { content: 'real'; }
 
-/* ── CONTACT ── */
+/* ─────────────────────────────────────────────
+   CONTACT
+   Two-column: left has eyebrow, contact
+   details and Szeged map; right has the form.
+───────────────────────────────────────────── */
 .contact-section { background: #fff; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
 .contact-eyebrow {
-  font-size: 20px;
-  letter-spacing: 0.06em;
+  font-size: 22px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 1.25rem;
   font-family: var(--serif);
   font-weight: 400;
-  line-height: 1.3;
+  line-height: 1.4;
 }
 .contact-detail { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; font-size: 14px; color: var(--text-muted); }
 .contact-detail strong { color: var(--text); font-weight: 400; }
@@ -272,19 +325,31 @@ body {
 .btn-submit:hover { background: var(--olive-mid); }
 .sent-msg { display: none; color: var(--olive); font-size: 14px; margin-top: 0.75rem; font-style: italic; font-family: var(--serif); }
 
-/* ── PIXEL ART ── */
+/* ─────────────────────────────────────────────
+   PIXEL ART
+   Dark strip at page bottom with two canvases
+   drawn by drawPixelArt() in main.js.
+───────────────────────────────────────────── */
 .mario-section { background: var(--dark); padding: 3rem 2.5rem; text-align: center; }
 .pixel-art-wrap { display: inline-flex; gap: 2.5rem; align-items: flex-end; justify-content: center; }
 canvas.pixel { image-rendering: pixelated; image-rendering: crisp-edges; }
-.pixel-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #666; margin-top: 0.5rem; font-family: var(--sans); }
+.pixel-label { display: none; }
 
-/* ── FOOTER ── */
+/* ─────────────────────────────────────────────
+   FOOTER
+   Dark bar with logo, contact summary
+   and copyright line.
+───────────────────────────────────────────── */
 footer { background: var(--dark); color: #fff; padding: 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(184,148,63,0.2); }
 .footer-logo { font-family: var(--serif); font-size: 17px; }
 .footer-logo span { color: var(--gold); }
 footer p { font-size: 12px; color: #666; }
 
-/* ── STICKER ── */
+/* ─────────────────────────────────────────────
+   STICKER POPUP
+   Fixed gold circle in bottom-right corner.
+   Rotated, clickable, scrolls to contact.
+───────────────────────────────────────────── */
 .sticker-popup {
   position: fixed; bottom: 28px; right: 28px; z-index: 999;
   background: var(--gold);
@@ -305,7 +370,11 @@ footer p { font-size: 12px; color: #666; }
 .sticker-close { position: absolute; top: 4px; right: 8px; background: none; border: none; color: rgba(255,255,255,0.7); font-size: 13px; cursor: pointer; line-height: 1; padding: 2px; }
 .sticker-close:hover { color: #fff; }
 
-/* ── RESPONSIVE ── */
+/* ─────────────────────────────────────────────
+   RESPONSIVE — mobile breakpoint ≤ 720px
+   Stacks grids, hides nav links, shrinks
+   padding. Stats stay single-row on mobile.
+───────────────────────────────────────────── */
 @media (max-width: 720px) {
   .nav { padding: 0.8rem 1.25rem; }
   .nav-links { display: none; }
@@ -313,9 +382,9 @@ footer p { font-size: 12px; color: #666; }
   .hero { padding: 4rem 1.25rem 3.5rem; }
   .stats { flex-direction: row; flex-wrap: nowrap; }
   .stat { padding: 0.75rem 0.4rem; }
-  .stat-num { font-size: 20px; }
-  .stat-label { font-size: 9px; }
-  .stat-sub { font-size: 8px; }
+  .stat-num { font-size: 22px; }
+  .stat-label { font-size: 10px; }
+  .stat-sub { font-size: 10px; }
   .best-grid { grid-template-columns: 1fr 1fr; }
   .about-grid { grid-template-columns: 1fr; }
   .flip-grid { grid-template-columns: 1fr; }
