@@ -1,0 +1,185 @@
+/* ─────────────────────────────────────────────
+   BLOG PAGE STYLES
+   Covers the blog header, post layout,
+   bullet lists, and both calculators.
+───────────────────────────────────────────── */
+
+/* Blog hero header */
+.blog-hero {
+  background: var(--dark);
+  color: #fff;
+  padding: 4rem 2.5rem 3rem;
+  text-align: center;
+}
+.blog-hero-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 300;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+
+/* Blog posts container */
+.blog-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* Individual post */
+.blog-post { border-top: 0.5px solid var(--border); padding-top: 3rem; }
+.blog-post:first-child { border-top: none; padding-top: 0; }
+.blog-post-inner { max-width: 680px; }
+.blog-post-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 400;
+  color: var(--olive);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.blog-post-intro {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+.blog-post-body {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-style: normal;
+}
+
+/* Bullet list for price post */
+.blog-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.blog-bullets li {
+  padding: 1rem 1.25rem;
+  background: var(--olive-pale);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--olive);
+}
+.blog-bullets li strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--olive);
+  margin-bottom: 4px;
+}
+.blog-bullets li p { font-size: 15px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+/* ─────────────────────────────────────────────
+   CALCULATOR BOXES
+───────────────────────────────────────────── */
+.calc-box {
+  background: var(--dark);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-top: 2rem;
+}
+.calc-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--gold-light);
+  margin-bottom: 1.5rem;
+}
+.calc-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+  gap: 1rem;
+}
+.calc-fixed { opacity: 0.7; }
+.calc-label { font-size: 15px; color: #aaa; font-weight: 300; flex-shrink: 0; }
+.calc-value-fixed { font-size: 15px; color: var(--gold-light); font-weight: 400; }
+.calc-input-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.calc-input-group input {
+  width: 100px;
+  padding: 8px 10px;
+  border: 0.5px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+  font-size: 15px;
+  font-family: var(--sans);
+  text-align: right;
+}
+.calc-input-group input:focus { outline: none; border-color: var(--gold); }
+.calc-input-group.small input { width: 70px; }
+.calc-unit { font-size: 15px; color: #888; white-space: nowrap; }
+.calc-divider { height: 0.5px; background: rgba(255,255,255,0.08); margin: 1.25rem 0; }
+.calc-result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0;
+}
+.calc-result {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--gold-light);
+}
+
+/* Door / window opening rows */
+.calc-openings-section { margin: 1rem 0; }
+.calc-openings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.calc-add-btn {
+  background: rgba(184,148,63,0.15);
+  border: 0.5px solid rgba(184,148,63,0.4);
+  color: var(--gold-light);
+  font-size: 14px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: background 0.2s;
+}
+.calc-add-btn:hover { background: rgba(184,148,63,0.3); }
+.calc-opening-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.opening-label { font-size: 14px; color: #aaa; min-width: 64px; }
+.calc-remove-btn {
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 4px;
+  line-height: 1;
+}
+.calc-remove-btn:hover { color: #e25; }
+
+@media (max-width: 720px) {
+  .blog-hero { padding: 3rem 1.25rem 2rem; }
+  .blog-container { padding: 2rem 1.25rem 4rem; }
+  .calc-box { padding: 1.25rem; }
+}

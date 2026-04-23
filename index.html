@@ -3,8 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
   <title>Super Malita Brothers — Construction & Renovation, Szeged</title>
-  <meta name="description" content="Premium construction, wall painting, drywall and tile installation in Szeged and surroundings. Licensed & insured." />
+  <meta name="description" content="Premium wall painting, drywall, tile and floor installation in Szeged and surroundings. Licensed & insured. Free on-site assessment." />
+  <meta name="keywords" content="construction Szeged, tile installation, wall painting, drywall, floor installation, renovation, Super Malita Brothers" />
+  <meta name="author" content="Super Malita Brothers" />
+  <link rel="canonical" href="https://supermalitabrothers.com/" />
+
+  <!-- Open Graph (Facebook, LinkedIn sharing) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://supermalitabrothers.com/" />
+  <meta property="og:title" content="Super Malita Brothers — Construction & Renovation, Szeged" />
+  <meta property="og:description" content="Premium wall painting, drywall, tile and floor installation in Szeged. Licensed & insured. Free on-site assessment." />
+  <meta property="og:image" content="https://supermalitabrothers.com/images/og-image.jpg" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:locale:alternate" content="hu_HU" />
+  <meta property="og:locale:alternate" content="ro_RO" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Super Malita Brothers — Construction & Renovation, Szeged" />
+  <meta name="twitter:description" content="Premium wall painting, drywall, tile and floor installation in Szeged." />
+  <meta name="twitter:image" content="https://supermalitabrothers.com/images/og-image.jpg" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Super Malita Brothers",
+    "description": "Premium construction and renovation services in Szeged: wall painting, drywall installation, tile installation, floor leveling.",
+    "url": "https://supermalitabrothers.com",
+    "email": "supermalitabrothers@gmail.com",
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 46.253, "longitude": 20.1486 },
+      "geoRadius": "50000"
+    },
+    "address": { "@type": "PostalAddress", "addressLocality": "Szeged", "addressCountry": "HU" },
+    "founders": [
+      { "@type": "Person", "name": "Malita Alex", "jobTitle": "Painter & Drywall Installer" },
+      { "@type": "Person", "name": "Malita Sergiu", "jobTitle": "Floor Installation Specialist" }
+    ],
+    "serviceType": ["Wall painting", "Drywall installation", "Tile installation", "Floor leveling"],
+    "priceRange": "$$",
+    "openingHours": "Mo-Fr 08:00-18:00"
+  }
+  </script>
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -18,10 +65,11 @@
       <a href="#about" data-nav="about"></a>
       <a href="#references" data-nav="references"></a>
       <a href="#contact" data-nav="contact"></a>
+      <a href="blog.html" data-nav="blog"></a>
     </div>
     <div class="lang-switcher">
       <button class="lang-btn" data-lang="hu" onclick="setLang('hu')">HU</button>
-      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
       <button class="lang-btn" data-lang="ro" onclick="setLang('ro')">RO</button>
     </div>
   </div>
@@ -41,7 +89,7 @@
   <div class="stat"><div class="stat-num"></div><div class="stat-label"></div><div class="stat-sub"></div></div>
 </div>
 
-<!-- BEST AT -->
+<!-- BEST AT / OUR CRAFT -->
 <section class="section best-at">
   <div class="section-inner">
     <div class="section-eyebrow best-eyebrow"></div>
@@ -49,7 +97,7 @@
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- SERVICES / WHAT WE DO -->
 <section class="section services-section" id="services">
   <div class="section-inner">
     <div class="section-eyebrow services-eyebrow"></div>
@@ -58,7 +106,7 @@
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- WHO WE ARE -->
 <section class="section" id="about" style="background:#fff;">
   <div class="section-inner">
     <div class="section-eyebrow about-eyebrow"></div>
@@ -76,8 +124,16 @@
   </div>
 </section>
 
-<!-- REFERENCES -->
-<section class="section references-section" id="references">
+<!-- HOW WE WORK (work[] images) -->
+<section class="section references-section" id="howwework">
+  <div class="section-inner">
+    <div class="section-eyebrow howwework-eyebrow"></div>
+    <div class="refs-grid" id="work-grid"></div>
+  </div>
+</section>
+
+<!-- REFERENCES (ref[] images) -->
+<section class="section" id="references" style="background:#fff;">
   <div class="section-inner">
     <div class="section-eyebrow refs-eyebrow"></div>
     <div class="refs-grid" id="refs-grid"></div>
@@ -120,13 +176,15 @@
           <div class="file-hint fl-hint"></div>
         </div>
         <button class="btn-submit fl-send" onclick="submitForm()"></button>
-        <div class="t-sent sent-msg" id="f-sent"></div>
+        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:0.5px solid var(--border);">
+          <a href="process.html" class="btn-outline-olive operate-link-btn"></a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PIXEL ART at bottom -->
+<!-- PIXEL ART -->
 <section class="mario-section">
   <div class="pixel-art-wrap">
     <div style="text-align:center;"><canvas id="mario-canvas" class="pixel"></canvas><div class="pixel-label">Malita Alex</div></div>
@@ -137,7 +195,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Super <span>Malita</span> Brothers</div>
-  <p>Szeged &amp; surroundings &middot; 123 &middot; abc@abc.com</p>
+  <p>Szeged &amp; surroundings &middot; supermalitabrothers@gmail.com</p>
   <p>&copy; 2026 Super Malita Brothers</p>
 </footer>
 

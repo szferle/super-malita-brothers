@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How We Work — Super Malita Brothers</title>
+  <meta name="description" content="Our simple, transparent process: from first contact to finished job. Free on-site assessment included." />
+  <link rel="canonical" href="https://supermalitabrothers.com/process.html" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .process-hero { background: var(--dark); color: #fff; padding: 5rem 2.5rem 4rem; text-align: center; position: relative; overflow: hidden; }
+    .process-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(92,122,58,0.22) 0%, transparent 65%); pointer-events: none; }
+    .process-hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.5rem; font-weight: 400; }
+    .process-hero-eyebrow::before, .process-hero-eyebrow::after { content: ''; display: block; width: 28px; height: 0.5px; background: var(--gold); }
+    .process-hero h1 { font-family: var(--serif); font-size: clamp(32px, 5vw, 56px); font-weight: 300; color: #fff; margin-bottom: 1rem; }
+    .process-hero p { font-size: 15px; color: #999; max-width: 440px; margin: 0 auto; font-weight: 300; }
+    .process-body { max-width: 760px; margin: 0 auto; padding: 4rem 2.5rem 6rem; }
+    .process-step { display: flex; gap: 2rem; align-items: flex-start; padding: 2.5rem 0; border-bottom: 0.5px solid var(--border); }
+    .process-step:last-child { border-bottom: none; }
+    .process-step-left { flex-shrink: 0; text-align: center; }
+    .process-step-icon { font-size: 28px; width: 56px; height: 56px; background: var(--olive-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; }
+    .process-step-num { font-family: var(--serif); font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; }
+    .process-step-body h2 { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--olive); margin-bottom: 0.6rem; }
+    .process-step-body p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
+    .process-cta { margin-top: 3rem; padding: 2rem; background: var(--olive-pale); border-radius: var(--radius-lg); border-left: 3px solid var(--olive); }
+    .process-cta p { font-size: 15px; color: var(--text-muted); margin-bottom: 1rem; }
+    .process-cta-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .process-calc-link { background: var(--olive); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: var(--radius); font-size: 14px; font-family: var(--sans); letter-spacing: 0.04em; transition: background 0.2s; display: inline-block; }
+    .process-calc-link:hover { background: var(--olive-mid); }
+    .process-contact-btn { background: var(--gold); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: var(--radius); font-size: 14px; font-family: var(--sans); letter-spacing: 0.04em; transition: background 0.2s; display: inline-block; }
+    .process-contact-btn:hover { background: var(--gold-light); color: var(--dark); }
+    @media (max-width: 720px) { .process-body { padding: 2.5rem 1.25rem 4rem; } .process-step { gap: 1.25rem; } .process-hero { padding: 3.5rem 1.25rem 3rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">Super <span>Malita</span> Brothers</a></div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="index.html#services" data-nav="services"></a>
+      <a href="index.html#about" data-nav="about"></a>
+      <a href="index.html#contact" data-nav="contact"></a>
+      <a href="blog.html" data-nav="blog"></a>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="hu" onclick="setLang('hu')">HU</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="ro" onclick="setLang('ro')">RO</button>
+    </div>
+  </div>
+</nav>
+
+<div class="process-hero">
+  <div class="process-hero-eyebrow" id="proc-eyebrow-text"></div>
+  <h1 id="proc-title"></h1>
+  <p id="proc-subtitle"></p>
+</div>
+
+<div class="process-body">
+  <div id="proc-steps"></div>
+  <div class="process-cta">
+    <p id="proc-calc-prompt"></p>
+    <div class="process-cta-links" id="proc-cta-links"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo"><a href="index.html" style="text-decoration:none;color:inherit;">Super <span>Malita</span> Brothers</a></div>
+  <p>Szeged &middot; +36 70 605 6821 &middot; supermalitabrothers@gmail.com</p>
+  <p>&copy; 2026 Super Malita Brothers</p>
+</footer>
+
+<script src="js/translations.js"></script>
+<script>
+/* ─────────────────────────────────────────────
+   PROCESS PAGE — language + render
+───────────────────────────────────────────── */
+let currentLang = 'en';
+
+function detectLang() {
+  const langs = navigator.languages || [navigator.language || 'en'];
+  for (const l of langs) {
+    const code = l.slice(0, 2).toLowerCase();
+    if (code === 'hu') return 'hu';
+    if (code === 'ro') return 'ro';
+    if (code === 'en') return 'en';
+  }
+  return 'en';
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('[data-nav]').forEach(el => el.textContent = translations[lang].nav[el.dataset.nav]);
+  renderProcess(translations[lang].operate);
+}
+
+function renderProcess(op) {
+  document.getElementById('proc-eyebrow-text').textContent = op.eyebrow;
+  document.getElementById('proc-title').textContent = op.title;
+  document.getElementById('proc-subtitle').textContent = op.calculatorPrompt;
+
+  document.getElementById('proc-steps').innerHTML = op.steps.map((step, i) => `
+    <div class="process-step">
+      <div class="process-step-left">
+        <div class="process-step-icon">${step.icon}</div>
+        <div class="process-step-num">0${i + 1}</div>
+      </div>
+      <div class="process-step-body">
+        <h2>${step.title}</h2>
+        <p>${step.text}</p>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('proc-calc-prompt').textContent = op.calculatorPrompt;
+  document.getElementById('proc-cta-links').innerHTML =
+    op.calcLinks.map(l => `<a href="${l.href}" class="process-calc-link">${l.label}</a>`).join('') +
+    `<a href="index.html#contact" class="process-contact-btn">Book free assessment →</a>`;
+}
+
+document.addEventListener('DOMContentLoaded', () => setLang(detectLang()));
+</script>
+</body>
+</html>

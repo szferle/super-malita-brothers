@@ -1,33 +1,45 @@
 /* ─────────────────────────────────────────────
-   LANGUAGE SWITCHING
-   Tracks the active language and re-renders
-   all page content when the user switches.
+   LANGUAGE DETECTION & SWITCHING
+   On first load, detects the browser language
+   and picks the best match from HU / EN / RO.
+   Falls back to English if no match is found.
 ───────────────────────────────────────────── */
 let currentLang = 'en';
 
+function detectLang() {
+  const langs = navigator.languages || [navigator.language || 'en'];
+  for (const l of langs) {
+    const code = l.slice(0, 2).toLowerCase();
+    if (code === 'hu') return 'hu';
+    if (code === 'ro') return 'ro';
+    if (code === 'en') return 'en';
+  }
+  return 'en';
+}
+
 function setLang(lang) {
   currentLang = lang;
-  // Highlight the active language button
+  // Highlight the active button
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   render(translations[lang]);
 }
 
 /* ─────────────────────────────────────────────
    MAIN RENDER
-   Populates every section with translated text
-   from the translations object in translations.js
+   Populates every section of the page with
+   translated content from translations.js.
 ───────────────────────────────────────────── */
 function render(t) {
 
-  // Navigation links
+  // Navigation links (including Blog)
   document.querySelectorAll('[data-nav]').forEach(el => el.textContent = t.nav[el.dataset.nav]);
 
-  // Hero headline and subtext
+  // Hero eyebrow, headline and subtext
   document.querySelector('.hero-eyebrow-text').textContent = t.hero.eyebrow;
   document.querySelector('.hero-h1').innerHTML = t.hero.h1;
   document.querySelector('.hero-sub').textContent = t.hero.sub;
 
-  // Stats bar — number, label, and tagline for each of the 3 stats
+  // Stats bar — 3 numbers with label and tagline
   t.stats.forEach((s, i) => {
     const stat = document.querySelectorAll('.stat')[i];
     stat.querySelector('.stat-num').textContent = s.num;
@@ -35,7 +47,7 @@ function render(t) {
     stat.querySelector('.stat-sub').textContent = s.sub;
   });
 
-  // "Our Craft" section — builds the 4 specialty cards dynamically
+  // Our Craft — 4 specialty cards, no title
   document.querySelector('.best-eyebrow').textContent = t.bestAt.eyebrow;
   document.querySelector('.best-grid').innerHTML = t.bestAt.items.map(item => `
     <div class="best-item">
@@ -45,7 +57,7 @@ function render(t) {
       ${item.badge ? `<span class="tolerance-badge">${item.badge}</span>` : ''}
     </div>`).join('');
 
-  // "What We Do" section — flip cards that show service image on hover
+  // What We Do — flip cards (front: icon+text, back: photo on hover)
   document.querySelector('.services-eyebrow').textContent = t.services.eyebrow;
   document.querySelector('.services-sub').textContent = t.services.sub;
   document.querySelector('.services-grid').innerHTML = t.services.items.map(s => `
@@ -62,7 +74,7 @@ function render(t) {
       </div>
     </div>`).join('');
 
-  // "Who We Are" section — bio paragraphs, spoken languages, and brother cards
+  // Who We Are — bio, languages, brother cards
   document.querySelector('.about-eyebrow').textContent = t.about.eyebrow;
   document.querySelector('.about-title').textContent = t.about.title;
   document.querySelector('.about-p1').textContent = t.about.p1;
@@ -70,8 +82,6 @@ function render(t) {
   document.querySelector('.about-p3').textContent = t.about.p3;
   document.querySelector('.about-lang-label').textContent = t.about.languages;
   document.querySelector('.languages-row').innerHTML = t.about.langs.map(l => `<span class="lang-pill">${l}</span>`).join('');
-
-  // Brother profile cards with avatar, name, title and description
   document.querySelector('.brothers').innerHTML = t.about.brothers.map(b => `
     <div class="brother-card">
       <div class="avatar">${b.init}</div>
@@ -82,21 +92,23 @@ function render(t) {
       </div>
     </div>`).join('');
 
-  // References section — eyebrow label, then grid is built by buildRefsGrid()
-  document.querySelector('.refs-eyebrow').textContent = t.references.eyebrow;
-  buildRefsGrid();
+  // How We Work — photo grid from images/work*.jpg
+  document.querySelector('.howwework-eyebrow').textContent = t.howwework.eyebrow;
+  buildImageGrid('work-grid', 'work');
 
-  // "Check This Out" section — flip cards (render vs real) are static in HTML
+  // References — photo grid from images/ref*.jpg
+  document.querySelector('.refs-eyebrow').textContent = t.references.eyebrow;
+  buildImageGrid('refs-grid', 'ref');
+
+  // Check This Out — static flip cards, just update text
   document.querySelector('.checkthis-eyebrow').textContent = t.checkthis.eyebrow;
   document.querySelector('.checkthis-title').textContent = t.checkthis.title;
 
-  // Contact section — eyebrow uses \n to split into two lines
-  document.querySelector('.contact-eyebrow').innerHTML = t.contact.eyebrow.replace('\\n', '<br>');
+  // Contact — eyebrow uses \n to render as two lines
+  document.querySelector('.contact-eyebrow').innerHTML = t.contact.eyebrow.replace('\n', '<br>');
   document.querySelector('.contact-phone').textContent = t.contact.phone;
   document.querySelector('.contact-email').textContent = t.contact.email;
   document.querySelector('.contact-location').textContent = t.contact.location;
-
-  // Contact form field labels and placeholders
   document.querySelector('.fl-name').textContent = t.contact.fields.name;
   document.querySelector('.fl-phone').textContent = t.contact.fields.phone;
   document.querySelector('.fl-email').textContent = t.contact.fields.email;
@@ -104,36 +116,39 @@ function render(t) {
   document.querySelector('.fl-file').textContent = t.contact.fields.file;
   document.querySelector('.fl-hint').textContent = t.contact.fields.fileHint;
   document.querySelector('.fl-send').textContent = t.contact.fields.send;
-  document.getElementById('f-sent').textContent = t.contact.fields.sent;
 
-  // Fixed sticker popup text
+  // How We Operate button in contact section
+  const opBtn = document.querySelector('.operate-link-btn');
+  if (opBtn) opBtn.textContent = t.operateBtn;
+
+  // Sticker popup
   document.querySelector('.bk-sticker-txt').textContent = t.sticker.txt;
   document.querySelector('.bk-sticker-cta').textContent = t.sticker.cta;
 }
 
 /* ─────────────────────────────────────────────
-   REFERENCES GRID
-   Probes a list of known filenames in images/.
-   Any image that fails to load (404) is hidden,
-   so only real photos appear in the grid.
+   IMAGE GRID BUILDER
+   Probes a list of candidate filenames in images/.
+   Tiles whose images 404 are hidden automatically.
+   prefix = 'ref' → ref1.jpg, ref2.jpg ...
+   prefix = 'work' → work1.jpg, work2.jpg ...
 ───────────────────────────────────────────── */
-const REF_IMAGES = [
-  'ref1.png','ref1.jpg','ref2.jpg','ref2.png','ref3.jpg','ref3.png',
-  'ref4.jpg','ref4.png','ref5.jpg','ref5.png','ref6.jpg','ref6.png',
-  'ref7.jpg','ref7.png','ref8.jpg','ref8.png','ref9.jpg','ref9.png',
-  'ref10.jpg','ref10.png'
-];
-
-function buildRefsGrid() {
-  const grid = document.getElementById('refs-grid');
+function buildImageGrid(gridId, prefix) {
+  const grid = document.getElementById(gridId);
   if (!grid) return;
 
-  // Render all candidate tiles as background-image divs
-  grid.innerHTML = REF_IMAGES.map(f => `
+  // Build candidate list up to 20 images per prefix
+  const candidates = [];
+  for (let i = 1; i <= 20; i++) {
+    candidates.push(`${prefix}${i}.jpg`);
+    candidates.push(`${prefix}${i}.png`);
+  }
+
+  grid.innerHTML = candidates.map(f => `
     <div class="ref-tile" style="background-image:url('images/${f}')" data-src="images/${f}"></div>
   `).join('');
 
-  // Hide any tile whose image doesn't exist
+  // Remove tiles that fail to load
   grid.querySelectorAll('.ref-tile').forEach(tile => {
     const img = new Image();
     img.onerror = () => tile.style.display = 'none';
@@ -143,12 +158,11 @@ function buildRefsGrid() {
 
 /* ─────────────────────────────────────────────
    CONTACT FORM → GOOGLE FORM SUBMISSION
-   Collects field values and POSTs them to the
-   Google Form via a hidden iframe (avoids CORS).
-   File upload field updates the label on change.
+   POSTs to Google Form via hidden iframe to
+   avoid CORS errors and page navigation.
 ───────────────────────────────────────────── */
 
-// Update file upload label with selected filename(s)
+// Updates file upload label with selected filename(s)
 function fileChosen(input) {
   const label = input.closest('.file-upload-label').querySelector('span');
   if (input.files && input.files.length > 0) {
@@ -162,27 +176,26 @@ function submitForm() {
   const email = document.getElementById('f-email').value.trim();
   const msg   = document.getElementById('f-msg').value.trim();
 
-  // Name is required — bail out silently if missing
+  // Name is required — do nothing if empty
   if (!name) return;
 
-  // Create a hidden iframe to receive the form POST response
-  // (prevents page navigation and avoids CORS errors)
+  // Hidden iframe receives the POST response (avoids page redirect)
   let iframe = document.getElementById('gform-submit-frame');
   if (!iframe) {
     iframe = document.createElement('iframe');
-    iframe.id = 'gform-submit-frame';
+    iframe.id   = 'gform-submit-frame';
     iframe.name = 'gform-submit-frame';
     iframe.style.display = 'none';
     document.body.appendChild(iframe);
   }
 
-  // Build a temporary form element with Google Form entry IDs as field names
+  // Temporary form targeting the hidden iframe
   const form = document.createElement('form');
   form.method = 'POST';
   form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSeGVlesIFUm-uIUY6xcyr6ORgWLeWA-ishxgBcZnhYBYRg2ow7/formResponse';
   form.target = 'gform-submit-frame';
 
-  // Map our fields to Google Form entry IDs
+  // Google Form entry IDs mapped to our field values
   const fields = {
     'entry.1806748632': name,
     'entry.73121990':   phone,
@@ -190,20 +203,21 @@ function submitForm() {
     'entry.313127878':  msg
   };
 
-  // Append each field as a hidden input, then submit
   Object.entries(fields).forEach(([k, v]) => {
     const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = k;
+    input.type  = 'hidden';
+    input.name  = k;
     input.value = v;
     form.appendChild(input);
   });
+
   document.body.appendChild(form);
   form.submit();
   document.body.removeChild(form);
 
-  // Show confirmation message and clear all fields
-  document.getElementById('f-sent').style.display = 'block';
+  // Show confirmation popup and clear fields
+  const sentMsg = translations[currentLang].contact.fields.sent;
+  alert(sentMsg);
   document.getElementById('f-name').value  = '';
   document.getElementById('f-phone').value = '';
   document.getElementById('f-email').value = '';
@@ -212,26 +226,27 @@ function submitForm() {
 
 /* ─────────────────────────────────────────────
    PIXEL ART — CONSTRUCTION WORKERS
-   Draws two characters on <canvas> elements
-   using a colour-keyed pixel grid array.
-   Guy A faces right, Guy B is mirrored left.
+   Draws two pixel characters on canvas elements.
+   Colour-keyed arrays define each sprite.
+   Guy A (Alex) faces right; Guy B (Sergiu) is
+   mirrored to face left toward his brother.
 ───────────────────────────────────────────── */
 function drawPixelArt() {
-  const S = 16; // pixel scale in px
+  const S = 16; // pixel block size in px
 
-  // Colour palette shortcuts
+  // Colour palette
   const _ = null;         // transparent
   const SK = '#D4A870';   // skin
   const BL = '#000000';   // black (eyes, boots)
-  const RE = '#CC1100';   // red cap / buttons (Alex)
-  const GE = '#3A9A1A';   // green cap / buttons (Sergiu)
+  const RE = '#CC1100';   // red cap & buttons (Alex)
+  const GE = '#3A9A1A';   // green cap & buttons (Sergiu)
   const OR = '#CC6600';   // orange hi-vis vest
   const GR = '#888888';   // grey pants (Alex)
   const GD = '#555555';   // grey shadow
   const WH = '#DDDDDD';   // white pants (Sergiu)
   const WD = '#AAAAAA';   // white shadow
 
-  // Alex — red cap, grey pants, faces right
+  // Alex — red cap, grey pants
   const guyA = [
     [_,_,RE,RE,RE,RE,RE,_,_,_],
     [_,_,RE,RE,RE,RE,RE,_,_,_],
@@ -253,7 +268,7 @@ function drawPixelArt() {
     [BL,BL,BL,BL,_,BL,BL,BL,BL,_],
   ];
 
-  // Sergiu — green cap, white pants, mirrored to face left
+  // Sergiu — green cap, white pants (mirrored in drawChar)
   const guyB = [
     [_,_,_,GE,GE,GE,GE,GE,_,_],
     [_,_,_,GE,GE,GE,GE,GE,_,_],
@@ -275,7 +290,7 @@ function drawPixelArt() {
     [_,BL,BL,BL,BL,_,BL,BL,BL,BL],
   ];
 
-  // Draws one character onto a canvas; mirrors the grid if needed
+  // Render a sprite grid onto a canvas element
   function drawChar(canvasId, grid, mirror) {
     const canvas = document.getElementById(canvasId);
     if (!canvas) return;
@@ -294,16 +309,16 @@ function drawPixelArt() {
     });
   }
 
-  drawChar('mario-canvas', guyA, false);  // Alex — no mirror
-  drawChar('luigi-canvas', guyB, true);   // Sergiu — mirrored
+  drawChar('mario-canvas', guyA, false); // Alex faces right
+  drawChar('luigi-canvas', guyB, true);  // Sergiu mirrored to face left
 }
 
 /* ─────────────────────────────────────────────
    INIT
-   Runs after the DOM is ready: set default
-   language to English and draw the pixel art.
+   Detect browser language, render page,
+   draw pixel art. Runs after DOM is ready.
 ───────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
-  setLang('en');
+  setLang(detectLang());
   drawPixelArt();
 });
