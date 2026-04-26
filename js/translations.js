@@ -29,7 +29,7 @@ const translations = {
     bestAt: {
       eyebrow: "Our craft",
       items: [
-        { n:"01", h:"Smooth surfaces & Q5 grouting", p:"Flawlessly smooth walls, ceilings and professional Q5 joints — the finish that speaks for itself." },
+        { n:"01", h:"Smooth surfaces & Q5 gletting", p:"Flawlessly smooth walls, ceilings with high quality classic finishing." },
         { n:"02", h:"Walk-in showers", p:"Custom walk-in shower installations designed for comfort, flow, and elegance." },
         { n:"03", h:"Herring pattern", p:"Intricate herringbone tile work laid with geometric precision and an eye for visual rhythm." },
         { n:"04", h:"<1 mm tolerance", p:"We work to sub-millimetre accuracy. Because quality shows in the details." }
@@ -39,7 +39,7 @@ const translations = {
     // What We Do / Services
     services: {
       eyebrow: "What we do",
-      sub: "We can work with a designed image or share your ideas with us!",
+      sub: "",
       items: [
         { icon:"🎨", h:"Wall painting", p:"Interior and exterior painting with premium finishes. Perfect colour, perfect texture, every time.", img:"images/svc-painting.jpg" },
         { icon:"🛠️", h:"Drywall installation", p:"Precision drywall installation — smooth, straight, durable.", img:"images/svc-drywall.jpg" },
@@ -110,6 +110,7 @@ const translations = {
     },
 
     // Sticker popup
+    callbackBtn: "Request callback",
     operateBtn: "See how we work →",
     sticker: { txt: "Book us for your next project!", cta: "Free visit" },
 
@@ -122,14 +123,14 @@ const translations = {
           id: "floor-calculator",
           title: "Floor Calculator",
           intro: "This simple calculator helps you determine the right quantity of flooring for a given room.",
-          body: "The calculation is based on the floor area of the room, to which a 10% cutting allowance is added. It rounds up to a full pack of flooring.",
+          body: "The calculation is based on the floor area of the room, to which a 10% cutting allowance is added.<br>The calculator rounds up to a full pack of flooring.",
           calculator: "floor"
         },
         {
           id: "paint-calculator",
           title: "Wall Paint Calculator",
-          intro: "Calculating how much paint you need before starting a room is essential — running out mid-job causes colour mismatches and delays. This calculator works out your total paintable surface, accounts for doors and windows, and tells you exactly how many litres and buckets to buy.",
-          body: "The formula adds up all four walls and the ceiling, then subtracts doors and windows. Multiply by coats and divide by the stated coverage. It rounds up to a full bucket of paint.",
+          intro: "Calculating how much paint you need before starting a room is essential — running out mid-job causes colour mismatches and delays.",
+          body: "The formula adds up all four walls and the ceiling, then subtracts doors and windows. Multiply by coats and divide by the stated coverage.<br>The calculator rounds up to a full bucket of paint.",
           calculator: "paint"
         },
         {
@@ -142,9 +143,7 @@ const translations = {
             { title: "Room complexity", text: "Rooms with many corners, niches or irregular shapes require more cutting and labour time, raising the cost per m²." },
             { title: "Pattern choice", text: "Herringbone and diagonal layouts waste 15–20% more material than straight patterns and take significantly longer to lay precisely — but it\'s worth it!" },
             { title: "Surface preparation", text: "If the existing floor needs leveling or old tiles need removing, this adds material and labour cost before any new surface is laid." },
-            { title: "Grout and adhesive quality", text: "Professional-grade Q5 grout and flexible adhesive cost more but last far longer — especially in wet rooms like bathrooms." },
-            { title: "Carrying materials", text: "Transporting heavy tiles and flooring materials to upper floors or difficult access areas adds time and cost to every job." },
-            { title: "Moving furniture", text: "Clearing and returning furniture from the work area takes time and is often overlooked when budgeting for a flooring project." }
+            { title: "Other", text: "Carrying heavy tiles to upper floors or difficult access areas adds time and cost. Moving furniture from the work area is also often overlooked when budgeting." }
           ]
         }
       ]
@@ -162,12 +161,12 @@ const translations = {
     stats: [
       { num: "15+", label: "Év tapasztalat", sub: "Apánktól tanultuk" },
       { num: "100+", label: "Befejezett projekt", sub: "Nemzetközileg" },
-      { num: "100%", label: "Ügyfél-elégedettség", sub: "Ajánlással dolgozunk" }
+      { num: "100%", label: "Ügyfélelégedettség", sub: "Ajánlanak minket" }
     ],
     bestAt: {
       eyebrow: "Szakértelmünk",
       items: [
-        { n:"01", h:"Sima felületek & Q5 fugázás", p:"Hibátlanul sima falak, mennyezetek és professzionális Q5 kötések." },
+        { n:"01", h:"Sima felületek & Q5 gletting", p:"Hibátlanul sima falak, mennyezetek magas minőségű klasszikus felülettel." },
         { n:"02", h:"Walk-in zuhanyzó", p:"Egyedi walk-in zuhanyzó telepítések kényelemre és eleganciára tervezve." },
         { n:"03", h:"Halszálkás minta", p:"Precízen fektetett halszálkás burkolat geometriai pontossággal." },
         { n:"04", h:"<1 mm tűréshatár", p:"Milliméter alatti pontossággal dolgozunk. A minőség a részletekben rejlik." }
@@ -175,7 +174,7 @@ const translations = {
     },
     services: {
       eyebrow: "Amit csinálunk",
-      sub: "Dolgozunk tervezett képpel, vagy ossza meg velünk ötleteit!",
+      sub: "",
       items: [
         { icon:"🎨", h:"Festés", p:"Bel- és külső festés prémium felületekkel. Tökéletes szín, tökéletes textúra.", img:"images/svc-painting.jpg" },
         { icon:"🛠️", h:"Gipszkarton szerelés", p:"Precíz gipszkarton munka — sima, egyenes, tartós.", img:"images/svc-drywall.jpg" },
@@ -232,6 +231,7 @@ const translations = {
         sent: "Üzenet megérkezett! Hamarosan felvesszük veled a kapcsolatot."
       }
     },
+    callbackBtn: "Visszahívást kérek",
     operateBtn: "Nézd meg a folyamatunkat →",
     sticker: { txt: "Foglalj minket a következő projektedhez!", cta: "Ingyenes felmérés" },
     blog: {
@@ -242,14 +242,14 @@ const translations = {
           id: "floor-calculator",
           title: "Padlókalkulátor",
           intro: "Ez az egyszerű kalkulátor segít meghatározni a szükséges padlómennyiséget egy adott helyiséghez.",
-          body: "A számítás alapja a helyiség alapterülete, amelyhez 10% vágási tartalékot ad hozzá. Egész csomagra kerekít fel.",
+          body: "A számítás alapja a helyiség alapterülete, amelyhez 10% vágási tartalékot ad hozzá.<br>A kalkulátor egész csomagra kerekít fel.",
           calculator: "floor"
         },
         {
           id: "paint-calculator",
-          title: "Falfesték kalkulátor",
-          intro: "A szükséges festékmennyiség kiszámítása elengedhetetlen a munka megkezdése előtt — ha elfogy a festék, az színeltéréshez és késedelemhez vezet. Ez a kalkulátor kiszámítja a festendő felületet, levon ajtókat és ablakokat, és megmondja, mennyi literre és vödörre lesz szükséged.",
-          body: "A képlet összeadja a négy falat és a mennyezetet, levonja az ajtókat és ablakokat, megszorozza a rétegek számával és elosztja a feltüntetett fedőképességgel. Egész vödörre kerekít fel.",
+          title: "Falfesték-kalkulátor",
+          intro: "A szükséges festékmennyiség kiszámítása elengedhetetlen a munka megkezdése előtt — ha elfogy a festék, az színeltéréshez és késedelemhez vezet.",
+          body: "A képlet összeadja a négy falat és a mennyezetet, levonja az ajtókat és ablakokat, megszorozza a rétegek számával és elosztja a feltüntetett fedőképességgel.<br>A kalkulátor egész vödörre kerekít fel.",
           calculator: "paint"
         },
         {
@@ -262,9 +262,7 @@ const translations = {
             { title: "A helyiség összetettsége", text: "A sok sarokkal, fülkével vagy szabálytalan alakú helyiségek több vágást és munkaidőt igényelnek, ami növeli az m²-enkénti árat." },
             { title: "Mintaválasztás", text: "A halszálkás és átlós elrendezések 15–20%-kal több anyagot pazarolnak, mint az egyenes minták, és jóval több időt vesznek igénybe — de megéri!" },
             { title: "Felület-előkészítés", text: "Ha a meglévő padlót ki kell egyenlíteni vagy a régi burkolatot el kell távolítani, ez anyag- és munkadíjat is hozzáad az új felület fektetéséhez." },
-            { title: "Fuga és ragasztó minősége", text: "A professzionális Q5 fuga és rugalmas ragasztó drágább, de sokkal tovább tart — különösen nedves helyiségekben, pl. fürdőszobákban." },
-            { title: "Anyagmozgatás", text: "A nehéz burkolólapok és padlóanyagok felső emeletekre vagy nehezen megközelíthető helyekre szállítása minden munkán időt és költséget ad hozzá." },
-            { title: "Bútorok mozgatása", text: "A munkaterületről a bútorok ki- és visszaszállítása időt vesz igénybe, és a padlófelújítás tervezésekor gyakran nem számolnak vele." }
+            { title: "Egyéb", text: "A nehéz burkolólapok felső emeletekre szállítása időt és költséget jelent. A bútorok mozgatása szintén sokszor kimarad a tervezésből." }
           ]
         }
       ]
@@ -287,7 +285,7 @@ const translations = {
     bestAt: {
       eyebrow: "Meșteșugul nostru",
       items: [
-        { n:"01", h:"Suprafețe netede & rostuire Q5", p:"Pereți și tavane perfect netezi cu rosturi Q5 profesionale." },
+        { n:"01", h:"Suprafețe netede & Q5 gletting", p:"Pereți și tavane perfect netezi cu finisaj clasic de înaltă calitate." },
         { n:"02", h:"Dușuri walk-in", p:"Instalații walk-in pentru confort și eleganță." },
         { n:"03", h:"Model hering", p:"Placaj hering cu precizie geometrică." },
         { n:"04", h:"Toleranță <1 mm", p:"Lucrăm la precizie sub milimetru." }
@@ -295,7 +293,7 @@ const translations = {
     },
     services: {
       eyebrow: "Ce facem",
-      sub: "Putem lucra cu un proiect sau împărtășiți-ne ideile voastre!",
+      sub: "",
       items: [
         { icon:"🎨", h:"Vopsitorie", p:"Vopsit interior și exterior cu finisaje premium.", img:"images/svc-painting.jpg" },
         { icon:"🛠️", h:"Montaj rigips", p:"Rigips de precizie — neted, drept, durabil.", img:"images/svc-drywall.jpg" },
@@ -352,6 +350,7 @@ const translations = {
         sent: "Mesaj primit! Te contactăm în curând."
       }
     },
+    callbackBtn: "Solicit un apel",
     operateBtn: "Cum funcționăm →",
     sticker: { txt: "Rezervă-ne pentru proiectul tău!", cta: "Evaluare gratuită" },
     blog: {
@@ -362,14 +361,14 @@ const translations = {
           id: "floor-calculator",
           title: "Calculator pardoseli",
           intro: "Acest calculator simplu te ajută să determini cantitatea necesară de pardoseli pentru o cameră.",
-          body: "Calculul se bazează pe suprafața camerei, la care se adaugă 10% pentru pierderi la tăiere. Rotunjește în sus la un pachet întreg.",
+          body: "Calculul se bazează pe suprafața camerei, la care se adaugă 10% pentru pierderi la tăiere.<br>Calculatorul rotunjește în sus la un pachet întreg.",
           calculator: "floor"
         },
         {
           id: "paint-calculator",
           title: "Calculator vopsea",
-          intro: "Calcularea cantității de vopsea înainte de a începe este esențială. Acest calculator determină suprafața totală de vopsit, scade ușile și ferestrele și îți spune exact câți litri și câte găleți să cumperi.",
-          body: "Formula adună pereții și tavanul, scade ușile și ferestrele, înmulțește cu numărul de straturi și împarte la acoperirea indicată. Rotunjește în sus la o găleată întreagă.",
+          intro: "Calcularea cantității de vopsea înainte de a începe este esențială.",
+          body: "Formula adună pereții și tavanul, scade ușile și ferestrele, înmulțește cu numărul de straturi și împarte la acoperirea indicată.<br>Calculatorul rotunjește în sus la o găleată întreagă.",
           calculator: "paint"
         },
         {
@@ -382,9 +381,7 @@ const translations = {
             { title: "Complexitatea camerei", text: "Camerele cu colțuri, nișe sau forme neregulate necesită mai multe tăieturi și timp suplimentar de lucru." },
             { title: "Alegerea modelului", text: "Modelele în os de pește și în diagonală risipesc 15–20% mai mult material și durează mult mai mult de montat — dar merită!" },
             { title: "Pregătirea suprafeței", text: "Dacă pardoseala existentă trebuie nivelată sau vechile plăci îndepărtate, acest lucru adaugă costuri suplimentare." },
-            { title: "Calitatea rostului și adezivului", text: "Rost profesional Q5 și adeziv flexibil costă mai mult, dar durează mult mai mult — în special în băi." },
-            { title: "Transportul materialelor", text: "Transportul plăcilor și materialelor grele la etaje superioare sau locații greu accesibile adaugă timp și cost la fiecare lucrare." },
-            { title: "Mutarea mobilei", text: "Eliberarea și readucerea mobilei în zona de lucru necesită timp și este adesea trecută cu vederea la bugetarea unui proiect de pardoseli." }
+            { title: "Altele", text: "Transportul materialelor grele la etaje superioare adaugă timp și cost. Mutarea mobilei este adesea trecută cu vederea la bugetare." }
           ]
         }
       ]

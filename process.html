@@ -3,44 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How We Work — Super Malita Brothers</title>
-  <meta name="description" content="Our simple, transparent process: from first contact to finished job. Free on-site assessment included." />
+  <title>Contact Us — Super Malita Brothers</title>
+  <meta name="description" content="Contact Super Malita Brothers. Free on-site assessment in Szeged. Simple process from first call to finished job." />
   <link rel="canonical" href="https://supermalitabrothers.com/process.html" />
+  <script>(function(){fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/contact_page').catch(function(){});})();</script>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    .process-hero { background: var(--dark); color: #fff; padding: 5rem 2.5rem 4rem; text-align: center; position: relative; overflow: hidden; }
-    .process-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(92,122,58,0.22) 0%, transparent 65%); pointer-events: none; }
-    .process-hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.5rem; font-weight: 400; }
-    .process-hero-eyebrow::before, .process-hero-eyebrow::after { content: ''; display: block; width: 28px; height: 0.5px; background: var(--gold); }
-    .process-hero h1 { font-family: var(--serif); font-size: clamp(32px, 5vw, 56px); font-weight: 300; color: #fff; margin-bottom: 1rem; }
-    .process-hero p { font-size: 15px; color: #999; max-width: 440px; margin: 0 auto; font-weight: 300; }
-    .process-body { max-width: 760px; margin: 0 auto; padding: 4rem 2.5rem 6rem; }
-    .process-step { display: flex; gap: 2rem; align-items: flex-start; padding: 2.5rem 0; border-bottom: 0.5px solid var(--border); }
-    .process-step:last-child { border-bottom: none; }
-    .process-step-left { flex-shrink: 0; text-align: center; }
-    .process-step-icon { font-size: 28px; width: 56px; height: 56px; background: var(--olive-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; }
-    .process-step-num { font-family: var(--serif); font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; }
-    .process-step-body h2 { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--olive); margin-bottom: 0.6rem; }
-    .process-step-body p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
-    .process-cta { margin-top: 3rem; padding: 2rem; background: var(--olive-pale); border-radius: var(--radius-lg); border-left: 3px solid var(--olive); }
-    .process-cta p { font-size: 15px; color: var(--text-muted); margin-bottom: 1rem; }
-    .process-cta-links { display: flex; gap: 12px; flex-wrap: wrap; }
-    .process-calc-link { background: var(--olive); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: var(--radius); font-size: 14px; font-family: var(--sans); letter-spacing: 0.04em; transition: background 0.2s; display: inline-block; }
-    .process-calc-link:hover { background: var(--olive-mid); }
-    .process-contact-btn { background: var(--gold); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: var(--radius); font-size: 14px; font-family: var(--sans); letter-spacing: 0.04em; transition: background 0.2s; display: inline-block; }
-    .process-contact-btn:hover { background: var(--gold-light); color: var(--dark); }
-    @media (max-width: 720px) { .process-body { padding: 2.5rem 1.25rem 4rem; } .process-step { gap: 1.25rem; } .process-hero { padding: 3.5rem 1.25rem 3rem; } }
+    .proc-hero{background:var(--dark);color:#fff;padding:4.5rem 2.5rem 3.5rem;text-align:center;position:relative;overflow:hidden}
+    .proc-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(92,122,58,0.22) 0%,transparent 65%);pointer-events:none}
+    .proc-eye{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.5rem;font-weight:400}
+    .proc-eye::before,.proc-eye::after{content:'';display:block;width:28px;height:0.5px;background:var(--gold)}
+    .proc-hero h1{font-family:var(--serif);font-size:clamp(26px,5vw,48px);font-weight:300;color:#fff;margin-bottom:0}
+    .proc-body{max-width:960px;margin:0 auto;padding:3.5rem 2.5rem 5rem;display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start}
+    .proc-steps{display:flex;flex-direction:column;gap:0}
+    .proc-step{display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem 0;border-bottom:0.5px solid var(--border)}
+    .proc-step:last-of-type{border-bottom:none}
+    .proc-step-icon{font-size:20px;width:44px;height:44px;background:var(--olive-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .proc-step-num{font-size:10px;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;margin-bottom:2px;font-family:var(--serif)}
+    .proc-step h3{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--olive);margin-bottom:3px}
+    .proc-step p{font-size:15px;color:var(--text-muted);line-height:1.7}
+    .proc-calc-box{margin-top:1.5rem;padding:1.25rem 1.5rem;background:var(--olive-pale);border-radius:var(--radius-lg);border-left:3px solid var(--olive)}
+    .proc-calc-box p{font-size:14px;color:var(--text-muted);margin-bottom:0.75rem}
+    .proc-calc-links{display:flex;gap:8px;flex-wrap:wrap}
+    .proc-calc-link{background:var(--olive);color:#fff;text-decoration:none;padding:8px 16px;border-radius:var(--radius);font-size:13px;font-family:var(--sans);transition:background 0.2s;display:inline-block}
+    .proc-calc-link:hover{background:var(--olive-mid)}
+    .proc-form-col h2{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--olive);margin-bottom:1.25rem}
+    .proc-form .form-group{margin-bottom:0.9rem}
+    .proc-form .form-group label{display:block;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:5px;font-weight:400}
+    .proc-form input,.proc-form textarea{width:100%;padding:11px 14px;border:0.5px solid rgba(61,82,40,0.25);border-radius:var(--radius);background:var(--olive-mist);color:var(--text);font-size:15px;font-family:var(--sans);font-weight:300}
+    .proc-form input:focus,.proc-form textarea:focus{outline:none;border-color:var(--olive-mid)}
+    .proc-form textarea{min-height:110px;resize:vertical}
+    .proc-form .btn-submit{margin-top:0.25rem}
+    .proc-sent{display:none;color:var(--olive);font-size:15px;margin-top:0.75rem;font-family:var(--sans)}
+    .proc-contact-details{margin-bottom:2rem}
+    .proc-map-wrap{border-radius:var(--radius-lg);overflow:hidden;border:0.5px solid var(--border);margin-top:1.25rem}
+    .proc-map-wrap iframe{width:100%;height:220px;border:none;display:block}
+    @media(max-width:720px){
+      .proc-body{grid-template-columns:1fr;gap:2.5rem;padding:2.5rem 1.25rem 4rem}
+      .proc-hero{padding:3.5rem 1.25rem 3rem}
+    }
   </style>
 </head>
 <body>
 
-<nav class="nav">
+<nav class="nav" role="navigation">
   <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">Super <span>Malita</span> Brothers</a></div>
   <div class="nav-right">
     <div class="nav-links">
       <a href="index.html#services" data-nav="services"></a>
       <a href="index.html#about" data-nav="about"></a>
-      <a href="index.html#contact" data-nav="contact"></a>
+      <a href="process.html" data-nav="contact" style="color:var(--olive);font-weight:500;"></a>
       <a href="blog.html" data-nav="blog"></a>
     </div>
     <div class="lang-switcher">
@@ -51,72 +63,118 @@
   </div>
 </nav>
 
-<div class="process-hero">
-  <div class="process-hero-eyebrow" id="proc-eyebrow-text"></div>
+<div class="proc-hero">
+  <div class="proc-eye" id="proc-eye"></div>
   <h1 id="proc-title"></h1>
-  <p id="proc-subtitle"></p>
 </div>
 
-<div class="process-body">
-  <div id="proc-steps"></div>
-  <div class="process-cta">
-    <p id="proc-calc-prompt"></p>
-    <div class="process-cta-links" id="proc-cta-links"></div>
+<div class="proc-body">
+  <!-- Left: process steps + calculator links + contact details + map -->
+  <div class="proc-left">
+    <div class="proc-steps" id="proc-steps"></div>
+    <div class="proc-calc-box">
+      <p id="proc-calc-prompt"></p>
+      <div class="proc-calc-links" id="proc-calc-links"></div>
+    </div>
+    <div class="proc-contact-details" style="margin-top:2rem">
+      <div class="contact-detail"><div class="contact-icon">&#128222;</div><div><strong class="contact-phone"></strong></div></div>
+      <div class="contact-detail"><div class="contact-icon">&#9993;&#65039;</div><div><strong class="contact-email"></strong></div></div>
+      <div class="contact-detail"><div class="contact-icon">&#128205;</div><div><strong class="contact-location"></strong></div></div>
+    </div>
+    <div class="proc-map-wrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d190000!2d20.1486!3d46.253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2shu!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Szeged service area"></iframe>
+    </div>
+  </div>
+
+  <!-- Right: contact form -->
+  <div class="proc-form-col">
+    <h2 id="proc-form-title"></h2>
+    <div class="proc-form">
+      <div class="form-group"><label class="fl-name"></label><input type="text" id="f-name" /></div>
+      <div class="form-group"><label class="fl-phone"></label><input type="text" id="f-phone" /></div>
+      <div class="form-group"><label class="fl-email"></label><input type="email" id="f-email" /></div>
+      <div class="form-group"><label class="fl-msg"></label><textarea id="f-msg"></textarea></div>
+      <button class="btn-submit fl-send" onclick="submitForm()"></button>
+      <div class="proc-sent" id="f-sent"></div>
+    </div>
   </div>
 </div>
 
 <footer>
-  <div class="footer-logo"><a href="index.html" style="text-decoration:none;color:inherit;">Super <span>Malita</span> Brothers</a></div>
-  <p>Szeged &middot; +36 70 605 6821 &middot; supermalitabrothers@gmail.com</p>
+  <div class="footer-logo">Super <span>Malita</span> Brothers</div>
+  <p>Szeged &amp; surroundings &middot; +36 70 605 6821 &middot; supermalitabrothers@gmail.com</p>
   <p>&copy; 2026 Super Malita Brothers</p>
 </footer>
 
 <script src="js/translations.js"></script>
 <script>
-/* ─────────────────────────────────────────────
-   PROCESS PAGE — language + render
-───────────────────────────────────────────── */
 let currentLang = 'en';
-
 function detectLang() {
   const langs = navigator.languages || [navigator.language || 'en'];
-  for (const l of langs) {
-    const code = l.slice(0, 2).toLowerCase();
-    if (code === 'hu') return 'hu';
-    if (code === 'ro') return 'ro';
-    if (code === 'en') return 'en';
-  }
+  for (const l of langs) { const c = l.slice(0,2).toLowerCase(); if(c==='hu') return 'hu'; if(c==='ro') return 'ro'; }
   return 'en';
 }
-
 function setLang(lang) {
   currentLang = lang;
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-  document.querySelectorAll('[data-nav]').forEach(el => el.textContent = translations[lang].nav[el.dataset.nav]);
-  renderProcess(translations[lang].operate);
-}
-
-function renderProcess(op) {
-  document.getElementById('proc-eyebrow-text').textContent = op.eyebrow;
+  document.querySelectorAll('[data-nav]').forEach(el => el.textContent = translations[lang].nav[el.dataset.nav] || '');
+  const t = translations[lang];
+  const op = t.operate;
+  const ct = t.contact;
+  // Hero
+  document.getElementById('proc-eye').textContent = op.eyebrow;
   document.getElementById('proc-title').textContent = op.title;
-  document.getElementById('proc-subtitle').textContent = op.calculatorPrompt;
-
-  document.getElementById('proc-steps').innerHTML = op.steps.map((step, i) => `
-    <div class="process-step">
-      <div class="process-step-left">
-        <div class="process-step-icon">${step.icon}</div>
-        <div class="process-step-num">0${i + 1}</div>
-      </div>
-      <div class="process-step-body">
-        <h2>${step.title}</h2>
-        <p>${step.text}</p>
+  // Steps
+  document.getElementById('proc-steps').innerHTML = op.steps.map((s,i) => `
+    <div class="proc-step">
+      <div class="proc-step-icon">${s.icon}</div>
+      <div>
+        <div class="proc-step-num">0${i+1}</div>
+        <h3>${s.title}</h3>
+        <p>${s.text}</p>
       </div>
     </div>`).join('');
-
+  // Calculator links
   document.getElementById('proc-calc-prompt').textContent = op.calculatorPrompt;
-  document.getElementById('proc-cta-links').innerHTML =
-    op.calcLinks.map(l => `<a href="${l.href}" class="process-calc-link">${l.label}</a>`).join('') +
-    `<a href="index.html#contact" class="process-contact-btn">Book free assessment →</a>`;
+  document.getElementById('proc-calc-links').innerHTML =
+    op.calcLinks.map(l => `<a href="${l.href}" class="proc-calc-link">${l.label}</a>`).join('');
+  // Contact details
+  document.querySelector('.contact-phone').textContent = ct.phone;
+  document.querySelector('.contact-email').textContent = ct.email;
+  document.querySelector('.contact-location').textContent = ct.location;
+  // Form
+  const eyebrowParts = ct.eyebrow.split('\n');
+  document.getElementById('proc-form-title').textContent = eyebrowParts[1] || eyebrowParts[0];
+  document.querySelector('.fl-name').textContent = ct.fields.name;
+  document.querySelector('.fl-phone').textContent = ct.fields.phone;
+  document.querySelector('.fl-email').textContent = ct.fields.email;
+  document.querySelector('.fl-msg').textContent = ct.fields.message;
+  document.querySelector('.fl-send').textContent = ct.fields.send;
+  document.getElementById('f-sent').textContent = ct.fields.sent;
+}
+
+function submitForm() {
+  const name = document.getElementById('f-name').value.trim();
+  if (!name) return;
+  let iframe = document.getElementById('_gf');
+  if (!iframe) { iframe = document.createElement('iframe'); iframe.id='_gf'; iframe.name='_gf'; iframe.style.display='none'; document.body.appendChild(iframe); }
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSeGVlesIFUm-uIUY6xcyr6ORgWLeWA-ishxgBcZnhYBYRg2ow/formResponse';
+  form.target = '_gf';
+  const fields = {
+    'entry.1806748632': name,
+    'entry.73121990': document.getElementById('f-phone').value,
+    'entry.1419449292': document.getElementById('f-email').value,
+    'entry.313127878': document.getElementById('f-msg').value
+  };
+  Object.entries(fields).forEach(([k,v]) => {
+    const i = document.createElement('input'); i.type='hidden'; i.name=k; i.value=v; form.appendChild(i);
+  });
+  document.body.appendChild(form); form.submit(); document.body.removeChild(form);
+  document.getElementById('f-sent').style.display = 'block';
+  ['f-name','f-phone','f-email','f-msg'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
+  fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/form_submit').catch(function(){});
 }
 
 document.addEventListener('DOMContentLoaded', () => setLang(detectLang()));

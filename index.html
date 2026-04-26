@@ -4,27 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Primary SEO -->
-  <title>Super Malita Brothers — Construction & Renovation, Szeged</title>
-  <meta name="description" content="Premium wall painting, drywall, tile and floor installation in Szeged and surroundings. Licensed & insured. Free on-site assessment." />
-  <meta name="keywords" content="construction Szeged, tile installation, wall painting, drywall, floor installation, renovation, Super Malita Brothers" />
+  <!-- Primary SEO (EN) -->
+  <title>Super Malita Brothers — Prémium Burkolás, Festés, Gipszkarton Szeged</title>
+  <meta name="description" content="Premium wall painting, drywall, tile and floor installation in Szeged. Free on-site assessment. | Prémium falfestés, gipszkarton, burkolás Szegeden. Ingyenes helyszíni felmérés." />
+  <meta name="keywords" content="construction Szeged, tile installation, wall painting, drywall, floor installation, renovation, Super Malita Brothers, burkolás Szeged, szobafestő Szeged, gipszkarton Szeged, aljzatkiegyenlítés, burkolás árak, festés Szeged" />
   <meta name="author" content="Super Malita Brothers" />
   <link rel="canonical" href="https://supermalitabrothers.com/" />
 
-  <!-- Open Graph (Facebook, LinkedIn sharing) -->
+  <!-- HU SEO -->
+  <meta name="description:hu" content="Prémium falfestés, gipszkarton szerelés, burkolás és aljzatkiegyenlítés Szegeden és környékén. Ingyenes helyszíni felmérés." />
+  <meta name="keywords:hu" content="burkolás Szeged, szobafestő Szeged, gipszkarton Szeged, aljzatkiegyenlítés, burkolás árak, festés Szeged, Malita fivérek" />
+
+  <!-- RO SEO -->
+  <meta name="description:ro" content="Servicii premium de vopsitorie, rigips, placaj și nivelarea pardoselii în Szeged și împrejurimi. Evaluare gratuită la fața locului." />
+  <meta name="keywords:ro" content="construcții Szeged, placaj gresie, vopsitorie, rigips, nivelarea pardoselii, renovare Szeged" />
+
+  <!-- Open Graph — HU as primary locale (largest target market) -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://supermalitabrothers.com/" />
-  <meta property="og:title" content="Super Malita Brothers — Construction & Renovation, Szeged" />
-  <meta property="og:description" content="Premium wall painting, drywall, tile and floor installation in Szeged. Licensed & insured. Free on-site assessment." />
+  <meta property="og:title" content="Super Malita Brothers — Burkolás, Festés, Gipszkarton Szeged" />
+  <meta property="og:description" content="Prémium falfestés, gipszkarton, burkolás Szegeden. Ingyenes helyszíni felmérés. | Premium wall painting, tile, drywall in Szeged." />
   <meta property="og:image" content="https://supermalitabrothers.com/images/og-image.jpg" />
-  <meta property="og:locale" content="en_GB" />
-  <meta property="og:locale:alternate" content="hu_HU" />
+  <meta property="og:locale" content="hu_HU" />
+  <meta property="og:locale:alternate" content="en_GB" />
   <meta property="og:locale:alternate" content="ro_RO" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Super Malita Brothers — Construction & Renovation, Szeged" />
-  <meta name="twitter:description" content="Premium wall painting, drywall, tile and floor installation in Szeged." />
+  <meta name="twitter:title" content="Super Malita Brothers — Burkolás, Festés, Gipszkarton Szeged" />
+  <meta name="twitter:description" content="Prémium burkolás, festés, gipszkarton Szegeden. | Premium construction in Szeged." />
   <meta name="twitter:image" content="https://supermalitabrothers.com/images/og-image.jpg" />
 
   <!-- JSON-LD Structured Data -->
@@ -53,6 +61,33 @@
   </script>
 
   <link rel="stylesheet" href="css/style.css" />
+  <!-- CountAPI — visitor & interaction tracking -->
+  <!-- Available CountAPI calls used here:
+       1. /hit/:namespace/:key — increments a counter each page load (total visits)
+       2. /hit/:namespace/:key — per-page hit counter (by path)
+       3. /hit/:namespace/:key — language usage tracking
+       4. /get/:namespace/:key — read a counter value without incrementing
+       5. /set/:namespace/:key/:value — set a counter to a specific value
+       6. /info/:namespace/:key — get metadata (created, value, namespace, key)
+       7. /create?key=&namespace=&value=&enable_reset=&is_private= — create new counter
+       CountAPI docs: https://countapi.xyz
+  -->
+  <script>
+  (function trackVisit() {
+    // 1. Global visit counter
+    fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/visits').catch(function(){});
+    // 2. Per-page counter
+    var page = location.pathname.split('/').pop().replace('.html','') || 'home';
+    fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/page_' + page).catch(function(){});
+    // 3. Language preference counter
+    var lang = (navigator.language || 'en').slice(0,2);
+    fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/lang_' + lang).catch(function(){});
+    // 4. Device type counter
+    var device = /Mobi|Android/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
+    fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/device_' + device).catch(function(){});
+  })();
+  </script>
+
 </head>
 <body>
 
@@ -156,29 +191,22 @@
 <!-- CONTACT -->
 <section class="section contact-section" id="contact">
   <div class="section-inner">
-    <div class="contact-grid">
+    <div class="contact-simple-grid">
       <div class="contact-info">
-        <div class="section-eyebrow contact-eyebrow"></div>
+        <div class="contact-eyebrow-wrap">
+          <div class="section-eyebrow contact-eyebrow-line1"></div>
+          <div class="section-eyebrow contact-eyebrow-line2"></div>
+        </div>
         <div class="contact-detail"><div class="contact-icon">&#128222;</div><div><strong class="contact-phone"></strong></div></div>
         <div class="contact-detail"><div class="contact-icon">&#9993;&#65039;</div><div><strong class="contact-email"></strong></div></div>
         <div class="contact-detail"><div class="contact-icon">&#128205;</div><div><strong class="contact-location"></strong></div></div>
-        <div class="map-wrap">
-          <iframe class="szeged-map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d190000!2d20.1486!3d46.253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2shu!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Szeged service area"></iframe>
+        <div class="contact-cta-row">
+          <a href="process.html" class="btn-submit contact-callback-btn" id="contact-callback-btn"></a>
+          <a href="process.html" class="btn-outline-olive contact-operate-btn" id="contact-operate-btn"></a>
         </div>
       </div>
-      <div>
-        <div class="form-group"><label class="fl-name"></label><input type="text" id="f-name" /></div>
-        <div class="form-group"><label class="fl-phone"></label><input type="text" id="f-phone" /></div>
-        <div class="form-group"><label class="fl-email"></label><input type="email" id="f-email" /></div>
-        <div class="form-group"><label class="fl-msg"></label><textarea id="f-msg"></textarea></div>
-        <div class="form-group">
-          <label class="file-upload-label"><span class="fl-file"></span><input type="file" id="f-photos" multiple accept="image/*,.pdf" onchange="fileChosen(this)" /></label>
-          <div class="file-hint fl-hint"></div>
-        </div>
-        <button class="btn-submit fl-send" onclick="submitForm()"></button>
-        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:0.5px solid var(--border);">
-          <a href="process.html" class="btn-outline-olive operate-link-btn"></a>
-        </div>
+      <div class="map-wrap">
+        <iframe class="szeged-map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d190000!2d20.1486!3d46.253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2shu!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Szeged service area"></iframe>
       </div>
     </div>
   </div>
@@ -195,7 +223,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Super <span>Malita</span> Brothers</div>
-  <p>Szeged &amp; surroundings &middot; supermalitabrothers@gmail.com</p>
+  <p>Szeged &amp; surroundings &middot; +36 70 605 6821 &middot; supermalitabrothers@gmail.com</p>
   <p>&copy; 2026 Super Malita Brothers</p>
 </footer>
 
@@ -211,5 +239,10 @@
 
 <script src="js/translations.js"></script>
 <script src="js/main.js"></script>
+<!-- Lightbox overlay for image zoom -->
+<div id="img-lightbox" onclick="this.classList.remove('active')">
+  <img id="img-lightbox-img" src="" alt="Zoomed image" />
+</div>
+
 </body>
 </html>

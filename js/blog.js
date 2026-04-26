@@ -32,6 +32,7 @@ function setLang(lang) {
 ───────────────────────────────────────────── */
 const calcLabels = {
   en: {
+    calcWord: "Calculator",
     roomSize: "Room size", cuttingLoss: "Cutting loss (fixed)",
     floorNeeded: "Floor needed", packSize: "Coverage per pack",
     packsNeeded: "Packs needed", packUnit: "m²/pack", packs: "packs",
@@ -47,6 +48,7 @@ const calcLabels = {
     litreUnit: "L", bucketWord: "bucket", bucketsWord: "buckets"
   },
   hu: {
+    calcWord: "Kalkulátor",
     roomSize: "Helyiség mérete", cuttingLoss: "Vágási veszteség (rögzített)",
     floorNeeded: "Szükséges padló", packSize: "Csomag tartalma",
     packsNeeded: "Szükséges csomagok", packUnit: "m²/csomag", packs: "csomag",
@@ -62,6 +64,7 @@ const calcLabels = {
     litreUnit: "l", bucketWord: "vödör", bucketsWord: "vödör"
   },
   ro: {
+    calcWord: "Calculator",
     roomSize: "Suprafața camerei", cuttingLoss: "Pierderi la tăiere (fixe)",
     floorNeeded: "Pardoseli necesare", packSize: "Conținut pachet",
     packsNeeded: "Pachete necesare", packUnit: "m²/pachet", packs: "pachete",
@@ -100,7 +103,7 @@ function renderBlog(t) {
   // Build posts — preserve state of existing calc inputs before re-render
   const floorRoomVal = document.getElementById('floor-room-size')?.value || '';
   const floorPackVal = document.getElementById('floor-pack-size')?.value || '';
-  const pHeightVal   = document.getElementById('p-height')?.value || '2.7';
+  const pHeightVal   = document.getElementById('p-height')?.value || '2.6';
   const pLenVal      = document.getElementById('p-length')?.value || '';
   const pWidVal      = document.getElementById('p-width')?.value || '';
   const pCoatsVal    = document.getElementById('p-coats')?.value || '2';
@@ -115,7 +118,7 @@ function renderBlog(t) {
       <div class="blog-post-inner">
         <h2 class="blog-post-title">${post.title}</h2>
         <p class="blog-post-intro">${post.intro}</p>
-        ${post.body ? `<p class="blog-post-body">${post.body}</p>` : ''}
+        ${post.body ? `<p class="blog-post-body">${post.body.replace(/\\n/g,"<br>")}</p>` : ''}
         ${post.bullets ? renderBullets(post.bullets) : ''}
         ${post.calculator === 'floor' ? renderFloorCalc(lbl) : ''}
         ${post.calculator === 'paint' ? renderPaintCalc(lbl) : ''}
@@ -168,7 +171,7 @@ function renderBullets(bullets) {
 function renderFloorCalc(lbl) {
   return `
     <div class="calc-box" id="floor-calc-box">
-      <h3 class="calc-title">🧮 Calculator</h3>
+      <h3 class="calc-title">🧮 ${lbl.calcWord || "Calculator"}</h3>
       <div class="calc-row">
         <label class="calc-label">${lbl.roomSize}</label>
         <div class="calc-input-group">
@@ -224,11 +227,11 @@ let windowCount = 0;
 function renderPaintCalc(lbl) {
   return `
     <div class="calc-box" id="paint-calc-box">
-      <h3 class="calc-title">🧮 Calculator</h3>
+      <h3 class="calc-title">🧮 ${lbl.calcWord || "Calculator"}</h3>
       <div class="calc-row">
         <label class="calc-label">${lbl.height}</label>
         <div class="calc-input-group">
-          <input type="text" inputmode="decimal" id="p-height" value="2.7" oninput="updatePaintCalc()" />
+          <input type="text" inputmode="decimal" id="p-height" value="2.6" oninput="updatePaintCalc()" />
           <span class="calc-unit">m</span>
         </div>
       </div>

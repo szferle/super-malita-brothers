@@ -104,22 +104,20 @@ function render(t) {
   document.querySelector('.checkthis-eyebrow').textContent = t.checkthis.eyebrow;
   document.querySelector('.checkthis-title').textContent = t.checkthis.title;
 
-  // Contact — eyebrow uses \n to render as two lines
-  document.querySelector('.contact-eyebrow').innerHTML = t.contact.eyebrow.replace('\n', '<br>');
+  // Contact section (index.html) — split eyebrow into two lines, details + buttons
+  const eyebrowParts = t.contact.eyebrow.split('\n');
+  const eyeLine1 = document.querySelector('.contact-eyebrow-line1');
+  const eyeLine2 = document.querySelector('.contact-eyebrow-line2');
+  if (eyeLine1) eyeLine1.textContent = eyebrowParts[0] || '';
+  if (eyeLine2) eyeLine2.textContent = eyebrowParts[1] || '';
   document.querySelector('.contact-phone').textContent = t.contact.phone;
   document.querySelector('.contact-email').textContent = t.contact.email;
   document.querySelector('.contact-location').textContent = t.contact.location;
-  document.querySelector('.fl-name').textContent = t.contact.fields.name;
-  document.querySelector('.fl-phone').textContent = t.contact.fields.phone;
-  document.querySelector('.fl-email').textContent = t.contact.fields.email;
-  document.querySelector('.fl-msg').textContent = t.contact.fields.message;
-  document.querySelector('.fl-file').textContent = t.contact.fields.file;
-  document.querySelector('.fl-hint').textContent = t.contact.fields.fileHint;
-  document.querySelector('.fl-send').textContent = t.contact.fields.send;
-
-  // How We Operate button in contact section
-  const opBtn = document.querySelector('.operate-link-btn');
-  if (opBtn) opBtn.textContent = t.operateBtn;
+  // Callback and operate buttons
+  const cbBtn = document.getElementById('contact-callback-btn');
+  if (cbBtn) cbBtn.textContent = t.callbackBtn || 'Request callback';
+  const opBtn2 = document.getElementById('contact-operate-btn');
+  if (opBtn2) opBtn2.textContent = t.operateBtn || 'See how we work →';
 
   // Sticker popup
   document.querySelector('.bk-sticker-txt').textContent = t.sticker.txt;
@@ -318,7 +316,33 @@ function drawPixelArt() {
    Detect browser language, render page,
    draw pixel art. Runs after DOM is ready.
 ───────────────────────────────────────────── */
+
+/* ── IMAGE ZOOM — attaches lightbox click to all ref-tile images ── */
+function initImageZoom() {
+  const lb = document.getElementById('img-lightbox');
+  const lbImg = document.getElementById('img-lightbox-img');
+  if (!lb || !lbImg) return;
+
+  function attachZoom() {
+    document.querySelectorAll('.ref-tile:not([data-zoom])').forEach(tile => {
+      tile.setAttribute('data-zoom', '1');
+      const raw = tile.style.backgroundImage;
+      const src = raw ? raw.replace(/url\(["']?(.+?)["']?\)/, '$1') : '';
+      if (src && src !== 'none') {
+        tile.addEventListener('click', function() {
+          lbImg.src = src;
+          lb.classList.add('active');
+        });
+      }
+    });
+  }
+  attachZoom();
+  // Re-run when grid is dynamically populated
+  new MutationObserver(attachZoom).observe(document.body, { childList: true, subtree: true });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   setLang(detectLang());
   drawPixelArt();
+  initImageZoom();
 });
