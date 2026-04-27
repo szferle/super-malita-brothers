@@ -105,13 +105,21 @@ const translations = {
         file: "Add photos (current state or design ideas)",
         fileHint: "Attach photos of the current state or design ideas — JPG, PNG, PDF",
         send: "Send message",
-        sent: "Message received! We'll be in touch soon."
+        sent: "Message received! We'll be in touch soon.",
+        termsText: "By submitting this form you agree to our",
+        termsLink: "Privacy & Data Policy",
+        termsBody: "We collect your name, phone and email solely to respond to your enquiry. Your data is not shared with third parties. You may request deletion by emailing supermalitabrothers@gmail.com."
       }
     },
 
     // Sticker popup
     callbackBtn: "Request callback",
+    callbackBtn: "Request callback",
     operateBtn: "See how we work →",
+    privacy: {
+      title: "Privacy Policy",
+      body: "We collect only the information you voluntarily provide (name, phone, email, message). This data is used solely to respond to your enquiry and is never shared with third parties. You may request deletion at any time by emailing supermalitabrothers@gmail.com."
+    },
     sticker: { txt: "Book us for your next project!", cta: "Free visit" },
 
     // Blog page
@@ -214,8 +222,8 @@ const translations = {
     howwework: { eyebrow: "Hogyan dolgozunk" },
     references: { eyebrow: "Munkáink — Referenciák" },
     checkthis: {
-      eyebrow: "Nézd meg",
-      title: "A látomástól a megvalósulásig. Együttműködünk belsőépítészekkel!"
+      eyebrow: "Ezt nézd meg!",
+      title: "Elképzeléstől a megvalósulásig. Együttműködünk belsőépítészekkel!"
     },
     contact: {
       eyebrow: "Lépj kapcsolatba\n— Foglalj ingyenes helyszíni felmérést!",
@@ -228,11 +236,19 @@ const translations = {
         file: "Fotók hozzáadása (jelenlegi állapot vagy ötletek)",
         fileHint: "Csatolj fotókat a jelenlegi állapotról — JPG, PNG, PDF",
         send: "Üzenet küldése",
-        sent: "Üzenet megérkezett! Hamarosan felvesszük veled a kapcsolatot."
+        sent: "Üzenet megérkezett! Hamarosan felvesszük veled a kapcsolatot.",
+        termsText: "Az űrlap beküldésével elfogadod az",
+        termsLink: "Adatvédelmi nyilatkozatunkat",
+        termsBody: "Az általad megadott adatokat kizárólag a megkeresésed megválaszolásához használjuk. Harmadik féllel nem osztjuk meg. Törlési kérelmedet a supermalitabrothers@gmail.com e-mail-címre küldheted."
       }
     },
     callbackBtn: "Visszahívást kérek",
+    callbackBtn: "Visszahívást kérek",
     operateBtn: "Nézd meg a folyamatunkat →",
+    privacy: {
+      title: "Adatvédelmi nyilatkozat",
+      body: "Csak az általad önkéntesen megadott adatokat kezeljük (név, telefonszám, e-mail, üzenet). Harmadik félnek nem adjuk át. Törlési kérelmedet a supermalitabrothers@gmail.com e-mail-címre küldheted."
+    },
     sticker: { txt: "Foglalj minket a következő projektedhez!", cta: "Ingyenes felmérés" },
     blog: {
       title: "Blog",
@@ -347,11 +363,19 @@ const translations = {
         file: "Adaugă fotografii (stare actuală sau idei)",
         fileHint: "Atașează fotografii cu starea actuală — JPG, PNG, PDF",
         send: "Trimite mesaj",
-        sent: "Mesaj primit! Te contactăm în curând."
+        sent: "Mesaj primit! Te contactăm în curând.",
+        termsText: "Prin trimiterea formularului ești de acord cu",
+        termsLink: "Politica noastră de confidențialitate",
+        termsBody: "Colectăm datele tale exclusiv pentru a răspunde solicitării. Nu sunt partajate cu terți. Poți solicita ștergerea la supermalitabrothers@gmail.com."
       }
     },
     callbackBtn: "Solicit un apel",
+    callbackBtn: "Solicit un apel",
     operateBtn: "Cum funcționăm →",
+    privacy: {
+      title: "Politica de confidențialitate",
+      body: "Colectăm doar informațiile pe care le furnizezi voluntar (nume, telefon, email, mesaj). Nu sunt partajate cu terți. Poți solicita ștergerea la supermalitabrothers@gmail.com."
+    },
     sticker: { txt: "Rezervă-ne pentru proiectul tău!", cta: "Evaluare gratuită" },
     blog: {
       title: "Blog",

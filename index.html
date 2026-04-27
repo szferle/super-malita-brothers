@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Primary SEO (EN) -->
-  <title>Super Malita Brothers — Prémium Burkolás, Festés, Gipszkarton Szeged</title>
+  <title>Super Malita Brothers — Burkolás, Festés, Gipszkarton Szeged</title>
   <meta name="description" content="Premium wall painting, drywall, tile and floor installation in Szeged. Free on-site assessment. | Prémium falfestés, gipszkarton, burkolás Szegeden. Ingyenes helyszíni felmérés." />
   <meta name="keywords" content="construction Szeged, tile installation, wall painting, drywall, floor installation, renovation, Super Malita Brothers, burkolás Szeged, szobafestő Szeged, gipszkarton Szeged, aljzatkiegyenlítés, burkolás árak, festés Szeged" />
   <meta name="author" content="Super Malita Brothers" />
@@ -60,6 +60,9 @@
   }
   </script>
 
+  <!-- Umami analytics — tracks visits, devices, referrers, pages, events -->
+  <!-- Replace YOUR_WEBSITE_ID with your Umami website ID after self-hosting or signing up at umami.is -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR_WEBSITE_ID"></script>
   <link rel="stylesheet" href="css/style.css" />
   <!-- CountAPI — visitor & interaction tracking -->
   <!-- Available CountAPI calls used here:
@@ -72,7 +75,6 @@
        7. /create?key=&namespace=&value=&enable_reset=&is_private= — create new counter
        CountAPI docs: https://countapi.xyz
   -->
-  <!--
   <script>
   (function trackVisit() {
     // 1. Global visit counter
@@ -88,10 +90,10 @@
     fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/device_' + device).catch(function(){});
   })();
   </script>
-  -->
 
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- NAV -->
 <nav class="nav">
@@ -113,6 +115,7 @@
 </nav>
 
 <!-- HERO -->
+<main id="main-content">
 <section class="hero">
   <div class="hero-eyebrow"><span class="hero-eyebrow-text"></span></div>
   <h1 class="hero-h1"></h1>
@@ -183,9 +186,9 @@
     <div class="section-eyebrow checkthis-eyebrow"></div>
     <h2 class="section-title checkthis-title"></h2>
     <div class="flip-grid">
-      <div class="flip-card"><div class="flip-inner"><div class="flip-front" style="background-image:url('images/render1.jpg')"></div><div class="flip-back" style="background-image:url('images/real1.jpg')"></div></div></div>
-      <div class="flip-card"><div class="flip-inner"><div class="flip-front" style="background-image:url('images/render2.jpg')"></div><div class="flip-back" style="background-image:url('images/real2.jpg')"></div></div></div>
-      <div class="flip-card"><div class="flip-inner"><div class="flip-front" style="background-image:url('images/render3.jpg')"></div><div class="flip-back" style="background-image:url('images/real3.jpg')"></div></div></div>
+      <div class="flip-card" onclick="toggleFlip(this)"><div class="flip-inner"><div class="flip-front" style="background-image:url('images/render1.jpg')"></div><div class="flip-back" style="background-image:url('images/real1.jpg')"></div></div></div>
+      <div class="flip-card" onclick="toggleFlip(this)"><div class="flip-inner"><div class="flip-front" style="background-image:url('images/render2.jpg')"></div><div class="flip-back" style="background-image:url('images/real2.jpg')"></div></div></div>
+      <div class="flip-card" onclick="toggleFlip(this)"><div class="flip-inner"><div class="flip-front" style="background-image:url('images/render3.jpg')"></div><div class="flip-back" style="background-image:url('images/real3.jpg')"></div></div></div>
     </div>
   </div>
 </section>
@@ -213,6 +216,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- PIXEL ART -->
 <section class="mario-section">

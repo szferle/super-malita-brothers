@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Super Malita Brothers</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .priv-body{max-width:680px;margin:3rem auto;padding:0 1.5rem 5rem}
+    .priv-body h1{font-family:var(--serif);font-size:32px;font-weight:400;color:var(--olive);margin-bottom:1.5rem}
+    .priv-body p{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:1rem}
+  </style>
+</head>
+<body>
+<nav class="nav"><div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">Super <span>Malita</span> Brothers</a></div></nav>
+<div class="priv-body" id="priv-body">
+  <h1 id="priv-title">Privacy Policy</h1>
+  <p id="priv-text"></p>
+</div>
+<footer>
+  <div class="footer-logo"><a href="index.html" style="text-decoration:none;color:inherit;">Super <span>Malita</span> Brothers</a></div>
+  <p>Szeged &amp; surroundings &middot; +36 70 605 6821 &middot; supermalitabrothers@gmail.com</p>
+  <p>&copy; 2026 Super Malita Brothers</p>
+</footer>
+<script src="js/translations.js"></script>
+<script>
+function detectLang(){const l=(navigator.languages||[navigator.language||'en'])[0].slice(0,2).toLowerCase();return l==='hu'?'hu':l==='ro'?'ro':'en';}
+const lang=detectLang();
+const t=translations[lang];
+if(t&&t.privacy){
+  document.getElementById('priv-title').textContent=t.privacy.title;
+  document.getElementById('priv-text').textContent=t.privacy.body;
+}
+</script>
+</body>
+</html>

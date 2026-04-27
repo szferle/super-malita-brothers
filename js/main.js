@@ -1,9 +1,8 @@
-/* ─────────────────────────────────────────────
-   LANGUAGE DETECTION & SWITCHING
-   On first load, detects the browser language
-   and picks the best match from HU / EN / RO.
-   Falls back to English if no match is found.
-───────────────────────────────────────────── */
+/* ── FLIP TOGGLE ── */
+function toggleFlip(card) {
+  card.classList.toggle('flipped');
+}
+
 let currentLang = 'en';
 
 function detectLang() {
@@ -24,11 +23,6 @@ function setLang(lang) {
   render(translations[lang]);
 }
 
-/* ─────────────────────────────────────────────
-   MAIN RENDER
-   Populates every section of the page with
-   translated content from translations.js.
-───────────────────────────────────────────── */
 function render(t) {
 
   // Navigation links (including Blog)
@@ -124,13 +118,6 @@ function render(t) {
   document.querySelector('.bk-sticker-cta').textContent = t.sticker.cta;
 }
 
-/* ─────────────────────────────────────────────
-   IMAGE GRID BUILDER
-   Probes a list of candidate filenames in images/.
-   Tiles whose images 404 are hidden automatically.
-   prefix = 'ref' → ref1.jpg, ref2.jpg ...
-   prefix = 'work' → work1.jpg, work2.jpg ...
-───────────────────────────────────────────── */
 function buildImageGrid(gridId, prefix) {
   const grid = document.getElementById(gridId);
   if (!grid) return;
@@ -142,93 +129,27 @@ function buildImageGrid(gridId, prefix) {
     candidates.push(`${prefix}${i}.png`);
   }
 
-  grid.innerHTML = candidates.map(f => `
-    <div class="ref-tile" style="background-image:url('images/${f}')" data-src="images/${f}"></div>
-  `).join('');
+  grid.innerHTML = candidates.map(f => {
+    const webp = f.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+    return `<div class="ref-tile" data-src="images/${webp}" data-fallback="images/${f}"></div>`;
+  }).join('');
 
-  // Remove tiles that fail to load
+  // Try WebP first, fall back to original, hide if neither loads
   grid.querySelectorAll('.ref-tile').forEach(tile => {
-    const img = new Image();
-    img.onerror = () => tile.style.display = 'none';
-    img.src = tile.dataset.src;
+    const probe = new Image();
+    probe.onload = () => { tile.style.backgroundImage = `url('${tile.dataset.src}')`; };
+    probe.onerror = () => {
+      const fb = new Image();
+      fb.onload = () => { tile.style.backgroundImage = `url('${tile.dataset.fallback}')`; };
+      fb.onerror = () => { tile.style.display = 'none'; };
+      fb.src = tile.dataset.fallback;
+    };
+    probe.src = tile.dataset.src;
   });
 }
-
-/* ─────────────────────────────────────────────
-   CONTACT FORM → GOOGLE FORM SUBMISSION
-   POSTs to Google Form via hidden iframe to
-   avoid CORS errors and page navigation.
-───────────────────────────────────────────── */
 
 // Updates file upload label with selected filename(s)
-function fileChosen(input) {
-  const label = input.closest('.file-upload-label').querySelector('span');
-  if (input.files && input.files.length > 0) {
-    label.textContent = Array.from(input.files).map(f => f.name).join(', ');
-  }
-}
 
-function submitForm() {
-  const name  = document.getElementById('f-name').value.trim();
-  const phone = document.getElementById('f-phone').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const msg   = document.getElementById('f-msg').value.trim();
-
-  // Name is required — do nothing if empty
-  if (!name) return;
-
-  // Hidden iframe receives the POST response (avoids page redirect)
-  let iframe = document.getElementById('gform-submit-frame');
-  if (!iframe) {
-    iframe = document.createElement('iframe');
-    iframe.id   = 'gform-submit-frame';
-    iframe.name = 'gform-submit-frame';
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-  }
-
-  // Temporary form targeting the hidden iframe
-  const form = document.createElement('form');
-  form.method = 'POST';
-  form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSeGVlesIFUm-uIUY6xcyr6ORgWLeWA-ishxgBcZnhYBYRg2ow7/formResponse';
-  form.target = 'gform-submit-frame';
-
-  // Google Form entry IDs mapped to our field values
-  const fields = {
-    'entry.1806748632': name,
-    'entry.73121990':   phone,
-    'entry.1419449292': email,
-    'entry.313127878':  msg
-  };
-
-  Object.entries(fields).forEach(([k, v]) => {
-    const input = document.createElement('input');
-    input.type  = 'hidden';
-    input.name  = k;
-    input.value = v;
-    form.appendChild(input);
-  });
-
-  document.body.appendChild(form);
-  form.submit();
-  document.body.removeChild(form);
-
-  // Show confirmation popup and clear fields
-  const sentMsg = translations[currentLang].contact.fields.sent;
-  alert(sentMsg);
-  document.getElementById('f-name').value  = '';
-  document.getElementById('f-phone').value = '';
-  document.getElementById('f-email').value = '';
-  document.getElementById('f-msg').value   = '';
-}
-
-/* ─────────────────────────────────────────────
-   PIXEL ART — CONSTRUCTION WORKERS
-   Draws two pixel characters on canvas elements.
-   Colour-keyed arrays define each sprite.
-   Guy A (Alex) faces right; Guy B (Sergiu) is
-   mirrored to face left toward his brother.
-───────────────────────────────────────────── */
 function drawPixelArt() {
   const S = 16; // pixel block size in px
 
@@ -310,12 +231,6 @@ function drawPixelArt() {
   drawChar('mario-canvas', guyA, false); // Alex faces right
   drawChar('luigi-canvas', guyB, true);  // Sergiu mirrored to face left
 }
-
-/* ─────────────────────────────────────────────
-   INIT
-   Detect browser language, render page,
-   draw pixel art. Runs after DOM is ready.
-───────────────────────────────────────────── */
 
 /* ── IMAGE ZOOM — attaches lightbox click to all ref-tile images ── */
 function initImageZoom() {

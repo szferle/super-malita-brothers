@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Burkolás árak Szeged — Super Malita Brothers Szeged</title>
+  <meta name="description" content="What affects flooring prices in Szeged? Expert guide from Super Malita Brothers." />
+  <link rel="canonical" href="https://supermalitabrothers.com/blog/burkolasarak-szeged.html" />
+  <script defer src="https://analytics.umami.is/script.js" data-website-id="YOUR_UMAMI_ID"></script>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/blog.css" />
+</head>
+<body>
+<nav class="nav" role="navigation">
+  <div class="logo"><a href="../index.html" style="text-decoration:none;color:inherit;">Super <span>Malita</span> Brothers</a></div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="../index.html#services" data-nav="services"></a>
+      <a href="../index.html#about" data-nav="about"></a>
+      <a href="../process.html" data-nav="contact"></a>
+      <a href="../blog.html" data-nav="blog"></a>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="hu" onclick="setLang('hu')">HU</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="ro" onclick="setLang('ro')">RO</button>
+    </div>
+  </div>
+</nav>
+<main id="main-content">
+  <div class="blog-hero">
+    <div class="section-eyebrow blog-eyebrow"></div>
+    <h1 class="blog-hero-title" id="post-title"></h1>
+  </div>
+  <div class="blog-container" id="blog-posts"></div>
+</main>
+<footer>
+  <div class="footer-logo"><a href="../index.html" style="text-decoration:none;color:inherit;">Super <span>Malita</span> Brothers</a></div>
+  <p>Szeged &amp; surroundings &middot; +36 70 605 6821 &middot; supermalitabrothers@gmail.com</p>
+  <p>&copy; 2026 Super Malita Brothers</p>
+</footer>
+<script src="../js/translations.js"></script>
+<script src="../js/blog.js"></script>
+<script>
+// Override renderBlog to show only this post
+const _origRender = window.renderBlog;
+window.renderBlog = function(t) {
+  document.querySelectorAll('[data-nav]').forEach(el => el.textContent = t.nav[el.dataset.nav] || '');
+  document.querySelector('.blog-eyebrow').textContent = t.blog.eyebrow;
+  const post = t.blog.posts.find(p => p.id === 'flooring-prices');
+  if (!post) return;
+  document.getElementById('post-title').textContent = post.title;
+  const lbl = calcLabels[currentLang];
+  document.getElementById('blog-posts').innerHTML = `
+    <article class="blog-post" id="${post.id}">
+      <div class="blog-post-inner">
+        <h2 class="blog-post-title">${post.title}</h2>
+        <p class="blog-post-intro">${post.intro}</p>
+        ${post.body ? `<p class="blog-post-body">${post.body.replace(/\n/g,"<br>")}</p>` : ''}
+        ${post.bullets ? renderBullets(post.bullets) : ''}
+        ${post.calculator === 'floor' ? renderFloorCalc(lbl) : ''}
+        ${post.calculator === 'paint' ? renderPaintCalc(lbl) : ''}
+      </div>
+    </article>`;
+  doorCount = 0; windowCount = 0;
+  updateFloorCalc(); updatePaintCalc();
+};
+</script>
+</body>
+</html>

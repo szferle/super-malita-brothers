@@ -7,6 +7,7 @@
   <meta name="description" content="Contact Super Malita Brothers. Free on-site assessment in Szeged. Simple process from first call to finished job." />
   <link rel="canonical" href="https://supermalitabrothers.com/process.html" />
   <script>(function(){fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/contact_page').catch(function(){});})();</script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR_WEBSITE_ID"></script>
   <link rel="stylesheet" href="css/style.css" />
   <style>
     .proc-hero{background:var(--dark);color:#fff;padding:4.5rem 2.5rem 3.5rem;text-align:center;position:relative;overflow:hidden}
@@ -45,6 +46,7 @@
   </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <nav class="nav" role="navigation">
   <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">Super <span>Malita</span> Brothers</a></div>
@@ -96,6 +98,7 @@
       <div class="form-group"><label class="fl-msg"></label><textarea id="f-msg"></textarea></div>
       <button class="btn-submit fl-send" onclick="submitForm()"></button>
       <div class="proc-sent" id="f-sent"></div>
+      <p class="proc-terms" id="proc-terms-line" style="font-size:12px;color:var(--text-muted);margin-top:0.75rem;line-height:1.5;"></p>
     </div>
   </div>
 </div>
@@ -151,6 +154,10 @@ function setLang(lang) {
   document.querySelector('.fl-msg').textContent = ct.fields.message;
   document.querySelector('.fl-send').textContent = ct.fields.send;
   document.getElementById('f-sent').textContent = ct.fields.sent;
+  const termsText = document.querySelector('.fl-terms-text');
+  const termsLink = document.querySelector('.fl-terms-link');
+  if (termsText && ct.fields.termsText) termsText.textContent = ct.fields.termsText;
+  if (termsLink && ct.fields.termsLink) { termsLink.textContent = ct.fields.termsLink; termsLink.href = ct.fields.termsUrl || 'privacy.html'; }
 }
 
 function submitForm() {
