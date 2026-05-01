@@ -1,6 +1,6 @@
 .skip-link{position:absolute;top:-40px;left:0;background:var(--olive);color:#fff;padding:8px 16px;border-radius:0 0 var(--radius) 0;z-index:9999;font-size:14px;text-decoration:none;transition:top 0.2s;}.skip-link:focus{top:0;}
 /* ─────────────────────────────────────────────
-   SUPER MALITA BROTHERS — STYLESHEET
+   SUPER MALITA BROTHERS - STYLESHEET
    Structured top to bottom matching page layout.
    Fonts: Cormorant Garamond (serif headings),
           Jost (sans body text).
@@ -143,7 +143,7 @@ body {
 .section-title { font-family: var(--serif); font-size: clamp(26px, 3.5vw, 40px); font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; }
 
 /* ─────────────────────────────────────────────
-   BEST AT — "OUR CRAFT"
+   BEST AT - "OUR CRAFT"
    Dark background grid of 4 specialty cards.
    Gold underline on each card.
 ───────────────────────────────────────────── */
@@ -158,7 +158,7 @@ body {
 .tolerance-badge { display: inline-block; margin-top: 0.75rem; background: rgba(184,148,63,0.15); border: 0.5px solid rgba(184,148,63,0.4); color: var(--gold-light); font-size: 11px; padding: 3px 10px; border-radius: 10px; letter-spacing: 0.06em; }
 
 /* ─────────────────────────────────────────────
-   SERVICES — "WHAT WE DO"
+   SERVICES - "WHAT WE DO"
    3-column grid of flip cards. Front shows
    icon + text; hover reveals a photo on back.
 ───────────────────────────────────────────── */
@@ -213,7 +213,7 @@ body {
 .service-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
 
 /* ─────────────────────────────────────────────
-   ABOUT — "WHO WE ARE"
+   ABOUT - "WHO WE ARE"
    Two-column layout: bio text on left,
    brother profile cards on right.
 ───────────────────────────────────────────── */
@@ -231,7 +231,7 @@ body {
 /* ─────────────────────────────────────────────
    REFERENCES
    Auto-fill square photo grid. Images are
-   loaded from images/ref*.jpg — missing
+   loaded from images/ref*.jpg - missing
    ones are hidden via JS.
 ───────────────────────────────────────────── */
 .references-section { background: var(--olive-mist); }
@@ -263,36 +263,14 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
-.flip-card { perspective: 900px; cursor: pointer; }
-.flip-inner {
-  position: relative;
-  width: 100%;
-  padding-bottom: 75%;
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1);
-}
-.flip-card:hover .flip-inner { transform: rotateY(180deg); }
-.flip-front,
-.flip-back {
-  position: absolute; inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-color: var(--olive);
-  border-radius: var(--radius-lg);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-.flip-back { transform: rotateY(180deg); background-color: var(--olive-mid); }
-.flip-front::after,
-.flip-back::after {
-  position: absolute;
-  top: 10px; left: 10px;
-  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-  background: rgba(20,24,16,0.6); color: var(--gold-light);
-  padding: 3px 8px; border-radius: 4px;
-}
-.flip-front::after { content: 'render'; }
-.flip-back::after { content: 'real'; }
+
+
+
+
+
+
+
+
 
 /* ─────────────────────────────────────────────
    CONTACT
@@ -377,7 +355,7 @@ footer p { font-size: 12px; color: #666; }
 .sticker-close:hover { color: #fff; }
 
 /* ─────────────────────────────────────────────
-   RESPONSIVE — mobile breakpoint ≤ 720px
+   RESPONSIVE - mobile breakpoint ≤ 720px
    Stacks grids, hides nav links, shrinks
    padding. Stats stay single-row on mobile.
 ───────────────────────────────────────────── */
@@ -489,7 +467,7 @@ footer p { font-size: 12px; color: #666; }
 }
 
 /* ─────────────────────────────────────────────
-   OUTLINE BUTTON — used for How We Operate link
+   OUTLINE BUTTON - used for How We Operate link
    in the contact section.
 ───────────────────────────────────────────── */
 .btn-outline-olive {
@@ -510,7 +488,7 @@ footer p { font-size: 12px; color: #666; }
 .btn-outline-olive:hover { background: var(--olive); color: #fff; }
 
 
-/* ── CONTACT SIMPLE GRID (index.html) — info + map side by side ── */
+/* ── CONTACT SIMPLE GRID (index.html) - info + map side by side ── */
 .contact-simple-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -561,7 +539,7 @@ footer p { font-size: 12px; color: #666; }
   .contact-cta-row { flex-direction: column; }
 }
 
-/* ── 13: IMAGE ZOOM — hover scales, click opens lightbox ── */
+/* ── 13: IMAGE ZOOM - hover scales, click opens lightbox ── */
 .ref-tile {
   cursor: zoom-in;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -598,12 +576,12 @@ footer p { font-size: 12px; color: #666; }
   object-fit: contain;
 }
 
-/* ── 17: FLIP TOGGLE — click to flip, click again to flip back ── */
-.flip-card { cursor: pointer; }
-.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+
+
+
 /* On touch/mobile devices disable hover, use only click */
 @media (hover: none) {
-  .flip-card:hover .flip-inner { transform: none; }
+  
 }
 
 /* ── 16: PRIVACY TERMS ── */
@@ -616,10 +594,57 @@ footer p { font-size: 12px; color: #666; }
 .proc-terms a { color: var(--olive); text-decoration: underline; }
 .proc-terms a:hover { color: var(--olive-mid); }
 
-/* ── 23: CONTRAST FIX — darker gold on light backgrounds (WCAG AA) ── */
+/* ── 23: CONTRAST FIX - darker gold on light backgrounds (WCAG AA) ── */
 .services-section .section-eyebrow,
 .references-section .section-eyebrow,
 .contact-section .section-eyebrow,
 .contact-eyebrow-line1,
 .contact-eyebrow-line2,
 section[style*="background:#fff"] .section-eyebrow { color: var(--gold-accessible); }
+
+/* ── CHECK THIS OUT - side-by-side render/real pairs ── */
+.check-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+.check-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.check-img {
+  position: relative;
+  aspect-ratio: 4/3;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--olive);
+  border-radius: var(--radius-lg);
+  cursor: zoom-in;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+.check-img:hover { transform: scale(1.02); }
+.check-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: var(--sans);
+  font-weight: 400;
+}
+.check-label-render { background: rgba(20,24,16,0.65); color: var(--gold-light); }
+.check-label-real   { background: rgba(61,82,40,0.75); color: #fff; }
+@media (max-width: 720px) {
+  .check-pair { grid-template-columns: 1fr; }
+}
+
+/* ── ref-tile and work-grid: zoom cursor ── */
+.ref-tile { cursor: zoom-in; }
+
+#img-lightbox.active { display: flex !important; }

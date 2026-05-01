@@ -18,6 +18,7 @@ function detectLang() {
 
 function setLang(lang) {
   currentLang = lang;
+  try { localStorage.setItem('smb_lang', lang); } catch(e) {}
   // Highlight the active button
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   render(translations[lang]);
@@ -33,7 +34,7 @@ function render(t) {
   document.querySelector('.hero-h1').innerHTML = t.hero.h1;
   document.querySelector('.hero-sub').textContent = t.hero.sub;
 
-  // Stats bar — 3 numbers with label and tagline
+  // Stats bar - 3 numbers with label and tagline
   t.stats.forEach((s, i) => {
     const stat = document.querySelectorAll('.stat')[i];
     stat.querySelector('.stat-num').textContent = s.num;
@@ -41,7 +42,7 @@ function render(t) {
     stat.querySelector('.stat-sub').textContent = s.sub;
   });
 
-  // Our Craft — 4 specialty cards, no title
+  // Our Craft - 4 specialty cards, no title
   document.querySelector('.best-eyebrow').textContent = t.bestAt.eyebrow;
   document.querySelector('.best-grid').innerHTML = t.bestAt.items.map(item => `
     <div class="best-item">
@@ -51,7 +52,7 @@ function render(t) {
       ${item.badge ? `<span class="tolerance-badge">${item.badge}</span>` : ''}
     </div>`).join('');
 
-  // What We Do — flip cards (front: icon+text, back: photo on hover)
+  // What We Do - flip cards (front: icon+text, back: photo on hover)
   document.querySelector('.services-eyebrow').textContent = t.services.eyebrow;
   document.querySelector('.services-sub').textContent = t.services.sub;
   document.querySelector('.services-grid').innerHTML = t.services.items.map(s => `
@@ -68,7 +69,7 @@ function render(t) {
       </div>
     </div>`).join('');
 
-  // Who We Are — bio, languages, brother cards
+  // Who We Are - bio, languages, brother cards
   document.querySelector('.about-eyebrow').textContent = t.about.eyebrow;
   document.querySelector('.about-title').textContent = t.about.title;
   document.querySelector('.about-p1').textContent = t.about.p1;
@@ -86,19 +87,19 @@ function render(t) {
       </div>
     </div>`).join('');
 
-  // How We Work — photo grid from images/work*.jpg
+  // How We Work - photo grid from images/work*.jpg
   document.querySelector('.howwework-eyebrow').textContent = t.howwework.eyebrow;
-  buildImageGrid('work-grid', 'work');
+  buildImageGrid('work-grid', 'images/work/', '');
 
-  // References — photo grid from images/ref*.jpg
+  // References - photo grid from images/ref*.jpg
   document.querySelector('.refs-eyebrow').textContent = t.references.eyebrow;
-  buildImageGrid('refs-grid', 'ref');
+  buildImageGrid('refs-grid', 'images/ref/', '');
 
-  // Check This Out — static flip cards, just update text
+  // Check This Out - static flip cards, just update text
   document.querySelector('.checkthis-eyebrow').textContent = t.checkthis.eyebrow;
   document.querySelector('.checkthis-title').textContent = t.checkthis.title;
 
-  // Contact section (index.html) — split eyebrow into two lines, details + buttons
+  // Contact section (index.html) - split eyebrow into two lines, details + buttons
   const eyebrowParts = t.contact.eyebrow.split('\n');
   const eyeLine1 = document.querySelector('.contact-eyebrow-line1');
   const eyeLine2 = document.querySelector('.contact-eyebrow-line2');
@@ -110,45 +111,53 @@ function render(t) {
   // Callback and operate buttons
   const cbBtn = document.getElementById('contact-callback-btn');
   if (cbBtn) cbBtn.textContent = t.callbackBtn || 'Request callback';
-  const opBtn2 = document.getElementById('contact-operate-btn');
-  if (opBtn2) opBtn2.textContent = t.operateBtn || 'See how we work →';
 
   // Sticker popup
   document.querySelector('.bk-sticker-txt').textContent = t.sticker.txt;
   document.querySelector('.bk-sticker-cta').textContent = t.sticker.cta;
 }
 
-function buildImageGrid(gridId, prefix) {
+function buildImageGrid(gridId, folder, prefix) {
   const grid = document.getElementById(gridId);
   if (!grid) return;
+  grid.innerHTML = '';
 
-  // Build candidate list up to 20 images per prefix
-  const candidates = [];
-  for (let i = 1; i <= 20; i++) {
-    candidates.push(`${prefix}${i}.jpg`);
-    candidates.push(`${prefix}${i}.png`);
+  // Probe files from folder, try both .webp and .jpg/.png
+  // Stop after 4 consecutive misses
+  let idx = 1;
+  let consecutive404 = 0;
+  const MAX_MISS = 4;
+
+  function probe(idx) {
+    if (consecutive404 >= MAX_MISS) return;
+    const base = folder + (prefix || '') + idx;
+    const webp = base + '.webp';
+    const jpg  = base + '.jpg';
+    const png  = base + '.png';
+
+    function tryUrl(url, fallbacks, onSuccess) {
+      const img = new Image();
+      img.onload = () => onSuccess(url);
+      img.onerror = () => {
+        if (fallbacks.length > 0) tryUrl(fallbacks[0], fallbacks.slice(1), onSuccess);
+        else { consecutive404++; probe(idx + 1); }
+      };
+      img.src = url;
+    }
+
+    tryUrl(webp, [jpg, png], function(src) {
+      consecutive404 = 0;
+      const tile = document.createElement('div');
+      tile.className = 'ref-tile';
+      tile.style.backgroundImage = `url('${src}')`;
+      tile.dataset.imgSrc = src;
+      grid.appendChild(tile);
+      probe(idx + 1);
+    });
   }
 
-  grid.innerHTML = candidates.map(f => {
-    const webp = f.replace(/\.(jpg|jpeg|png)$/i, '.webp');
-    return `<div class="ref-tile" data-src="images/${webp}" data-fallback="images/${f}"></div>`;
-  }).join('');
-
-  // Try WebP first, fall back to original, hide if neither loads
-  grid.querySelectorAll('.ref-tile').forEach(tile => {
-    const probe = new Image();
-    probe.onload = () => { tile.style.backgroundImage = `url('${tile.dataset.src}')`; };
-    probe.onerror = () => {
-      const fb = new Image();
-      fb.onload = () => { tile.style.backgroundImage = `url('${tile.dataset.fallback}')`; };
-      fb.onerror = () => { tile.style.display = 'none'; };
-      fb.src = tile.dataset.fallback;
-    };
-    probe.src = tile.dataset.src;
-  });
+  probe(1);
 }
-
-// Updates file upload label with selected filename(s)
 
 function drawPixelArt() {
   const S = 16; // pixel block size in px
@@ -165,7 +174,7 @@ function drawPixelArt() {
   const WH = '#DDDDDD';   // white pants (Sergiu)
   const WD = '#AAAAAA';   // white shadow
 
-  // Alex — red cap, grey pants
+  // Alex - red cap, grey pants
   const guyA = [
     [_,_,RE,RE,RE,RE,RE,_,_,_],
     [_,_,RE,RE,RE,RE,RE,_,_,_],
@@ -187,7 +196,7 @@ function drawPixelArt() {
     [BL,BL,BL,BL,_,BL,BL,BL,BL,_],
   ];
 
-  // Sergiu — green cap, white pants (mirrored in drawChar)
+  // Sergiu - green cap, white pants (mirrored in drawChar)
   const guyB = [
     [_,_,_,GE,GE,GE,GE,GE,_,_],
     [_,_,_,GE,GE,GE,GE,GE,_,_],
@@ -232,32 +241,131 @@ function drawPixelArt() {
   drawChar('luigi-canvas', guyB, true);  // Sergiu mirrored to face left
 }
 
-/* ── IMAGE ZOOM — attaches lightbox click to all ref-tile images ── */
+/* ── IMAGE ZOOM - attaches lightbox click to all ref-tile images ── */
 function initImageZoom() {
   const lb = document.getElementById('img-lightbox');
   const lbImg = document.getElementById('img-lightbox-img');
   if (!lb || !lbImg) return;
+  let zoomSrcs = [], zoomIdx = 0;
 
-  function attachZoom() {
-    document.querySelectorAll('.ref-tile:not([data-zoom])').forEach(tile => {
-      tile.setAttribute('data-zoom', '1');
-      const raw = tile.style.backgroundImage;
-      const src = raw ? raw.replace(/url\(["']?(.+?)["']?\)/, '$1') : '';
-      if (src && src !== 'none') {
-        tile.addEventListener('click', function() {
-          lbImg.src = src;
-          lb.classList.add('active');
-        });
-      }
+  function showLightbox(srcs, idx) {
+    zoomSrcs = srcs; zoomIdx = idx;
+    lbImg.src = srcs[idx];
+    lb.style.display = 'flex';
+    const counter = document.getElementById('lb-counter');
+    const prev = document.getElementById('lb-prev');
+    const next = document.getElementById('lb-next');
+    if (counter) counter.textContent = (idx + 1) + ' / ' + srcs.length;
+    if (prev) prev.style.display = srcs.length > 1 ? 'flex' : 'none';
+    if (next) next.style.display = srcs.length > 1 ? 'flex' : 'none';
+  }
+
+  window.lbPrev = function(e) {
+    e.stopPropagation();
+    zoomIdx = (zoomIdx - 1 + zoomSrcs.length) % zoomSrcs.length;
+    showLightbox(zoomSrcs, zoomIdx);
+  };
+  window.lbNext = function(e) {
+    e.stopPropagation();
+    zoomIdx = (zoomIdx + 1) % zoomSrcs.length;
+    showLightbox(zoomSrcs, zoomIdx);
+  };
+
+  lb.onclick = function(e) {
+    if (e.target === lb || e.target === lbImg) lb.style.display = 'none';
+  };
+
+  document.addEventListener('keydown', function(e) {
+    if (lb.style.display === 'none') return;
+    if (e.key === 'ArrowLeft') lbPrev(e);
+    if (e.key === 'ArrowRight') lbNext(e);
+    if (e.key === 'Escape') lb.style.display = 'none';
+  });
+
+  function getSrc(el) {
+    return el.getAttribute('data-img-src') ||
+      (el.style.backgroundImage || '').replace(/url\(["']?(.+?)["']?\)/, '$1');
+  }
+
+  function attachGridZoom(selector) {
+    document.querySelectorAll(selector + ':not([data-zoom])').forEach(grid => {
+      grid.setAttribute('data-zoom', '1');
+      grid.addEventListener('click', function(e) {
+        const tile = e.target.closest('.ref-tile, .check-img');
+        if (!tile) return;
+        const tiles = Array.from(grid.querySelectorAll('.ref-tile, .check-img'));
+        const srcs = tiles.map(getSrc).filter(Boolean);
+        const idx = tiles.indexOf(tile);
+        if (idx >= 0 && srcs[idx]) showLightbox(srcs, idx);
+      });
     });
   }
-  attachZoom();
-  // Re-run when grid is dynamically populated
-  new MutationObserver(attachZoom).observe(document.body, { childList: true, subtree: true });
+
+  function attachAll() {
+    attachGridZoom('#refs-grid');
+    attachGridZoom('#work-grid');
+    attachGridZoom('#check-grid');
+  }
+
+  attachAll();
+  new MutationObserver(attachAll).observe(document.body, { childList: true, subtree: true });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   setLang(detectLang());
   drawPixelArt();
   initImageZoom();
-});
+});function buildImageGrid(gridId, prefix) {
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  // Map prefix to image subfolder
+  const folderMap = { ref: 'images/ref/', work: 'images/work/', svc: 'images/svc/', check: 'images/check/' };
+  const folder = folderMap[prefix] || ('images/' + prefix + '/');
+
+  // Probe sequentially: try webp then jpg for each index
+  let i = 1, consecutive404 = 0;
+
+  function probeNext() {
+    if (consecutive404 >= 3) return;
+    const idx = i++;
+    const webpSrc = folder + prefix + idx + '.webp';
+    const jpgSrc  = folder + prefix + idx + '.jpg';
+
+    function tryJpg() {
+      const fb = new Image();
+      fb.onload = function() {
+        consecutive404 = 0;
+        addTile(jpgSrc);
+        probeNext();
+      };
+      fb.onerror = function() {
+        consecutive404++;
+        probeNext();
+      };
+      fb.src = jpgSrc;
+    }
+
+    const probe = new Image();
+    probe.onload = function() {
+      consecutive404 = 0;
+      addTile(webpSrc);
+      probeNext();
+    };
+    probe.onerror = tryJpg;
+    probe.src = webpSrc;
+  }
+
+  function addTile(src) {
+    const tile = document.createElement('div');
+    tile.className = 'ref-tile';
+    tile.style.backgroundImage = "url('" + src + "')";
+    tile.setAttribute('data-img-src', src);
+    grid.appendChild(tile);
+    // Re-trigger zoom attachment
+    if (typeof initImageZoom === 'function') initImageZoom();
+  }
+
+  probeNext();
+}

@@ -2,7 +2,7 @@
    TRANSLATIONS
    All user-facing text for EN, HU, RO.
    Each language mirrors the same structure.
-   Edit values here — main.js picks them up.
+   Edit values here - main.js picks them up.
 ───────────────────────────────────────────── */
 const translations = {
 
@@ -41,10 +41,10 @@ const translations = {
       eyebrow: "What we do",
       sub: "",
       items: [
-        { icon:"🎨", h:"Wall painting", p:"Interior and exterior painting with premium finishes. Perfect colour, perfect texture, every time.", img:"images/svc-painting.jpg" },
-        { icon:"🛠️", h:"Drywall installation", p:"Precision drywall installation — smooth, straight, durable.", img:"images/svc-drywall.jpg" },
-        { icon:"🧩", h:"Tile installation", p:"From herringbone to large-format tiles, installed with meticulous care and sub-mm precision.", img:"images/svc-tile.jpg" },
-        { icon:"📐", h:"Floor leveling", p:"Professional floor leveling for a perfect, even base — essential for flawless tile and laminate results.", img:"images/svc-leveling.jpg" }
+        { icon:"🎨", h:"Wall painting", p:"Interior and exterior painting with premium finishes. Perfect colour, perfect texture, every time.", img:"images/svc/svc-painting.webp" },
+        { icon:"🛠️", h:"Drywall installation", p:"Precision drywall installation - smooth, straight, durable.", img:"images/svc/svc-drywall.webp" },
+        { icon:"🧩", h:"Tile installation", p:"From herringbone to large-format tiles, installed with meticulous care and sub-mm precision.", img:"images/svc/svc-tile.webp" },
+        { icon:"📐", h:"Floor leveling", p:"Professional floor leveling for a perfect, even base - essential for flawless tile and laminate results.", img:"images/svc/svc-leveling.webp" }
       ]
     },
 
@@ -54,10 +54,10 @@ const translations = {
       title: "Simple, transparent process",
       steps: [
         { icon:"📞", title:"Get in touch", text:"Call or message us about the work and surfaces. Use our calculators to get an idea of the quantities!", cta: null },
-        { icon:"📋", title:"Approximate offer", text:"We send you a rough estimate so we both have an idea about the workload and cost — no commitment needed.", cta: null },
+        { icon:"📋", title:"Approximate offer", text:"We send you a rough estimate so we both have an idea about the workload and cost - no commitment needed.", cta: null },
         { icon:"🏠", title:"Free on-site assessment", text:"We come to you for free. We finalise ideas, timelines and prices on the spot. We can also help with material selection.", cta: null },
-        { icon:"📄", title:"Finalised offer", text:"You receive a clear, detailed written offer with everything agreed — no surprises.", cta: null },
-        { icon:"🔨", title:"We do the job!", text:"We show up, we do the work ourselves — no subcontractors — and we deliver the quality you expect.", cta: null }
+        { icon:"📄", title:"Finalised offer", text:"You receive a clear, detailed written offer with everything agreed - no surprises.", cta: null },
+        { icon:"🔨", title:"We do the job!", text:"We show up, we do the work ourselves - no subcontractors - and we deliver the quality you expect.", cta: null }
       ],
       calculatorPrompt: "Not sure how much material you need?",
       calcLinks: [
@@ -72,7 +72,7 @@ const translations = {
       title: "Two brothers, one mission",
       p1: "We are Alex and Sergiu, brothers, and we live in Szeged with our families. Together we bring decades of hands-on experience across Europe to every project we take on.",
       p2: "Alex is a painter, drywall installer, and interior designer. Sergiu is a flooring specialist. Both are fully licensed with years of experience working in different countries.",
-      p3: "We believe great work comes from people who genuinely care. No subcontractors, no shortcuts — just the two of us, on every job.",
+      p3: "We believe great work comes from people who genuinely care. No subcontractors, no shortcuts - just the two of us, on every job.",
       languages: "We speak:",
       langs: ["English", "French", "German", "Romanian"],
       brothers: [
@@ -85,7 +85,7 @@ const translations = {
     howwework: { eyebrow: "How we work" },
 
     // References image section
-    references: { eyebrow: "Our work — References" },
+    references: { eyebrow: "References" },
 
     // Check This Out flip section
     checkthis: {
@@ -95,7 +95,7 @@ const translations = {
 
     // Contact section
     contact: {
-      eyebrow: "Get in touch\n— Book a free on-site assessment!",
+      eyebrow: "Get in touch\n- Book a free on-site assessment!",
       phone: "+36 70 605 6821",
       email: "supermalitabrothers@gmail.com",
       location: "Szeged & surroundings",
@@ -103,7 +103,7 @@ const translations = {
         name: "Name", phone: "Phone", email: "Email (Optional)",
         message: "Message",
         file: "Add photos (current state or design ideas)",
-        fileHint: "Attach photos of the current state or design ideas — JPG, PNG, PDF",
+        fileHint: "Attach photos of the current state or design ideas - JPG, PNG, PDF",
         send: "Send message",
         sent: "Message received! We'll be in touch soon.",
         termsText: "By submitting this form you agree to our",
@@ -120,7 +120,7 @@ const translations = {
       title: "Privacy Policy",
       body: "We collect only the information you voluntarily provide (name, phone, email, message). This data is used solely to respond to your enquiry and is never shared with third parties. You may request deletion at any time by emailing supermalitabrothers@gmail.com."
     },
-    sticker: { txt: "Book us for your next project!", cta: "Free visit" },
+    sticker: { txt: "Book us for your next project!", cta: "Free assessment" },
 
     // Blog page
     blog: {
@@ -137,7 +137,7 @@ const translations = {
         {
           id: "paint-calculator",
           title: "Wall Paint Calculator",
-          intro: "Calculating how much paint you need before starting a room is essential — running out mid-job causes colour mismatches and delays.",
+          intro: "Calculating how much paint you need before starting a room is essential - running out mid-job causes colour mismatches and delays.",
           body: "The formula adds up all four walls and the ceiling, then subtracts doors and windows. Multiply by coats and divide by the stated coverage.<br>The calculator rounds up to a full bucket of paint.",
           calculator: "paint"
         },
@@ -149,7 +149,7 @@ const translations = {
           calculator: null,
           bullets: [
             { title: "Room complexity", text: "Rooms with many corners, niches or irregular shapes require more cutting and labour time, raising the cost per m²." },
-            { title: "Pattern choice", text: "Herringbone and diagonal layouts waste 15–20% more material than straight patterns and take significantly longer to lay precisely — but it\'s worth it!" },
+            { title: "Pattern choice", text: "Herringbone and diagonal layouts waste 15–20% more material than straight patterns and take significantly longer to lay precisely - but it\'s worth it!" },
             { title: "Surface preparation", text: "If the existing floor needs leveling or old tiles need removing, this adds material and labour cost before any new surface is laid." },
             { title: "Other", text: "Carrying heavy tiles to upper floors or difficult access areas adds time and cost. Moving furniture from the work area is also often overlooked when budgeting." }
           ]
@@ -160,10 +160,10 @@ const translations = {
 
   /* ── HUNGARIAN ── */
   hu: {
-    nav: { services: "Szolgáltatások", about: "Rólunk", references: "Referenciák", contact: "Kapcsolat", blog: "Blog" },
+    nav: { services: "Szolgáltatások", about: "Rólunk", references: "Referencia", contact: "Kapcsolat", blog: "Blog" },
     hero: {
       eyebrow: "Szeged és Környéke",
-      h1: "Fivérek építik.<br><em>Maradandóra.</em>",
+      h1: "Testvérek építik.<br><em>Maradandóra.</em>",
       sub: "Prémium építési és felújítási szolgáltatások szakértelemmel és pontossággal."
     },
     stats: [
@@ -174,9 +174,9 @@ const translations = {
     bestAt: {
       eyebrow: "Szakértelmünk",
       items: [
-        { n:"01", h:"Sima felületek & Q5 gletting", p:"Hibátlanul sima falak, mennyezetek magas minőségű klasszikus felülettel." },
+        { n:"01", h:"Sima felületek & Q5 glett", p:"Hibátlanul sima falak és mennyezet, magas minőségű klasszikus felület." },
         { n:"02", h:"Walk-in zuhanyzó", p:"Egyedi walk-in zuhanyzó telepítések kényelemre és eleganciára tervezve." },
-        { n:"03", h:"Halszálkás minta", p:"Precízen fektetett halszálkás burkolat geometriai pontossággal." },
+        { n:"03", h:"Halszálka minta", p:"Precízen fektetett halszálka burkolat geometriai pontossággal." },
         { n:"04", h:"<1 mm tűréshatár", p:"Milliméter alatti pontossággal dolgozunk. A minőség a részletekben rejlik." }
       ]
     },
@@ -184,21 +184,21 @@ const translations = {
       eyebrow: "Amit csinálunk",
       sub: "",
       items: [
-        { icon:"🎨", h:"Festés", p:"Bel- és külső festés prémium felületekkel. Tökéletes szín, tökéletes textúra.", img:"images/svc-painting.jpg" },
-        { icon:"🛠️", h:"Gipszkarton szerelés", p:"Precíz gipszkarton munka — sima, egyenes, tartós.", img:"images/svc-drywall.jpg" },
-        { icon:"🧩", h:"Csempézés", p:"Halszálkástól a nagyformátumú lapokig, aprólékos gonddal lerakva.", img:"images/svc-tile.jpg" },
-        { icon:"📐", h:"Aljzatkiegyenlítés", p:"Professzionális aljzatkiegyenlítés — tökéletes, egyenletes alap csempéhez és lamináthoz.", img:"images/svc-leveling.jpg" }
+        { icon:"🎨", h:"Festés", p:"Bel- és külső festés prémium felületekkel. Tökéletes szín, tökéletes textúra.", img:"images/svc/svc-painting.webp" },
+        { icon:"🛠️", h:"Gipszkarton szerelés", p:"Precíz gipszkarton munka - sima, egyenes, tartós.", img:"images/svc/svc-drywall.webp" },
+        { icon:"🧩", h:"Csempézés", p:"Halszálkától a nagyformátumú lapokig, aprólékos gonddal lerakva.", img:"images/svc/svc-tile.webp" },
+        { icon:"📐", h:"Aljzatkiegyenlítés", p:"Professzionális aljzatkiegyenlítés - tökéletes, egyenletes alap járólaphoz és laminált padlóhoz.", img:"images/svc/svc-leveling.webp" }
       ]
     },
     operate: {
       eyebrow: "Hogyan dolgozunk",
       title: "Egyszerű, átlátható folyamat",
       steps: [
-        { icon:"📞", title:"Keress meg minket", text:"Hívj vagy írj nekünk a munkáról és a felületekről. Használd a kalkulátorainkat, hogy képed legyen a mennyiségekről!", cta: null },
-        { icon:"📋", title:"Tájékoztató ajánlat", text:"Küldünk egy hozzávetőleges becslést, hogy mindkettőnknek képe legyen a munkáról és a költségekről — kötelezettség nélkül.", cta: null },
+        { icon:"📞", title:"Keress minket", text:"Hívj vagy írj nekünk a munkáról és a felületekről. Használd a kalkulátorainkat, hogy képed legyen a mennyiségekről!", cta: null },
+        { icon:"📋", title:"Tájékoztató ajánlat", text:"Küldünk egy hozzávetőleges becslést, hogy mindkettőnknek képe legyen a munkáról és a költségekről - kötelezettség nélkül.", cta: null },
         { icon:"🏠", title:"Ingyenes helyszíni felmérés", text:"Kijövünk hozzád ingyen. Helyszínen véglegesítjük az ötleteket, határidőket és árakat. Anyagkiválasztásban is segítünk.", cta: null },
-        { icon:"📄", title:"Végleges ajánlat", text:"Részletes írásos ajánlatot kapsz mindennel, amiben megállapodtunk — meglepetések nélkül.", cta: null },
-        { icon:"🔨", title:"Elvégezzük a munkát!", text:"Megjelenünk, mi magunk végezzük a munkát — alvállalkozó nélkül — és azt a minőséget szállítjuk, amit elvársz.", cta: null }
+        { icon:"📄", title:"Végleges ajánlat", text:"Részletes írásos ajánlatot kapsz mindenről, amiben megállapodtunk - meglepetések nélkül.", cta: null },
+        { icon:"🔨", title:"Elvégezzük a munkát!", text:"Megjelenünk, mi magunk végezzük a munkát - alvállalkozó nélkül - és azt a minőséget szállítjuk, amit elvársz.", cta: null }
       ],
       calculatorPrompt: "Nem tudod, mennyi anyagra lesz szükséged?",
       calcLinks: [
@@ -208,10 +208,10 @@ const translations = {
     },
     about: {
       eyebrow: "Kik vagyunk",
-      title: "Két fivér, egy cél",
-      p1: "Alex és Sergiu vagyunk, fivérek, Szegeden élünk a családunkkal.",
-      p2: "Alex festő, gipszkarton szerelő és belsőépítész. Sergiu padlóburkolat-specialista. Mindketten teljes jogosítvánnyal rendelkeznek.",
-      p3: "Nincs alvállalkozó, nincs rövidítés — csak mi ketten, minden munkánál.",
+      title: "Két testvér, egy cél",
+      p1: "Alex és Sergiu vagyunk, testvérek, Szegeden élünk a családunkkal. Együtt több évtizednyi, Európa-szerte szerzett gyakorlati tapasztalatot viszünk minden egyes projektünkbe.",
+      p2: "Alex festő, gipszkarton szerelő és belsőépítész. Sergiu padlóburkolat-specialista. Minden szükséges engedéllyel és garanciával.",
+      p3: "Hisszük, hogy a minőségi munka a valódi odafigyelésből születik. Nincs alvállalkozó - minden projekten személyesen mi ketten dolgozunk.",
       languages: "Beszélünk:",
       langs: ["Angol", "Francia", "Német", "Román"],
       brothers: [
@@ -220,13 +220,13 @@ const translations = {
       ]
     },
     howwework: { eyebrow: "Hogyan dolgozunk" },
-    references: { eyebrow: "Munkáink — Referenciák" },
+    references: { eyebrow: "Referencia" },
     checkthis: {
       eyebrow: "Ezt nézd meg!",
       title: "Elképzeléstől a megvalósulásig. Együttműködünk belsőépítészekkel!"
     },
     contact: {
-      eyebrow: "Lépj kapcsolatba\n— Foglalj ingyenes helyszíni felmérést!",
+      eyebrow: "Kapcsolat\n- Foglalj ingyenes helyszíni felmérést!",
       phone: "+36 70 605 6821",
       email: "supermalitabrothers@gmail.com",
       location: "Szeged és környéke",
@@ -234,7 +234,7 @@ const translations = {
         name: "Név", phone: "Telefonszám", email: "Email (opcionális)",
         message: "Üzenet",
         file: "Fotók hozzáadása (jelenlegi állapot vagy ötletek)",
-        fileHint: "Csatolj fotókat a jelenlegi állapotról — JPG, PNG, PDF",
+        fileHint: "Csatolj fotókat a jelenlegi állapotról - JPG, PNG, PDF",
         send: "Üzenet küldése",
         sent: "Üzenet megérkezett! Hamarosan felvesszük veled a kapcsolatot.",
         termsText: "Az űrlap beküldésével elfogadod az",
@@ -249,7 +249,7 @@ const translations = {
       title: "Adatvédelmi nyilatkozat",
       body: "Csak az általad önkéntesen megadott adatokat kezeljük (név, telefonszám, e-mail, üzenet). Harmadik félnek nem adjuk át. Törlési kérelmedet a supermalitabrothers@gmail.com e-mail-címre küldheted."
     },
-    sticker: { txt: "Foglalj minket a következő projektedhez!", cta: "Ingyenes felmérés" },
+    sticker: { txt: "Válassz minket a következő projektedhez!", cta: "Ingyenes felmérés" },
     blog: {
       title: "Blog",
       eyebrow: "Tippek & Kalkulátorok",
@@ -264,7 +264,7 @@ const translations = {
         {
           id: "paint-calculator",
           title: "Falfesték-kalkulátor",
-          intro: "A szükséges festékmennyiség kiszámítása elengedhetetlen a munka megkezdése előtt — ha elfogy a festék, az színeltéréshez és késedelemhez vezet.",
+          intro: "A szükséges festékmennyiség kiszámítása elengedhetetlen a munka megkezdése előtt - ha elfogy a festék, az színeltéréshez és késedelemhez vezet.",
           body: "A képlet összeadja a négy falat és a mennyezetet, levonja az ajtókat és ablakokat, megszorozza a rétegek számával és elosztja a feltüntetett fedőképességgel.<br>A kalkulátor egész vödörre kerekít fel.",
           calculator: "paint"
         },
@@ -276,7 +276,7 @@ const translations = {
           calculator: null,
           bullets: [
             { title: "A helyiség összetettsége", text: "A sok sarokkal, fülkével vagy szabálytalan alakú helyiségek több vágást és munkaidőt igényelnek, ami növeli az m²-enkénti árat." },
-            { title: "Mintaválasztás", text: "A halszálkás és átlós elrendezések 15–20%-kal több anyagot pazarolnak, mint az egyenes minták, és jóval több időt vesznek igénybe — de megéri!" },
+            { title: "Mintaválasztás", text: "A halszálkás és átlós elrendezések 15–20%-kal több anyagot pazarolnak, mint az egyenes minták, és jóval több időt vesznek igénybe - de megéri!" },
             { title: "Felület-előkészítés", text: "Ha a meglévő padlót ki kell egyenlíteni vagy a régi burkolatot el kell távolítani, ez anyag- és munkadíjat is hozzáad az új felület fektetéséhez." },
             { title: "Egyéb", text: "A nehéz burkolólapok felső emeletekre szállítása időt és költséget jelent. A bútorok mozgatása szintén sokszor kimarad a tervezésből." }
           ]
@@ -311,10 +311,10 @@ const translations = {
       eyebrow: "Ce facem",
       sub: "",
       items: [
-        { icon:"🎨", h:"Vopsitorie", p:"Vopsit interior și exterior cu finisaje premium.", img:"images/svc-painting.jpg" },
-        { icon:"🛠️", h:"Montaj rigips", p:"Rigips de precizie — neted, drept, durabil.", img:"images/svc-drywall.jpg" },
-        { icon:"🧩", h:"Placaj gresie", p:"De la model hering la plăci mari, cu precizie sub mm.", img:"images/svc-tile.jpg" },
-        { icon:"📐", h:"Șapă / nivelarea pardoselii", p:"Nivelarea profesională a pardoselii — baza perfectă pentru gresie și parchet.", img:"images/svc-leveling.jpg" }
+        { icon:"🎨", h:"Vopsitorie", p:"Vopsit interior și exterior cu finisaje premium.", img:"images/svc/svc-painting.webp" },
+        { icon:"🛠️", h:"Montaj rigips", p:"Rigips de precizie - neted, drept, durabil.", img:"images/svc/svc-drywall.webp" },
+        { icon:"🧩", h:"Placaj gresie", p:"De la model hering la plăci mari, cu precizie sub mm.", img:"images/svc/svc-tile.webp" },
+        { icon:"📐", h:"Șapă / nivelarea pardoselii", p:"Nivelarea profesională a pardoselii - baza perfectă pentru gresie și parchet.", img:"images/svc/svc-leveling.webp" }
       ]
     },
     operate: {
@@ -322,10 +322,10 @@ const translations = {
       title: "Proces simplu și transparent",
       steps: [
         { icon:"📞", title:"Contactează-ne", text:"Sună sau scrie-ne despre lucrare și suprafețe. Folosește calculatoarele noastre pentru a estima cantitățile!", cta: null },
-        { icon:"📋", title:"Ofertă aproximativă", text:"Trimitem o estimare rapidă pentru a avea amândoi o idee despre volumul de muncă și costuri — fără angajament.", cta: null },
+        { icon:"📋", title:"Ofertă aproximativă", text:"Trimitem o estimare rapidă pentru a avea amândoi o idee despre volumul de muncă și costuri - fără angajament.", cta: null },
         { icon:"🏠", title:"Evaluare gratuită la fața locului", text:"Venim la tine gratuit. Finalizăm ideile, termenele și prețurile pe loc. Te ajutăm și cu selectarea materialelor.", cta: null },
-        { icon:"📄", title:"Ofertă finală", text:"Primești o ofertă scrisă clară și detaliată cu tot ce am convenit — fără surprize.", cta: null },
-        { icon:"🔨", title:"Executăm lucrarea!", text:"Ne prezentăm, executăm noi înșine lucrarea — fără subcontractori — și livrăm calitatea așteptată.", cta: null }
+        { icon:"📄", title:"Ofertă finală", text:"Primești o ofertă scrisă clară și detaliată cu tot ce am convenit - fără surprize.", cta: null },
+        { icon:"🔨", title:"Executăm lucrarea!", text:"Ne prezentăm, executăm noi înșine lucrarea - fără subcontractori - și livrăm calitatea așteptată.", cta: null }
       ],
       calculatorPrompt: "Nu ești sigur de cantitatea de materiale?",
       calcLinks: [
@@ -338,7 +338,7 @@ const translations = {
       title: "Doi frați, o misiune",
       p1: "Suntem Alex și Sergiu, frați, locuim în Szeged cu familiile noastre.",
       p2: "Alex este vopsitor, montator rigips și designer de interior. Sergiu este specialist în pardoseli.",
-      p3: "Fără subcontractori, fără scurtături — doar noi doi, la fiecare lucrare.",
+      p3: "Fără subcontractori, fără scurtături - doar noi doi, la fiecare lucrare.",
       languages: "Vorbim:",
       langs: ["Engleză", "Franceză", "Germană", "Română"],
       brothers: [
@@ -347,13 +347,13 @@ const translations = {
       ]
     },
     howwework: { eyebrow: "Cum lucrăm" },
-    references: { eyebrow: "Lucrările noastre — Referințe" },
+    references: { eyebrow: "Referințe" },
     checkthis: {
       eyebrow: "Privește asta",
       title: "De la viziune la perfecțiune. Colaborăm cu designeri de interior!"
     },
     contact: {
-      eyebrow: "Contactează-ne\n— Programează o evaluare gratuită!",
+      eyebrow: "Contactează-ne\n- Programează o evaluare gratuită!",
       phone: "+36 70 605 6821",
       email: "supermalitabrothers@gmail.com",
       location: "Szeged și împrejurimi",
@@ -361,7 +361,7 @@ const translations = {
         name: "Nume", phone: "Telefon", email: "Email (opțional)",
         message: "Mesaj",
         file: "Adaugă fotografii (stare actuală sau idei)",
-        fileHint: "Atașează fotografii cu starea actuală — JPG, PNG, PDF",
+        fileHint: "Atașează fotografii cu starea actuală - JPG, PNG, PDF",
         send: "Trimite mesaj",
         sent: "Mesaj primit! Te contactăm în curând.",
         termsText: "Prin trimiterea formularului ești de acord cu",
@@ -403,7 +403,7 @@ const translations = {
           calculator: null,
           bullets: [
             { title: "Complexitatea camerei", text: "Camerele cu colțuri, nișe sau forme neregulate necesită mai multe tăieturi și timp suplimentar de lucru." },
-            { title: "Alegerea modelului", text: "Modelele în os de pește și în diagonală risipesc 15–20% mai mult material și durează mult mai mult de montat — dar merită!" },
+            { title: "Alegerea modelului", text: "Modelele în os de pește și în diagonală risipesc 15–20% mai mult material și durează mult mai mult de montat - dar merită!" },
             { title: "Pregătirea suprafeței", text: "Dacă pardoseala existentă trebuie nivelată sau vechile plăci îndepărtate, acest lucru adaugă costuri suplimentare." },
             { title: "Altele", text: "Transportul materialelor grele la etaje superioare adaugă timp și cost. Mutarea mobilei este adesea trecută cu vederea la bugetare." }
           ]

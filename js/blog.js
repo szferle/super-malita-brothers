@@ -1,11 +1,12 @@
 /* ─────────────────────────────────────────────
-   BLOG — LANGUAGE DETECTION & SWITCHING
+   BLOG - LANGUAGE DETECTION & SWITCHING
    Detects browser language on first load.
    All content re-renders when language changes.
 ───────────────────────────────────────────── */
 let currentLang = 'en';
 
 function detectLang() {
+  try { var saved = localStorage.getItem('smb_lang'); if (saved && ['en','hu','ro'].includes(saved)) return saved; } catch(e) {}
   const langs = navigator.languages || [navigator.language || 'en'];
   for (const l of langs) {
     const code = l.slice(0, 2).toLowerCase();
@@ -18,6 +19,7 @@ function detectLang() {
 
 function setLang(lang) {
   currentLang = lang;
+  try { localStorage.setItem('smb_lang', lang); } catch(e) {}
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   renderBlog(translations[lang]);
   // Re-run calculators so translated labels refresh
@@ -26,7 +28,7 @@ function setLang(lang) {
 }
 
 /* ─────────────────────────────────────────────
-   CALCULATOR LABELS — translated strings
+   CALCULATOR LABELS - translated strings
    Keyed by language for field labels / result
    prefixes used inside the calculators.
 ───────────────────────────────────────────── */
@@ -100,7 +102,7 @@ function renderBlog(t) {
   document.querySelector('.blog-eyebrow').textContent = t.blog.eyebrow;
   document.querySelector('.blog-hero-title').textContent = t.blog.title;
 
-  // Build posts — preserve state of existing calc inputs before re-render
+  // Build posts - preserve state of existing calc inputs before re-render
   const floorRoomVal = document.getElementById('floor-room-size')?.value || '';
   const floorPackVal = document.getElementById('floor-pack-size')?.value || '';
   const pHeightVal   = document.getElementById('p-height')?.value || '2.6';
@@ -185,7 +187,7 @@ function renderFloorCalc(lbl) {
       </div>
       <div class="calc-result-row">
         <span class="calc-label">${lbl.floorNeeded}</span>
-        <span class="calc-result" id="floor-needed-result">—</span>
+        <span class="calc-result" id="floor-needed-result">-</span>
       </div>
       <div class="calc-divider"></div>
       <div class="calc-row">
@@ -197,7 +199,7 @@ function renderFloorCalc(lbl) {
       </div>
       <div class="calc-result-row">
         <span class="calc-label">${lbl.packsNeeded}</span>
-        <span class="calc-result" id="floor-packs-result">—</span>
+        <span class="calc-result" id="floor-packs-result">-</span>
       </div>
     </div>`;
 }
@@ -209,9 +211,9 @@ function updateFloorCalc() {
   const floorNeeded = roomSize * 1.1;
   const floorEl    = document.getElementById('floor-needed-result');
   const packsEl    = document.getElementById('floor-packs-result');
-  if (floorEl) floorEl.textContent = roomSize > 0 ? floorNeeded.toFixed(2) + ' m²' : '—';
+  if (floorEl) floorEl.textContent = roomSize > 0 ? floorNeeded.toFixed(2) + ' m²' : '-';
   if (packsEl) packsEl.textContent = (roomSize > 0 && packSize > 0)
-    ? Math.ceil(floorNeeded / packSize) + ' ' + lbl.packs : '—';
+    ? Math.ceil(floorNeeded / packSize) + ' ' + lbl.packs : '-';
 }
 
 /* ─────────────────────────────────────────────
@@ -266,7 +268,7 @@ function renderPaintCalc(lbl) {
       <div class="calc-divider"></div>
       <div class="calc-result-row">
         <span class="calc-label">${lbl.surface}</span>
-        <span class="calc-result" id="paint-surface-result">—</span>
+        <span class="calc-result" id="paint-surface-result">-</span>
       </div>
       <div class="calc-divider"></div>
 
@@ -292,11 +294,11 @@ function renderPaintCalc(lbl) {
       </div>
       <div class="calc-result-row">
         <span class="calc-label">${lbl.litresNeeded}</span>
-        <span class="calc-result" id="paint-litres-result">—</span>
+        <span class="calc-result" id="paint-litres-result">-</span>
       </div>
       <div class="calc-result-row">
         <span class="calc-label">${lbl.bucketsNeeded}</span>
-        <span class="calc-result" id="paint-buckets-result">—</span>
+        <span class="calc-result" id="paint-buckets-result">-</span>
       </div>
     </div>`;
 }
@@ -342,7 +344,7 @@ function updatePaintCalc() {
 
   const clear = () => {
     ['paint-surface-result','paint-litres-result','paint-buckets-result'].forEach(id => {
-      const el = document.getElementById(id); if (el) el.textContent = '—';
+      const el = document.getElementById(id); if (el) el.textContent = '-';
     });
   };
 
@@ -382,13 +384,13 @@ function updatePaintCalc() {
     if (litEl) litEl.textContent = litres.toFixed(1) + ' ' + lbl.litreUnit;
     if (bukEl) bukEl.textContent = buckets + ' ' + (buckets === 1 ? lbl.bucketWord : lbl.bucketsWord);
   } else {
-    if (litEl) litEl.textContent = '—';
-    if (bukEl) bukEl.textContent = '—';
+    if (litEl) litEl.textContent = '-';
+    if (bukEl) bukEl.textContent = '-';
   }
 }
 
 /* ─────────────────────────────────────────────
-   INIT — detect language and render blog
+   INIT - detect language and render blog
 ───────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   setLang(detectLang());

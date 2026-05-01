@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTAiIGZpbGw9IiMxRTI0MTYiLz4KICA8dGV4dCB4PSIzMiIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjQjg5NDNGIj5TdXBlcjwvdGV4dD4KICA8dGV4dCB4PSIzMiIgeT0iMzciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjZmZmZmZmIj5NYWxpdGE8L3RleHQ+CiAgPHRleHQgeD0iMzIiIHk9IjUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI0I4OTQzRiI+QnJvdGhlcnM8L3RleHQ+Cjwvc3ZnPg==" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us - Super Malita Brothers</title>
   <meta name="description" content="Contact Super Malita Brothers. Free on-site assessment in Szeged. Simple process from first call to finished job." />
-  <link rel="canonical" href="https://supermalitabrothers.com/process.html" />
-  <script>(function(){fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/contact_page').catch(function(){});})();</script>
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR_WEBSITE_ID"></script>
+  <link rel="canonical" href="https://supermalitabrothers.com/contact.html" />
+  <!-- <script>(function(){fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/contact_page').catch(function(){});})();</script> -->
+  <!-- <script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR_WEBSITE_ID"></script> -->
   <link rel="stylesheet" href="css/style.css" />
   <style>
     .proc-hero{background:var(--dark);color:#fff;padding:4.5rem 2.5rem 3.5rem;text-align:center;position:relative;overflow:hidden}
@@ -20,7 +24,7 @@
     .proc-step{display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem 0;border-bottom:0.5px solid var(--border)}
     .proc-step:last-of-type{border-bottom:none}
     .proc-step-icon{font-size:20px;width:44px;height:44px;background:var(--olive-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .proc-step-num{font-size:10px;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;margin-bottom:2px;font-family:var(--serif)}
+    .proc-step-num{font-size:18px;letter-spacing:0.06em;color:var(--gold);font-weight:500;margin-bottom:4px;font-family:var(--serif)}
     .proc-step h3{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--olive);margin-bottom:3px}
     .proc-step p{font-size:15px;color:var(--text-muted);line-height:1.7}
     .proc-calc-box{margin-top:1.5rem;padding:1.25rem 1.5rem;background:var(--olive-pale);border-radius:var(--radius-lg);border-left:3px solid var(--olive)}
@@ -48,13 +52,14 @@
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<nav class="nav" role="navigation">
+<nav class="nav">
   <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">Super <span>Malita</span> Brothers</a></div>
   <div class="nav-right">
-    <div class="nav-links">
+        <div class="nav-links">
       <a href="index.html#services" data-nav="services"></a>
       <a href="index.html#about" data-nav="about"></a>
-      <a href="process.html" data-nav="contact" style="color:var(--olive);font-weight:500;"></a>
+      <a href="index.html#references" data-nav="references"></a>
+      <a href="contact.html" data-nav="contact"></a>
       <a href="blog.html" data-nav="blog"></a>
     </div>
     <div class="lang-switcher">
@@ -71,26 +76,18 @@
 </div>
 
 <div class="proc-body">
-  <!-- Left: process steps + calculator links + contact details + map -->
+  <!-- Left: process steps + calculator links -->
   <div class="proc-left">
     <div class="proc-steps" id="proc-steps"></div>
     <div class="proc-calc-box">
       <p id="proc-calc-prompt"></p>
       <div class="proc-calc-links" id="proc-calc-links"></div>
     </div>
-    <div class="proc-contact-details" style="margin-top:2rem">
-      <div class="contact-detail"><div class="contact-icon">&#128222;</div><div><strong class="contact-phone"></strong></div></div>
-      <div class="contact-detail"><div class="contact-icon">&#9993;&#65039;</div><div><strong class="contact-email"></strong></div></div>
-      <div class="contact-detail"><div class="contact-icon">&#128205;</div><div><strong class="contact-location"></strong></div></div>
-    </div>
-    <div class="proc-map-wrap">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d190000!2d20.1486!3d46.253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2shu!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Szeged service area"></iframe>
-    </div>
   </div>
 
-  <!-- Right: contact form -->
+  <!-- Right: form title + form + contact details + map -->
   <div class="proc-form-col">
-    <h2 id="proc-form-title"></h2>
+    <h2 id="proc-form-title">Request a callback!</h2>
     <div class="proc-form">
       <div class="form-group"><label class="fl-name"></label><input type="text" id="f-name" /></div>
       <div class="form-group"><label class="fl-phone"></label><input type="text" id="f-phone" /></div>
@@ -99,6 +96,15 @@
       <button class="btn-submit fl-send" onclick="submitForm()"></button>
       <div class="proc-sent" id="f-sent"></div>
       <p class="proc-terms" id="proc-terms-line" style="font-size:12px;color:var(--text-muted);margin-top:0.75rem;line-height:1.5;"></p>
+    </div>
+    <!-- Contact details + map below form -->
+    <div class="proc-contact-details" style="margin-top:2rem;padding-top:1.5rem;border-top:0.5px solid var(--border);">
+      <div class="contact-detail"><div class="contact-icon">&#128222;</div><div><strong class="contact-phone"></strong></div></div>
+      <div class="contact-detail"><div class="contact-icon">&#9993;&#65039;</div><div><strong class="contact-email"></strong></div></div>
+      <div class="contact-detail"><div class="contact-icon">&#128205;</div><div><strong class="contact-location"></strong></div></div>
+    </div>
+    <div class="proc-map-wrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d190000!2d20.1486!3d46.253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2shu!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Szeged service area"></iframe>
     </div>
   </div>
 </div>
@@ -113,12 +119,14 @@
 <script>
 let currentLang = 'en';
 function detectLang() {
+  try { var saved = localStorage.getItem('smb_lang'); if (saved && ['en','hu','ro'].includes(saved)) return saved; } catch(e) {}
   const langs = navigator.languages || [navigator.language || 'en'];
   for (const l of langs) { const c = l.slice(0,2).toLowerCase(); if(c==='hu') return 'hu'; if(c==='ro') return 'ro'; }
   return 'en';
 }
 function setLang(lang) {
   currentLang = lang;
+  try { localStorage.setItem('smb_lang', lang); } catch(e) {}
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   document.querySelectorAll('[data-nav]').forEach(el => el.textContent = translations[lang].nav[el.dataset.nav] || '');
   const t = translations[lang];
@@ -147,7 +155,7 @@ function setLang(lang) {
   document.querySelector('.contact-location').textContent = ct.location;
   // Form
   const eyebrowParts = ct.eyebrow.split('\n');
-  document.getElementById('proc-form-title').textContent = eyebrowParts[1] || eyebrowParts[0];
+  document.getElementById('proc-form-title').textContent = currentLang === 'hu' ? 'Visszahívást kérek!' : currentLang === 'ro' ? 'Solicit un apel!' : 'Request a callback!';
   document.querySelector('.fl-name').textContent = ct.fields.name;
   document.querySelector('.fl-phone').textContent = ct.fields.phone;
   document.querySelector('.fl-email').textContent = ct.fields.email;
@@ -179,6 +187,8 @@ function submitForm() {
     const i = document.createElement('input'); i.type='hidden'; i.name=k; i.value=v; form.appendChild(i);
   });
   document.body.appendChild(form); form.submit(); document.body.removeChild(form);
+  var sentMsg = translations[currentLang] && translations[currentLang].contact && translations[currentLang].contact.fields.sent ? translations[currentLang].contact.fields.sent : 'Message sent!';
+  alert(sentMsg);
   document.getElementById('f-sent').style.display = 'block';
   ['f-name','f-phone','f-email','f-msg'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
   fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/form_submit').catch(function(){});
