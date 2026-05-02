@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
   <meta charset="UTF-8" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTAiIGZpbGw9IiMxRTI0MTYiLz4KICA8dGV4dCB4PSIzMiIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjQjg5NDNGIj5TdXBlcjwvdGV4dD4KICA8dGV4dCB4PSIzMiIgeT0iMzciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjZmZmZmZmIj5NYWxpdGE8L3RleHQ+CiAgPHRleHQgeD0iMzIiIHk9IjUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI0I4OTQzRiI+QnJvdGhlcnM8L3RleHQ+Cjwvc3ZnPg==" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Primary SEO (EN) -->
@@ -64,38 +63,7 @@
   }
   </script>
 
-  <!-- Umami analytics - tracks visits, devices, referrers, pages, events -->
-  <!-- Replace YOUR_WEBSITE_ID with your Umami website ID after self-hosting or signing up at umami.is -->
-  <!-- <script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR_WEBSITE_ID"></script> -->
   <link rel="stylesheet" href="css/style.css" />
-  <!-- CountAPI - visitor & interaction tracking -->
-  <!-- Available CountAPI calls used here:
-       1. /hit/:namespace/:key - increments a counter each page load (total visits)
-       2. /hit/:namespace/:key - per-page hit counter (by path)
-       3. /hit/:namespace/:key - language usage tracking
-       4. /get/:namespace/:key - read a counter value without incrementing
-       5. /set/:namespace/:key/:value - set a counter to a specific value
-       6. /info/:namespace/:key - get metadata (created, value, namespace, key)
-       7. /create?key=&namespace=&value=&enable_reset=&is_private= - create new counter
-       CountAPI docs: https://countapi.xyz
-
-  <script>
-  (function trackVisit() {
-    // 1. Global visit counter
-    fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/visits').catch(function(){});
-    // 2. Per-page counter
-    var page = location.pathname.split('/').pop().replace('.html','') || 'home';
-    fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/page_index' + page).catch(function(){});
-    // 3. Language preference counter
-    var lang = (navigator.language || 'en').slice(0,2);
-    fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/lang_en' + lang).catch(function(){});
-    // 4. Device type counter
-    var device = /Mobi|Android/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
-    fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/device_desktop' + device).catch(function(){});
-  })();
-  </script>
-  -->
-
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -146,7 +114,6 @@
 <section class="section services-section" id="services">
   <div class="section-inner">
     <div class="section-eyebrow services-eyebrow"></div>
-    <p class="services-sub"></p>
     <div class="services-grid"></div>
   </div>
 </section>
@@ -169,18 +136,13 @@
   </div>
 </section>
 
-<!-- HOW WE WORK (work[] images) -->
-<section class="section references-section" id="howwework">
-  <div class="section-inner">
-    <div class="section-eyebrow howwework-eyebrow"></div>
-    <div class="refs-grid" id="work-grid"></div>
-  </div>
-</section>
-<!-- REFERENCES (ref[] images) -->
+<!-- REFERENCES (ref[] + work[] images) -->
 <section class="section" id="references" style="background:#fff;">
   <div class="section-inner">
     <div class="section-eyebrow refs-eyebrow"></div>
     <div class="refs-grid" id="refs-grid"></div>
+    <div style="height:2rem"></div>
+    <div class="refs-grid" id="work-grid"></div>
   </div>
 </section>
 
@@ -215,8 +177,8 @@
           <div class="section-eyebrow contact-eyebrow-line1"></div>
           <div class="section-eyebrow contact-eyebrow-line2"></div>
         </div>
-        <div class="contact-detail"><div class="contact-icon">&#128222;</div><div><strong class="contact-phone"></strong></div></div>
-        <div class="contact-detail"><div class="contact-icon">&#9993;&#65039;</div><div><strong class="contact-email"></strong></div></div>
+        <div class="contact-detail"><div class="contact-icon">&#128222;</div><div><a class="contact-phone" href="tel:+36706056821" style="color:inherit;text-decoration:none;"></a></div></div>
+        <div class="contact-detail"><div class="contact-icon">&#9993;&#65039;</div><div><a class="contact-email" href="mailto:supermalitabrothers@gmail.com" style="color:inherit;text-decoration:none;"></a></div></div>
         <div class="contact-detail"><div class="contact-icon">&#128205;</div><div><strong class="contact-location"></strong></div></div>
         <div class="contact-cta-row">
           <a href="contact.html" class="btn-submit contact-callback-btn" id="contact-callback-btn"></a>
@@ -247,7 +209,7 @@
 </footer>
 
 <!-- STICKER -->
-<div class="sticker-popup" id="sticker-popup" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+<div class="sticker-popup" id="sticker-popup" onclick="window.location.href='contact.html'">
   <div class="sticker-inner">
     <div class="sticker-star">&#9733;</div>
     <div class="sticker-text bk-sticker-txt"></div>
@@ -259,12 +221,12 @@
 <script src="js/translations.js"></script>
 <script src="js/main.js"></script>
 <!-- Lightbox overlay for image zoom -->
-<div id="img-lightbox" onclick="this.classList.remove('active')" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;">
+<div id="img-lightbox" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;">
   <button id="lb-prev" onclick="lbPrev(event)" style="display:none;position:absolute;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:28px;width:48px;height:48px;border-radius:50%;cursor:pointer;align-items:center;justify-content:center;">&#8592;</button>
   <img id="img-lightbox-img" src="" alt="Zoomed image" style="max-width:88vw;max-height:88vh;border-radius:8px;object-fit:contain;" />
   <button id="lb-next" onclick="lbNext(event)" style="display:none;position:absolute;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:28px;width:48px;height:48px;border-radius:50%;cursor:pointer;align-items:center;justify-content:center;">&#8594;</button>
   <div id="lb-counter" style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.7);font-size:13px;font-family:sans-serif;"></div>
-  <button onclick="document.getElementById('img-lightbox').classList.remove('active');event.stopPropagation();" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:20px;width:36px;height:36px;border-radius:50%;cursor:pointer;">&#10005;</button>
+  <button onclick="document.getElementById('img-lightbox').style.display='none';event.stopPropagation();" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:20px;width:36px;height:36px;border-radius:50%;cursor:pointer;">&#10005;</button>
 </div>
 
 </body>

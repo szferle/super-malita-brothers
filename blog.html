@@ -5,7 +5,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTAiIGZpbGw9IiMxRTI0MTYiLz4KICA8dGV4dCB4PSIzMiIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjQjg5NDNGIj5TdXBlcjwvdGV4dD4KICA8dGV4dCB4PSIzMiIgeT0iMzciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjZmZmZmZmIj5NYWxpdGE8L3RleHQ+CiAgPHRleHQgeD0iMzIiIHk9IjUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI0I4OTQzRiI+QnJvdGhlcnM8L3RleHQ+Cjwvc3ZnPg==" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog - Super Malita Brothers</title>
   <meta name="description" content="Tips, calculators and guides from Super Malita Brothers - floor calculator, paint calculator, flooring price guide." />
@@ -15,7 +14,6 @@
   <link rel="canonical" href="https://supermalitabrothers.com/blog.html" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/blog.css" />
-  <!-- <script defer src="https://analytics.umami.is/script.js" data-website-id="YOUR_UMAMI_ID"></script> -->
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -58,20 +56,17 @@
 <script src="js/translations.js"></script>
 <script src="js/blog.js"></script>
 <script>
-// Blog index: show cards linking to subpages
-const _blogIndexOrig = window.renderBlog;
 window.renderBlog = function(t) {
   document.querySelectorAll('[data-nav]').forEach(el => el.textContent = t.nav[el.dataset.nav] || '');
   document.querySelector('.blog-eyebrow').textContent = t.blog.eyebrow;
   document.querySelector('.blog-hero-title').textContent = t.blog.title;
   const slugs = ['burkolas-szeged','szobafesto-szeged','burkolasarak-szeged'];
-  const icons = ['🧩','🎨','💰'];
   const readMore = currentLang === 'hu' ? 'Tovább olvasom' : currentLang === 'ro' ? 'Citește mai mult' : 'Read more';
   const idx = document.getElementById('blog-index');
   if (!idx) return;
   idx.innerHTML = t.blog.posts.map((p, i) => `
     <a href="blog/${slugs[i]}.html" class="blog-card">
-      <div class="blog-card-img">${icons[i]}</div>
+      <div class="blog-card-img"><img src="images/blog-${i+1}.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
       <div class="blog-card-body">
         <h2 class="blog-card-title">${p.title}</h2>
         <p class="blog-card-intro">${p.intro}</p>

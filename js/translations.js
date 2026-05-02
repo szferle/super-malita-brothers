@@ -41,10 +41,10 @@ const translations = {
       eyebrow: "What we do",
       sub: "",
       items: [
-        { icon:"🎨", h:"Wall painting", p:"Interior and exterior painting with premium finishes. Perfect colour, perfect texture, every time.", img:"images/svc/svc-painting.webp" },
-        { icon:"🛠️", h:"Drywall installation", p:"Precision drywall installation - smooth, straight, durable.", img:"images/svc/svc-drywall.webp" },
-        { icon:"🧩", h:"Tile installation", p:"From herringbone to large-format tiles, installed with meticulous care and sub-mm precision.", img:"images/svc/svc-tile.webp" },
-        { icon:"📐", h:"Floor leveling", p:"Professional floor leveling for a perfect, even base - essential for flawless tile and laminate results.", img:"images/svc/svc-leveling.webp" }
+        { icon:"🎨", h:"Wall painting", p:"Interior and exterior painting with premium finishes. Perfect colour, perfect texture, every time.", img:"images/svc-painting.webp" },
+        { icon:"🛠️", h:"Drywall installation", p:"Precision drywall installation - smooth, straight, durable.", img:"images/svc-drywall.webp" },
+        { icon:"🧩", h:"Tile installation", p:"From herringbone to large-format tiles, installed with meticulous care and sub-mm precision.", img:"images/svc-tile.webp" },
+        { icon:"📐", h:"Floor leveling", p:"Professional floor leveling for a perfect, even base - essential for flawless tile and laminate results.", img:"images/svc-leveling.webp" }
       ]
     },
 
@@ -81,9 +81,6 @@ const translations = {
       ]
     },
 
-    // How We Work image section
-    howwework: { eyebrow: "How we work" },
-
     // References image section
     references: { eyebrow: "References" },
 
@@ -102,20 +99,15 @@ const translations = {
       fields: {
         name: "Name", phone: "Phone", email: "Email (Optional)",
         message: "Message",
-        file: "Add photos (current state or design ideas)",
-        fileHint: "Attach photos of the current state or design ideas - JPG, PNG, PDF",
+
         send: "Send message",
         sent: "Message received! We'll be in touch soon.",
         termsText: "By submitting this form you agree to our",
         termsLink: "Privacy & Data Policy",
-        termsBody: "We collect your name, phone and email solely to respond to your enquiry. Your data is not shared with third parties. You may request deletion by emailing supermalitabrothers@gmail.com."
       }
     },
 
-    // Sticker popup
     callbackBtn: "Request callback",
-    callbackBtn: "Request callback",
-    operateBtn: "See how we work →",
     privacy: {
       title: "Privacy Policy",
       body: "We collect only the information you voluntarily provide (name, phone, email, message). This data is used solely to respond to your enquiry and is never shared with third parties. You may request deletion at any time by emailing supermalitabrothers@gmail.com."
@@ -184,10 +176,10 @@ const translations = {
       eyebrow: "Amit csinálunk",
       sub: "",
       items: [
-        { icon:"🎨", h:"Festés", p:"Bel- és külső festés prémium felületekkel. Tökéletes szín, tökéletes textúra.", img:"images/svc/svc-painting.webp" },
-        { icon:"🛠️", h:"Gipszkarton szerelés", p:"Precíz gipszkarton munka - sima, egyenes, tartós.", img:"images/svc/svc-drywall.webp" },
-        { icon:"🧩", h:"Csempézés", p:"Halszálkától a nagyformátumú lapokig, aprólékos gonddal lerakva.", img:"images/svc/svc-tile.webp" },
-        { icon:"📐", h:"Aljzatkiegyenlítés", p:"Professzionális aljzatkiegyenlítés - tökéletes, egyenletes alap járólaphoz és laminált padlóhoz.", img:"images/svc/svc-leveling.webp" }
+        { icon:"🎨", h:"Festés", p:"Bel- és külső festés prémium felületekkel. Tökéletes szín, tökéletes textúra.", img:"images/svc-painting.webp" },
+        { icon:"🛠️", h:"Gipszkarton szerelés", p:"Precíz gipszkarton munka - sima, egyenes, tartós.", img:"images/svc-drywall.webp" },
+        { icon:"🧩", h:"Csempézés", p:"Halszálkától a nagyformátumú lapokig, aprólékos gonddal lerakva.", img:"images/svc-tile.webp" },
+        { icon:"📐", h:"Aljzatkiegyenlítés", p:"Professzionális aljzatkiegyenlítés - tökéletes, egyenletes alap járólaphoz és laminált padlóhoz.", img:"images/svc-leveling.webp" }
       ]
     },
     operate: {
@@ -219,7 +211,6 @@ const translations = {
         { init:"A", name:"Malita Alex", title:"Festés & gipszkarton", desc:"Festő, gipszkarton szerelő és belsőépítész." }
       ]
     },
-    howwework: { eyebrow: "Hogyan dolgozunk" },
     references: { eyebrow: "Referencia" },
     checkthis: {
       eyebrow: "Ezt nézd meg!",
@@ -233,18 +224,14 @@ const translations = {
       fields: {
         name: "Név", phone: "Telefonszám", email: "Email (opcionális)",
         message: "Üzenet",
-        file: "Fotók hozzáadása (jelenlegi állapot vagy ötletek)",
-        fileHint: "Csatolj fotókat a jelenlegi állapotról - JPG, PNG, PDF",
+
         send: "Üzenet küldése",
         sent: "Üzenet megérkezett! Hamarosan felvesszük veled a kapcsolatot.",
         termsText: "Az űrlap beküldésével elfogadod az",
         termsLink: "Adatvédelmi nyilatkozatunkat",
-        termsBody: "Az általad megadott adatokat kizárólag a megkeresésed megválaszolásához használjuk. Harmadik féllel nem osztjuk meg. Törlési kérelmedet a supermalitabrothers@gmail.com e-mail-címre küldheted."
       }
     },
     callbackBtn: "Visszahívást kérek",
-    callbackBtn: "Visszahívást kérek",
-    operateBtn: "Nézd meg a folyamatunkat →",
     privacy: {
       title: "Adatvédelmi nyilatkozat",
       body: "Csak az általad önkéntesen megadott adatokat kezeljük (név, telefonszám, e-mail, üzenet). Harmadik félnek nem adjuk át. Törlési kérelmedet a supermalitabrothers@gmail.com e-mail-címre küldheted."
@@ -311,10 +298,10 @@ const translations = {
       eyebrow: "Ce facem",
       sub: "",
       items: [
-        { icon:"🎨", h:"Vopsitorie", p:"Vopsit interior și exterior cu finisaje premium.", img:"images/svc/svc-painting.webp" },
-        { icon:"🛠️", h:"Montaj rigips", p:"Rigips de precizie - neted, drept, durabil.", img:"images/svc/svc-drywall.webp" },
-        { icon:"🧩", h:"Placaj gresie", p:"De la model hering la plăci mari, cu precizie sub mm.", img:"images/svc/svc-tile.webp" },
-        { icon:"📐", h:"Șapă / nivelarea pardoselii", p:"Nivelarea profesională a pardoselii - baza perfectă pentru gresie și parchet.", img:"images/svc/svc-leveling.webp" }
+        { icon:"🎨", h:"Vopsitorie", p:"Vopsit interior și exterior cu finisaje premium.", img:"images/svc-painting.webp" },
+        { icon:"🛠️", h:"Montaj rigips", p:"Rigips de precizie - neted, drept, durabil.", img:"images/svc-drywall.webp" },
+        { icon:"🧩", h:"Placaj gresie", p:"De la model hering la plăci mari, cu precizie sub mm.", img:"images/svc-tile.webp" },
+        { icon:"📐", h:"Șapă / nivelarea pardoselii", p:"Nivelarea profesională a pardoselii - baza perfectă pentru gresie și parchet.", img:"images/svc-leveling.webp" }
       ]
     },
     operate: {
@@ -346,7 +333,6 @@ const translations = {
         { init:"A", name:"Malita Alex", title:"Vopsitorie & rigips", desc:"Vopsitor, montator rigips și designer de interior." }
       ]
     },
-    howwework: { eyebrow: "Cum lucrăm" },
     references: { eyebrow: "Referințe" },
     checkthis: {
       eyebrow: "Privește asta",
@@ -360,18 +346,14 @@ const translations = {
       fields: {
         name: "Nume", phone: "Telefon", email: "Email (opțional)",
         message: "Mesaj",
-        file: "Adaugă fotografii (stare actuală sau idei)",
-        fileHint: "Atașează fotografii cu starea actuală - JPG, PNG, PDF",
+
         send: "Trimite mesaj",
         sent: "Mesaj primit! Te contactăm în curând.",
         termsText: "Prin trimiterea formularului ești de acord cu",
         termsLink: "Politica noastră de confidențialitate",
-        termsBody: "Colectăm datele tale exclusiv pentru a răspunde solicitării. Nu sunt partajate cu terți. Poți solicita ștergerea la supermalitabrothers@gmail.com."
       }
     },
     callbackBtn: "Solicit un apel",
-    callbackBtn: "Solicit un apel",
-    operateBtn: "Cum funcționăm →",
     privacy: {
       title: "Politica de confidențialitate",
       body: "Colectăm doar informațiile pe care le furnizezi voluntar (nume, telefon, email, mesaj). Nu sunt partajate cu terți. Poți solicita ștergerea la supermalitabrothers@gmail.com."

@@ -5,13 +5,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTAiIGZpbGw9IiMxRTI0MTYiLz4KICA8dGV4dCB4PSIzMiIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjQjg5NDNGIj5TdXBlcjwvdGV4dD4KICA8dGV4dCB4PSIzMiIgeT0iMzciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjZmZmZmZmIj5NYWxpdGE8L3RleHQ+CiAgPHRleHQgeD0iMzIiIHk9IjUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI0I4OTQzRiI+QnJvdGhlcnM8L3RleHQ+Cjwvc3ZnPg==" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us - Super Malita Brothers</title>
   <meta name="description" content="Contact Super Malita Brothers. Free on-site assessment in Szeged. Simple process from first call to finished job." />
   <link rel="canonical" href="https://supermalitabrothers.com/contact.html" />
-  <!-- <script>(function(){fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/contact_page').catch(function(){});})();</script> -->
-  <!-- <script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR_WEBSITE_ID"></script> -->
   <link rel="stylesheet" href="css/style.css" />
   <style>
     .proc-hero{background:var(--dark);color:#fff;padding:4.5rem 2.5rem 3.5rem;text-align:center;position:relative;overflow:hidden}
@@ -95,12 +92,12 @@
       <div class="form-group"><label class="fl-msg"></label><textarea id="f-msg"></textarea></div>
       <button class="btn-submit fl-send" onclick="submitForm()"></button>
       <div class="proc-sent" id="f-sent"></div>
-      <p class="proc-terms" id="proc-terms-line" style="font-size:12px;color:var(--text-muted);margin-top:0.75rem;line-height:1.5;"></p>
+      <p class="proc-terms" id="proc-terms-line" style="font-size:12px;color:var(--text-muted);margin-top:0.75rem;line-height:1.5;"><span class="fl-terms-text"></span> <a class="fl-terms-link" href="privacy.html" style="color:var(--olive);"></a></p>
     </div>
     <!-- Contact details + map below form -->
     <div class="proc-contact-details" style="margin-top:2rem;padding-top:1.5rem;border-top:0.5px solid var(--border);">
-      <div class="contact-detail"><div class="contact-icon">&#128222;</div><div><strong class="contact-phone"></strong></div></div>
-      <div class="contact-detail"><div class="contact-icon">&#9993;&#65039;</div><div><strong class="contact-email"></strong></div></div>
+      <div class="contact-detail"><div class="contact-icon">&#128222;</div><div><a class="contact-phone" href="tel:+36706056821" style="color:inherit;text-decoration:none;"></a></div></div>
+      <div class="contact-detail"><div class="contact-icon">&#9993;&#65039;</div><div><a class="contact-email" href="mailto:supermalitabrothers@gmail.com" style="color:inherit;text-decoration:none;"></a></div></div>
       <div class="contact-detail"><div class="contact-icon">&#128205;</div><div><strong class="contact-location"></strong></div></div>
     </div>
     <div class="proc-map-wrap">
@@ -150,8 +147,10 @@ function setLang(lang) {
   document.getElementById('proc-calc-links').innerHTML =
     op.calcLinks.map(l => `<a href="${l.href}" class="proc-calc-link">${l.label}</a>`).join('');
   // Contact details
-  document.querySelector('.contact-phone').textContent = ct.phone;
-  document.querySelector('.contact-email').textContent = ct.email;
+  const phEl = document.querySelector('.contact-phone');
+  if (phEl) { phEl.textContent = ct.phone; phEl.href = 'tel:' + ct.phone.replace(/\s/g, ''); }
+  const emEl = document.querySelector('.contact-email');
+  if (emEl) { emEl.textContent = ct.email; emEl.href = 'mailto:' + ct.email; }
   document.querySelector('.contact-location').textContent = ct.location;
   // Form
   const eyebrowParts = ct.eyebrow.split('\n');
@@ -171,27 +170,24 @@ function setLang(lang) {
 function submitForm() {
   const name = document.getElementById('f-name').value.trim();
   if (!name) return;
-  let iframe = document.getElementById('_gf');
-  if (!iframe) { iframe = document.createElement('iframe'); iframe.id='_gf'; iframe.name='_gf'; iframe.style.display='none'; document.body.appendChild(iframe); }
-  const form = document.createElement('form');
-  form.method = 'POST';
-  form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSeGVlesIFUm-uIUY6xcyr6ORgWLeWA-ishxgBcZnhYBYRg2ow/formResponse';
-  form.target = '_gf';
-  const fields = {
-    'entry.1806748632': name,
-    'entry.73121990': document.getElementById('f-phone').value,
-    'entry.1419449292': document.getElementById('f-email').value,
-    'entry.313127878': document.getElementById('f-msg').value
-  };
-  Object.entries(fields).forEach(([k,v]) => {
-    const i = document.createElement('input'); i.type='hidden'; i.name=k; i.value=v; form.appendChild(i);
-  });
-  document.body.appendChild(form); form.submit(); document.body.removeChild(form);
-  var sentMsg = translations[currentLang] && translations[currentLang].contact && translations[currentLang].contact.fields.sent ? translations[currentLang].contact.fields.sent : 'Message sent!';
-  alert(sentMsg);
+  const data = new FormData();
+  data.append('entry.1806748632', name);
+  data.append('entry.73121990', document.getElementById('f-phone').value);
+  data.append('entry.1419449292', document.getElementById('f-email').value);
+  data.append('entry.313127878', document.getElementById('f-msg').value);
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLSeGVlesIFUm-uIUY6xcyr6ORgWLeWA-ishxgBcZnhYBYRg2ow/formResponse', {
+    method: 'POST', mode: 'no-cors', body: data
+  }).catch(function(e) { console.error('Form submit error:', e); });
   document.getElementById('f-sent').style.display = 'block';
-  ['f-name','f-phone','f-email','f-msg'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
-  fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/form_submit').catch(function(){});
+  const fields = ['f-name','f-phone','f-email','f-msg'].map(id => document.getElementById(id)).filter(Boolean);
+  const btn = document.querySelector('.btn-submit');
+  fields.forEach(el => { el.value = ''; el.disabled = true; });
+  if (btn) btn.disabled = true;
+  setTimeout(function() {
+    fields.forEach(el => { el.disabled = false; });
+    if (btn) btn.disabled = false;
+    document.getElementById('f-sent').style.display = 'none';
+  }, 5000);
 }
 
 document.addEventListener('DOMContentLoaded', () => setLang(detectLang()));

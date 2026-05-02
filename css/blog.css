@@ -209,10 +209,7 @@
 .blog-card-img {
   height: 130px;
   background: var(--olive-pale);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 52px;
+  overflow: hidden;
 }
 .blog-card-body { padding: 1.25rem; display: flex; flex-direction: column; flex: 1; }
 .blog-card-title { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--olive); margin-bottom: 0.5rem; line-height: 1.25; }

@@ -6,8 +6,6 @@
   <title>Contact Us - Super Malita Brothers</title>
   <meta name="description" content="Contact Super Malita Brothers. Free on-site assessment in Szeged. Simple process from first call to finished job." />
   <link rel="canonical" href="https://supermalitabrothers.com/process.html" />
-  <script>(function(){fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/contact_page').catch(function(){});})();</script>
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR_WEBSITE_ID"></script>
   <link rel="stylesheet" href="css/style.css" />
   <style>
     .proc-hero{background:var(--dark);color:#fff;padding:4.5rem 2.5rem 3.5rem;text-align:center;position:relative;overflow:hidden}
@@ -163,25 +161,16 @@ function setLang(lang) {
 function submitForm() {
   const name = document.getElementById('f-name').value.trim();
   if (!name) return;
-  let iframe = document.getElementById('_gf');
-  if (!iframe) { iframe = document.createElement('iframe'); iframe.id='_gf'; iframe.name='_gf'; iframe.style.display='none'; document.body.appendChild(iframe); }
-  const form = document.createElement('form');
-  form.method = 'POST';
-  form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSeGVlesIFUm-uIUY6xcyr6ORgWLeWA-ishxgBcZnhYBYRg2ow/formResponse';
-  form.target = '_gf';
-  const fields = {
-    'entry.1806748632': name,
-    'entry.73121990': document.getElementById('f-phone').value,
-    'entry.1419449292': document.getElementById('f-email').value,
-    'entry.313127878': document.getElementById('f-msg').value
-  };
-  Object.entries(fields).forEach(([k,v]) => {
-    const i = document.createElement('input'); i.type='hidden'; i.name=k; i.value=v; form.appendChild(i);
-  });
-  document.body.appendChild(form); form.submit(); document.body.removeChild(form);
+  const data = new FormData();
+  data.append('entry.1806748632', name);
+  data.append('entry.73121990', document.getElementById('f-phone').value);
+  data.append('entry.1419449292', document.getElementById('f-email').value);
+  data.append('entry.313127878', document.getElementById('f-msg').value);
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLSeGVlesIFUm-uIUY6xcyr6ORgWLeWA-ishxgBcZnhYBYRg2ow/formResponse', {
+    method: 'POST', mode: 'no-cors', body: data
+  }).catch(function(e) { console.error('Form submit error:', e); });
   document.getElementById('f-sent').style.display = 'block';
   ['f-name','f-phone','f-email','f-msg'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
-  fetch('https://api.countapi.xyz/hit/supermalitabrothers.com/form_submit').catch(function(){});
 }
 
 document.addEventListener('DOMContentLoaded', () => setLang(detectLang()));

@@ -1,8 +1,3 @@
-/* ── FLIP TOGGLE ── */
-function toggleFlip(card) {
-  card.classList.toggle('flipped');
-}
-
 let currentLang = 'en';
 
 function detectLang() {
@@ -54,7 +49,6 @@ function render(t) {
 
   // What We Do - flip cards (front: icon+text, back: photo on hover)
   document.querySelector('.services-eyebrow').textContent = t.services.eyebrow;
-  document.querySelector('.services-sub').textContent = t.services.sub;
   document.querySelector('.services-grid').innerHTML = t.services.items.map(s => `
     <div class="service-card flip-svc">
       <div class="svc-inner">
@@ -87,13 +81,10 @@ function render(t) {
       </div>
     </div>`).join('');
 
-  // How We Work - photo grid from images/work*.jpg
-  document.querySelector('.howwework-eyebrow').textContent = t.howwework.eyebrow;
-  buildImageGrid('work-grid', 'images/work/', '');
-
-  // References - photo grid from images/ref*.jpg
+  // References - ref images then work images
   document.querySelector('.refs-eyebrow').textContent = t.references.eyebrow;
-  buildImageGrid('refs-grid', 'images/ref/', '');
+  buildImageGrid('refs-grid', 'ref');
+  buildImageGrid('work-grid', 'work');
 
   // Check This Out - static flip cards, just update text
   document.querySelector('.checkthis-eyebrow').textContent = t.checkthis.eyebrow;
@@ -105,8 +96,10 @@ function render(t) {
   const eyeLine2 = document.querySelector('.contact-eyebrow-line2');
   if (eyeLine1) eyeLine1.textContent = eyebrowParts[0] || '';
   if (eyeLine2) eyeLine2.textContent = eyebrowParts[1] || '';
-  document.querySelector('.contact-phone').textContent = t.contact.phone;
-  document.querySelector('.contact-email').textContent = t.contact.email;
+  const phEl = document.querySelector('.contact-phone');
+  if (phEl) { phEl.textContent = t.contact.phone; phEl.href = 'tel:' + t.contact.phone.replace(/\s/g, ''); }
+  const emEl = document.querySelector('.contact-email');
+  if (emEl) { emEl.textContent = t.contact.email; emEl.href = 'mailto:' + t.contact.email; }
   document.querySelector('.contact-location').textContent = t.contact.location;
   // Callback and operate buttons
   const cbBtn = document.getElementById('contact-callback-btn');
@@ -115,48 +108,6 @@ function render(t) {
   // Sticker popup
   document.querySelector('.bk-sticker-txt').textContent = t.sticker.txt;
   document.querySelector('.bk-sticker-cta').textContent = t.sticker.cta;
-}
-
-function buildImageGrid(gridId, folder, prefix) {
-  const grid = document.getElementById(gridId);
-  if (!grid) return;
-  grid.innerHTML = '';
-
-  // Probe files from folder, try both .webp and .jpg/.png
-  // Stop after 4 consecutive misses
-  let idx = 1;
-  let consecutive404 = 0;
-  const MAX_MISS = 4;
-
-  function probe(idx) {
-    if (consecutive404 >= MAX_MISS) return;
-    const base = folder + (prefix || '') + idx;
-    const webp = base + '.webp';
-    const jpg  = base + '.jpg';
-    const png  = base + '.png';
-
-    function tryUrl(url, fallbacks, onSuccess) {
-      const img = new Image();
-      img.onload = () => onSuccess(url);
-      img.onerror = () => {
-        if (fallbacks.length > 0) tryUrl(fallbacks[0], fallbacks.slice(1), onSuccess);
-        else { consecutive404++; probe(idx + 1); }
-      };
-      img.src = url;
-    }
-
-    tryUrl(webp, [jpg, png], function(src) {
-      consecutive404 = 0;
-      const tile = document.createElement('div');
-      tile.className = 'ref-tile';
-      tile.style.backgroundImage = `url('${src}')`;
-      tile.dataset.imgSrc = src;
-      grid.appendChild(tile);
-      probe(idx + 1);
-    });
-  }
-
-  probe(1);
 }
 
 function drawPixelArt() {
@@ -321,31 +272,16 @@ document.addEventListener('DOMContentLoaded', () => {
   grid.innerHTML = '';
 
   // Map prefix to image subfolder
-  const folderMap = { ref: 'images/ref/', work: 'images/work/', svc: 'images/svc/', check: 'images/check/' };
+  const folderMap = { ref: 'images/ref/', work: 'images/work/', check: 'images/check/' };
   const folder = folderMap[prefix] || ('images/' + prefix + '/');
 
-  // Probe sequentially: try webp then jpg for each index
+  // Probe sequentially: webp only
   let i = 1, consecutive404 = 0;
 
   function probeNext() {
     if (consecutive404 >= 3) return;
     const idx = i++;
     const webpSrc = folder + prefix + idx + '.webp';
-    const jpgSrc  = folder + prefix + idx + '.jpg';
-
-    function tryJpg() {
-      const fb = new Image();
-      fb.onload = function() {
-        consecutive404 = 0;
-        addTile(jpgSrc);
-        probeNext();
-      };
-      fb.onerror = function() {
-        consecutive404++;
-        probeNext();
-      };
-      fb.src = jpgSrc;
-    }
 
     const probe = new Image();
     probe.onload = function() {
@@ -353,7 +289,10 @@ document.addEventListener('DOMContentLoaded', () => {
       addTile(webpSrc);
       probeNext();
     };
-    probe.onerror = tryJpg;
+    probe.onerror = function() {
+      consecutive404++;
+      probeNext();
+    };
     probe.src = webpSrc;
   }
 
@@ -363,8 +302,6 @@ document.addEventListener('DOMContentLoaded', () => {
     tile.style.backgroundImage = "url('" + src + "')";
     tile.setAttribute('data-img-src', src);
     grid.appendChild(tile);
-    // Re-trigger zoom attachment
-    if (typeof initImageZoom === 'function') initImageZoom();
   }
 
   probeNext();

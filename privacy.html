@@ -5,7 +5,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTAiIGZpbGw9IiMxRTI0MTYiLz4KICA8dGV4dCB4PSIzMiIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjQjg5NDNGIj5TdXBlcjwvdGV4dD4KICA8dGV4dCB4PSIzMiIgeT0iMzciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjZmZmZmZmIj5NYWxpdGE8L3RleHQ+CiAgPHRleHQgeD0iMzIiIHk9IjUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI0I4OTQzRiI+QnJvdGhlcnM8L3RleHQ+Cjwvc3ZnPg==" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy - Super Malita Brothers</title>
   <link rel="stylesheet" href="css/style.css" />
@@ -44,13 +43,25 @@
 </footer>
 <script src="js/translations.js"></script>
 <script>
-function detectLang(){const l=(navigator.languages||[navigator.language||'en'])[0].slice(0,2).toLowerCase();return l==='hu'?'hu':l==='ro'?'ro':'en';}
-const lang=detectLang();
-const t=translations[lang];
-if(t&&t.privacy){
-  document.getElementById('priv-title').textContent=t.privacy.title;
-  document.getElementById('priv-text').textContent=t.privacy.body;
+let currentLang = 'en';
+function detectLang() {
+  try { var saved = localStorage.getItem('smb_lang'); if (saved && ['en','hu','ro'].includes(saved)) return saved; } catch(e) {}
+  const langs = navigator.languages || [navigator.language || 'en'];
+  for (const l of langs) { const c = l.slice(0,2).toLowerCase(); if(c==='hu') return 'hu'; if(c==='ro') return 'ro'; }
+  return 'en';
 }
+function setLang(lang) {
+  currentLang = lang;
+  try { localStorage.setItem('smb_lang', lang); } catch(e) {}
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('[data-nav]').forEach(el => el.textContent = translations[lang].nav[el.dataset.nav] || '');
+  const t = translations[lang];
+  if (t && t.privacy) {
+    document.getElementById('priv-title').textContent = t.privacy.title;
+    document.getElementById('priv-text').textContent = t.privacy.body;
+  }
+}
+document.addEventListener('DOMContentLoaded', () => setLang(detectLang()));
 </script>
 </body>
 </html>
