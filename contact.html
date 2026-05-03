@@ -91,7 +91,6 @@
       <div class="form-group"><label class="fl-email"></label><input type="email" id="f-email" /></div>
       <div class="form-group"><label class="fl-msg"></label><textarea id="f-msg"></textarea></div>
       <button class="btn-submit fl-send" onclick="submitForm()"></button>
-      <div class="proc-sent" id="f-sent"></div>
       <p class="proc-terms" id="proc-terms-line" style="font-size:12px;color:var(--text-muted);margin-top:0.75rem;line-height:1.5;"><span class="fl-terms-text"></span> <a class="fl-terms-link" href="privacy.html" style="color:var(--olive);"></a></p>
     </div>
     <!-- Contact details + map below form -->
@@ -160,13 +159,15 @@ function setLang(lang) {
   document.querySelector('.fl-email').textContent = ct.fields.email;
   document.querySelector('.fl-msg').textContent = ct.fields.message;
   document.querySelector('.fl-send').textContent = ct.fields.send;
-  document.getElementById('f-sent').textContent = ct.fields.sent;
   const termsText = document.querySelector('.fl-terms-text');
   const termsLink = document.querySelector('.fl-terms-link');
   if (termsText && ct.fields.termsText) termsText.textContent = ct.fields.termsText;
   if (termsLink && ct.fields.termsLink) { termsLink.textContent = ct.fields.termsLink; termsLink.href = ct.fields.termsUrl || 'privacy.html'; }
 }
 
+function dismissForm() {
+  document.getElementById('sent-modal').style.display = 'none';
+}
 function submitForm() {
   const name = document.getElementById('f-name').value.trim();
   if (!name) return;
@@ -175,22 +176,24 @@ function submitForm() {
   data.append('entry.73121990', document.getElementById('f-phone').value);
   data.append('entry.1419449292', document.getElementById('f-email').value);
   data.append('entry.313127878', document.getElementById('f-msg').value);
+  data.append('entry.1240408592', currentLang);
   fetch('https://docs.google.com/forms/d/e/1FAIpQLSeGVlesIFUm-uIUY6xcyr6ORgWLeWA-ishxgBcZnhYBYRg2ow/formResponse', {
     method: 'POST', mode: 'no-cors', body: data
   }).catch(function(e) { console.error('Form submit error:', e); });
-  document.getElementById('f-sent').style.display = 'block';
-  const fields = ['f-name','f-phone','f-email','f-msg'].map(id => document.getElementById(id)).filter(Boolean);
-  const btn = document.querySelector('.btn-submit');
-  fields.forEach(el => { el.value = ''; el.disabled = true; });
-  if (btn) btn.disabled = true;
-  setTimeout(function() {
-    fields.forEach(el => { el.disabled = false; });
-    if (btn) btn.disabled = false;
-    document.getElementById('f-sent').style.display = 'none';
-  }, 5000);
+  ['f-name','f-phone','f-email','f-msg'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('sent-modal').style.display = 'flex';
 }
 
 document.addEventListener('DOMContentLoaded', () => setLang(detectLang()));
 </script>
+
+<div id="sent-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:var(--radius-lg);padding:2rem 2.5rem;max-width:340px;width:90%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+    <p style="font-family:var(--serif);font-size:20px;color:var(--olive);font-weight:300;margin-bottom:0.3rem;">Message sent.</p>
+    <p style="font-family:var(--serif);font-size:20px;color:var(--olive);font-weight:300;margin-bottom:0.3rem;">Üzenet elküldve.</p>
+    <p style="font-family:var(--serif);font-size:20px;color:var(--olive);font-weight:300;margin-bottom:1.75rem;">Mesaj trimis.</p>
+    <button onclick="dismissForm()" style="background:var(--olive);color:#fff;border:none;padding:10px 40px;border-radius:var(--radius);font-size:15px;font-family:var(--sans);cursor:pointer;letter-spacing:0.05em;">OK</button>
+  </div>
+</div>
 </body>
 </html>
